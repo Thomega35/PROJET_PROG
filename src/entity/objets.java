@@ -10,11 +10,11 @@ import entity.Inventaire;
 import main.GamePanel;
 
 public class objets extends Entity{
-
-	public int life;
+	//Variable de la fonction
 	public boolean aff;
 	public int[] caract;
 	
+	//Constructeur objets contenant les caractéristiques que rajoute l'objets
 	public objets(GamePanel gp) {
 		super(gp);
 		aff=true;

@@ -6,10 +6,12 @@ import javax.swing.JPanel;
 
 import entity.Player;
 import entity.objets;
+import graphic.Hearth;
 import tile.TileManager;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable{
 	//Paramètres de l'écran
@@ -28,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	Player player = new Player(this, keyH);
 	objets Objets= new objets(this);
+	Hearth hearth = new Hearth(player, this);
 	public TileManager tileM = new TileManager(this, 1);
 
 	// Constructeur de la classe
@@ -92,7 +95,12 @@ public class GamePanel extends JPanel implements Runnable{
 		if(Objets.aff) {
 		Objets.draw(g2);
 		player.draw(g2);
-		g2.dispose();
+			try {
+				hearth.draw(g2);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			g2.dispose();
 	}
 		}}
 

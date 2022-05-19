@@ -47,10 +47,17 @@ public class Player extends Entity{
 	}
 	
 	public void move() {
-		if (keyH.DKey && !keyH.QKey) {x+=speed;}
-		if(keyH.QKey && !keyH.DKey) {x-=speed;}
-		if(keyH.ZKey && !keyH.SKey) {y-=speed;}
-		if(!keyH.ZKey && keyH.SKey) {y+=speed;}
+		//MOVE one direction
+		     if(keyH.DKey && !keyH.QKey && !keyH.ZKey && !keyH.SKey) {x+=speed;}
+		else if(!keyH.DKey && keyH.QKey && !keyH.ZKey && !keyH.SKey) {x-=speed;}
+		else if(!keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {y-=speed;}
+		else if(!keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {y+=speed;}
+		//MOVE diagonale
+		else if(keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {y+=speed/2;x+=speed/2;}
+		else if(keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {y-=speed/2;x+=speed/2;}
+		else if(!keyH.DKey && keyH.QKey && !keyH.ZKey && keyH.SKey) {y+=speed/2;x-=speed/2;}
+		else if(!keyH.DKey && keyH.QKey && keyH.ZKey && !keyH.SKey) {y-=speed/2;x-=speed/2;}
+		     
 	}
 	
 	public void draw(Graphics2D g2) {

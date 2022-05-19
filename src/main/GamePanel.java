@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 import entity.Player;
-import entity.objets;
+import entity.Sword;
 import event.Success;
 import graphic.Hearth;
 import tile.TileManager;
@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable{
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH);
-	objets Objets= new objets(this);
+	Sword sword= new Sword(this);
 	Hearth hearth = new Hearth(player, this);
 	Success success = new Success(this, player);
 	public TileManager tileM = new TileManager(this, 1);
@@ -84,7 +84,6 @@ public class GamePanel extends JPanel implements Runnable{
 	public void update() {
 		player.update();
 		success.update();
-		Objets.update();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -92,17 +91,17 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			tileM.draw(g2);
-			if (Objets.aff) {
-				Objets.draw(g2);
-				player.draw(g2);
-				try {
-					hearth.draw(g2);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				g2.dispose();
+			sword.draw(g2);
+			player.draw(g2);
+			try {
+				hearth.draw(g2);
+			} 
+			catch (IOException e) {
+				e.printStackTrace();
 			}
-		} else {
+			g2.dispose();
+		}
+		else {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			success.draw(g2);

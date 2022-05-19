@@ -25,6 +25,7 @@ public class Player extends Entity{
 	int hp;
 	int attack;
 	int defence;
+	Inventaire stuff;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -45,6 +46,7 @@ public class Player extends Entity{
 		idle = new ArrayList<BufferedImage>();
 		moving = new ArrayList<BufferedImage>();
 		ismoving = false;
+		stuff = new Inventaire();
 	}
 	
 	public void getPlayerImages() {

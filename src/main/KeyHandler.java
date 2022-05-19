@@ -5,14 +5,22 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
 	
-	public Boolean ZKey = false;
-	public Boolean QKey = false;
-	public Boolean SKey = false;
-	public Boolean DKey = false;
+	public Boolean ZKey;
+	public Boolean QKey;
+	public Boolean SKey;
+	public Boolean DKey;
+	public Boolean FightKey;
+	
+	public KeyHandler() {
+		ZKey = false;
+		QKey = false;
+		SKey = false;
+		DKey = false;
+		FightKey = false;
+	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -20,27 +28,28 @@ public class KeyHandler implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// récupère le code du boutton appuyé
 		int code = e.getKeyCode();
-		if (code == 90) {
+		if (code == 90 || code == 38) {
 			ZKey = true;
-		}else if (code == 81) {
+		}else if (code == 81 || code == 37) {
 			QKey = true;
-		}else if (code == 83) {
+		}else if (code == 83 || code == 40) {
 			SKey = true;
-		}else if (code == 68) {
+		}else if (code == 68 || code == 39) {
 			DKey = true;
 		}
+		System.out.println(code);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		int code = e.getKeyCode();
-		if (code == 90) {
+		if (code == 90 || code == 38) {
 			ZKey = false;
-		}else if (code == 81) {
+		}else if (code == 81 || code == 37) {
 			QKey = false;
-		}else if (code == 83) {
+		}else if (code == 83 || code == 40) {
 			SKey = false;
-		}else if (code == 68) {
+		}else if (code == 68 || code == 39) {
 			DKey = false;
 		}
 	}

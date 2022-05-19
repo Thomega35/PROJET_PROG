@@ -32,7 +32,7 @@ public class KeyHandler implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// récupère le code du boutton appuyé
+		// rï¿½cupï¿½re le code du boutton appuyï¿½
 		int code = e.getKeyCode();
 		if (code == 90 || code == 38) {
 			ZKey = true;
@@ -57,7 +57,6 @@ public class KeyHandler implements KeyListener{
 		if (code == 69) {
 			wantToPick = true;
 		}
-		System.out.println(wantToPick);
 	}
 
 	@Override

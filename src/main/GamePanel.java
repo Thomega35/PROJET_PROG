@@ -84,7 +84,6 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void update() {
 		player.update();
-		
 		Objets.update();
 	}
 
@@ -95,6 +94,7 @@ public class GamePanel extends JPanel implements Runnable{
 		if(Objets.aff) {
 		Objets.draw(g2);
 		player.draw(g2);
+		player.stuff.draw(g2);
 			try {
 				hearth.draw(g2);
 			} catch (IOException e) {

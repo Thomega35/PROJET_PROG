@@ -51,7 +51,6 @@ public class KeyHandler implements KeyListener{
 		if (code == 73) {
 			openInventory = true;
 		}
-		System.out.println(code);
 	}
 
 	@Override

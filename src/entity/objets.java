@@ -33,7 +33,7 @@ public class objets extends Entity{
 		setDefaultValues(120,120);
 	}
 	
-	public void interaction() {}
+	public void interaction(Player pl) {}
 	
 
 	public void getObjetImage() {}

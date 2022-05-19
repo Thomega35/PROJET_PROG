@@ -10,39 +10,40 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import entityItem.Items;
 import main.GamePanel;
 import main.KeyHandler;
  
 public class Inventaire extends Entity{
-	public ArrayList<objets> inventaire;
+	public ArrayList<Items> inventaire;
 	public boolean aff;
 	KeyHandler keyH;
 	
 	public Inventaire(GamePanel gp) {
 		super(gp);
 		aff=false;
-		inventaire=new ArrayList<objets>();
+		inventaire=new ArrayList<Items>();
 		setDefaultValues();
 	}
 	
-	void push_back(objets Obj) {
-		Obj.x=this.x+62*inventaire.size();			// Quand on obtient un objet lui donne les coordonnees de l'inventaire pour ça place
+	public void push_back(Items Obj) {
+		Obj.x=this.x+62*inventaire.size();			// Quand on obtient un objet lui donne les coordonnees de l'inventaire pour ï¿½a place
 		Obj.y=this.y;
 		if (inventaire.size() >= 4) {
 			Obj.y=this.y+gp.tileSize+10;
 		}
-		// Si la case précédente est occupée alors on le mets dans la case suivante
+		// Si la case prï¿½cï¿½dente est occupï¿½e alors on le mets dans la case suivante
 		inventaire.add(Obj);
 	}
 	
 	public void setDefaultValues() {
-		// Donne les coordonnées en bas au centre pour l'inventaire
+		// Donne les coordonnï¿½es en bas au centre pour l'inventaire
 		x=264;
 		y=232;
 	}	
 	
 	public void draw(Graphics2D g2) {
-		// affiche l'inventaire avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		// affiche l'inventaire avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		if (aff) {
 			for(int i=0;i<2;i++) {
 				for(int j=0;j<4;j++) {

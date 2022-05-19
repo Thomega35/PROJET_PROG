@@ -11,6 +11,7 @@ public class KeyHandler implements KeyListener{
 	public Boolean DKey;
 	public Boolean openInventory;
 	public Boolean wantToHit;
+	public Boolean wantToHitFar;
 	public Boolean lookLeft;
 	public Boolean wantToPick;
 	
@@ -20,6 +21,7 @@ public class KeyHandler implements KeyListener{
 		SKey = false;
 		DKey = false;
 		wantToHit = false;
+		wantToHitFar = false;
 		openInventory = false;
 		wantToPick = false;
 		lookLeft = false;
@@ -50,6 +52,10 @@ public class KeyHandler implements KeyListener{
 			wantToHit = true;
 		}
 		
+		if (code == 67) {
+			wantToHitFar = true;
+		}
+		
 		if (code == 73) {
 			openInventory = true;
 		}
@@ -57,6 +63,7 @@ public class KeyHandler implements KeyListener{
 		if (code == 69) {
 			wantToPick = true;
 		}
+		//System.out.println(code);
 	}
 
 	@Override

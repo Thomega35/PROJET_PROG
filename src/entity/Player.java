@@ -11,25 +11,33 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
 
+import entityItem.Items;
+import entityItem.Projectile;
 import main.GamePanel;
 import main.KeyHandler;
 import tile.TileManager;
 
 public class Player extends Entity{
 
-	KeyHandler keyH;
+	public KeyHandler keyH;
 	ArrayList<BufferedImage> idle;
 	ArrayList<BufferedImage> moving;
 	ArrayList<BufferedImage> hiting;
-	ArrayList<BufferedImage> winning;
+	ArrayList<BufferedImage> hitingProjectile;
+	ArrayList<BufferedImage> jumping;
+	ArrayList<BufferedImage> hurting;
 	
 	int timetodisplay;
 	public int hp;
-	int attack;
-	int defence;
+	public int attack;
+	public int defence;
+	public double grabDistance;
 	public Inventaire stuff;
 	Boolean ismoving;
+	public Boolean win;
 	int display6fightFrame;
+	int display6fightFrameFar;
+	int display6fHurtFrame;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		super(gp);
@@ -39,11 +47,15 @@ public class Player extends Entity{
 		this.hp = 11;
 		this.attack = 1;
 		this.defence = 1;
-		this.display6fightFrame = 200;
+		this.grabDistance=30;
+		this.display6fightFrame = 30;
+		this.display6fightFrameFar = 30;
+		this.display6fHurtFrame = 10;
+		this.win = false;
 	}
 	
 	public void setDefaultValues() {
-		// Initialise les valeurs par défaut
+		// Initialise les valeurs par dï¿½faut
 		x = 100;
 		y = 100;
 		speed = 4;
@@ -51,7 +63,9 @@ public class Player extends Entity{
 		idle = new ArrayList<BufferedImage>();
 		moving = new ArrayList<BufferedImage>();
 		hiting = new ArrayList<BufferedImage>();
-		winning = new ArrayList<BufferedImage>();
+		hitingProjectile = new ArrayList<BufferedImage>();
+		jumping = new ArrayList<BufferedImage>();
+		hurting = new ArrayList<BufferedImage>();
 		ismoving = false;
 		stuff = new Inventaire(gp);
 	}
@@ -62,8 +76,10 @@ public class Player extends Entity{
 			for (int i=1; i<=6;i++) {
 				moving.add(ImageIO.read(new File("res/player/SteamManRun"+i+".png")));
 				hiting.add(ImageIO.read(new File("res/player/SteamManHit"+i+".png")));
-				
+				jumping.add(ImageIO.read(new File("res/player/SteamManHit_Jump"+i+".png")));
+				hitingProjectile.add(ImageIO.read(new File("res/player/SteamManHitNum2_"+i+".png")));
 				if (i<=4) {idle.add(ImageIO.read(new File("res/player/SteamMan"+i+".png")));}
+				if (i<=3) {hurting.add(ImageIO.read(new File("res/player/SteamManHitHurt_"+i+".png")));}
 			}
 			
 			
@@ -106,13 +122,15 @@ public class Player extends Entity{
 		changeMap();
 		move();
 		hit();
+		hit_far();
 		inventory();
 		pick();
-		
+		//hurt(); set display6fHurtFrame to ten is need to hurt display
 	}
+
 	private void pick() {
 		if (keyH.wantToPick) {
-			objets obj = TileManager.giveMeFirst(gp.listeObjects,this);
+			Items obj = TileManager.giveMeFirstItem(gp.listeObjects,this, grabDistance);
 			if (obj != null) {
 				obj.interaction(this);
 			}
@@ -129,11 +147,27 @@ public class Player extends Entity{
 
 	private void hit() {
 		if (keyH.wantToHit && display6fightFrame >= 30) {
+			//TODO frapper le monstre
 			display6fightFrame = 0;
 			keyH.wantToHit = false;
 		}
 	}
-
+	
+	public void hurt() {
+			display6fHurtFrame = 0;
+	}
+	
+	public void hit_far() {
+		if (keyH.wantToHitFar && display6fightFrameFar >= 30) {
+			//TODO frapper le monstre
+			Projectile p = new Projectile(gp, this);
+			gp.listeObjects.add(p);
+			p.setDefaultValues(x+gp.tileSize/2,y+gp.tileSize/2);
+			display6fightFrameFar = 0;
+			keyH.wantToHitFar = false;
+		}
+	}
+	
 	private void move() {
 		int x_temp = x;
 		int y_temp = y;
@@ -169,11 +203,19 @@ public class Player extends Entity{
 	}
 
 	public void draw(Graphics2D g2) {
-		// récupére l'image du joueur
+		// rï¿½cupï¿½re l'image du joueur
 		BufferedImage image;
-		if (display6fightFrame < 30) {
+		if(win) {
+			image = jumping.get((timetodisplay/15)%6);
+		}else if (display6fHurtFrame <= 10) {
+			image = hurting.get((timetodisplay/5)%3);
+			display6fHurtFrame++;
+		}else if (display6fightFrame < 30) {
 			image = hiting.get((timetodisplay/5)%6);
 			display6fightFrame++;
+		}else if (display6fightFrameFar < 30) {
+			image = hitingProjectile.get(((timetodisplay+20)/5)%6);
+			display6fightFrameFar++;
 		}else if (!ismoving) {
 			image = idle.get((timetodisplay/10)%4);
 		}else {
@@ -184,7 +226,7 @@ public class Player extends Entity{
 			image = flip(image);
 		}
 		
-		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 		stuff.draw(g2);
 		timetodisplay++;

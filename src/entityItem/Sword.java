@@ -1,21 +1,22 @@
-package entity;
+package entityItem;
 
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import entity.Player;
 import main.GamePanel;
 
-public class Sword extends objets{
-	//Objet épée ajoutant 10 à l'attaque du joueur
+public class Sword extends Items{
+	//Objet ï¿½pï¿½e ajoutant 10 ï¿½ l'attaque du joueur
 		public Sword(GamePanel gp){
 			super(gp,"res/objets/epeecaillou.png");
 			caract[0]=10;
 		}
 
-		// Fonction permettant l'intéraction avec l'épée et le joueur.
-		// Si le joueur appuye pour récupérer l'objet, elle arrive dans son inventaire et disparait de la carte
+		// Fonction permettant l'intï¿½raction avec l'ï¿½pï¿½e et le joueur.
+		// Si le joueur appuye pour rï¿½cupï¿½rer l'objet, elle arrive dans son inventaire et disparait de la carte
 		public void interaction(Player pl) {
 			urlImage = "res/objets/epee.png";
 			this.getObjetImage();

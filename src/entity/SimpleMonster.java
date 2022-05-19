@@ -18,6 +18,7 @@ public class SimpleMonster extends Monsters{
         this.player=player;
         setDefaultValues();
         getSimpleMonsterImage();
+        lifePoint = 20;
     }
 
     public void setDefaultValues() {
@@ -36,9 +37,7 @@ public class SimpleMonster extends Monsters{
 
     public void getSimpleMonsterImage() {
         try {
-
             idleImage = ImageIO.read(new File("res/player/superhero.png"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -46,7 +45,10 @@ public class SimpleMonster extends Monsters{
 
 
     public void update() {
-
+    	if (lifePoint <=0) {
+    		dying=true;
+    	}
+    	System.out.println();
     }
 
     public void draw(Graphics2D g2) {

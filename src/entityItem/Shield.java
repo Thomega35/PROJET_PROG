@@ -1,20 +1,21 @@
-package entity;
+package entityItem;
 
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import entity.Player;
 import main.GamePanel;
 
-public class Shield extends objets{
+public class Shield extends Items{
 	public Shield(GamePanel gp) {
 		super(gp,"res/objets/shield.png");
 		caract[1]=10;
 	}
 	
-	// Fonction permettant l'intéraction avec l'épée et le joueur.
-	// Si le joueur appuye pour récupérer l'objet, elle arrive dans son inventaire et disparait de la carte
+	// Fonction permettant l'intï¿½raction avec l'ï¿½pï¿½e et le joueur.
+	// Si le joueur appuye pour rï¿½cupï¿½rer l'objet, elle arrive dans son inventaire et disparait de la carte
 	public void interaction(Player pl) {
 		pl.stuff.push_back(this);
 		gp.listeObjects.remove(this);

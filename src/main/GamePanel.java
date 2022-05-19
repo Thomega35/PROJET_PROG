@@ -5,10 +5,10 @@ import javax.swing.JPanel;
 
 import entity.Monsters;
 import entity.Player;
-import entity.Shield;
 import entity.SimpleMonster;
-import entity.Sword;
-import entity.objets;
+import entityItem.Items;
+import entityItem.Shield;
+import entityItem.Sword;
 import event.Success;
 import graphic.Hearth;
 import tile.TileManager;
@@ -22,29 +22,30 @@ public class GamePanel extends JPanel implements Runnable{
 	 * 
 	 */
 	private static final long serialVersionUID = 8330524675799416531L;
-	//Paramètres de l'écran
+	//Paramï¿½tres de l'ï¿½cran
 	final int originalTileSize = 16; // une tuile de taille 16x16
-	final int scale = 3; // échelle utilisée pour agrandir l'affichage
+	final int scale = 3; // ï¿½chelle utilisï¿½e pour agrandir l'affichage
 	public final int tileSize = originalTileSize * scale; // 48x48
 	public final int maxScreenCol = 16;
-	public final int maxScreenRow = 12; // ces valeurs donnent une résolution 4:3
+	public final int maxScreenRow = 12; // ces valeurs donnent une rï¿½solution 4:3
 	public final int screenWidth = tileSize * maxScreenCol; //768 pixels
 	public final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
 	// FPS : taux de rafraichissement
 	int FPS = 60;
-	// Création des différentes instances (Player, KeyHandler, TileManager, GameThread ...)
+	// Crï¿½ation des diffï¿½rentes instances (Player, KeyHandler, TileManager, GameThread ...)
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH);
 	Sword sword= new Sword(this);
 	Shield shield= new Shield(this);
 	Hearth hearth = new Hearth(player, this);
+	Monsters simplemonster1 = new SimpleMonster(this, player);
 	Success success = new Success(this, player);
 	public TileManager tileM = new TileManager(this, 1);
 	
 	//Liste choses
-	public ArrayList<objets> listeObjects = new ArrayList<objets>();
+	public ArrayList<Items> listeObjects = new ArrayList<Items>();
 	public ArrayList<Monsters> listeMonsters = new ArrayList<Monsters>();
 
 	// Constructeur de la classe
@@ -58,7 +59,7 @@ public class GamePanel extends JPanel implements Runnable{
 		listeObjects.add(sword);
 		listeObjects.add(shield);
 		shield.setDefaultValues(100,100);
-		listeMonsters.add(null);
+		listeMonsters.add(simplemonster1);
 	}
 
 	public void startGameThread() {
@@ -75,9 +76,9 @@ public class GamePanel extends JPanel implements Runnable{
 		while(gameThread != null) { //Tant que le thread du jeu est actif
 
 			tileM = new TileManager(this, tileM.numMap);
-			//Permet de mettre à jour les différentes variables du jeu
+			//Permet de mettre ï¿½ jour les diffï¿½rentes variables du jeu
 			update();
-			//Dessine sur l'écran le personnage et la map avec les nouvelles informations. la méthode "paintComponent" doit obligatoirement être appelée avec "repaint()"
+			//Dessine sur l'ï¿½cran le personnage et la map avec les nouvelles informations. la mï¿½thode "paintComponent" doit obligatoirement ï¿½tre appelï¿½e avec "repaint()"
 			repaint();
 			//Calcule le temps de pause du thread
 
@@ -104,12 +105,14 @@ public class GamePanel extends JPanel implements Runnable{
 	public void update() {
 		player.update();
 		success.update();
-		for(objets obj : listeObjects) {
-			//obj.update();
+		for(Items obj : listeObjects) {
+			obj.update();
 		}
 		for(Monsters mons : listeMonsters) {
-			//mons.update();
+			mons.update();
 		}
+		listeObjects.removeIf(x->x.dying);
+		listeMonsters.removeIf(x->x.dying);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -117,11 +120,11 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			tileM.draw(g2);
-			for(objets obj : listeObjects) {
+			for(Items obj : listeObjects) {
 				obj.draw(g2);
 			}
 			for(Monsters mons : listeMonsters) {
-				//mons.draw(g2);
+				mons.draw(g2);
 			}
 			player.draw(g2);
 			try {

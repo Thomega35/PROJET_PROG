@@ -8,7 +8,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import entity.Entity;
-import entity.objets;
+import entity.Monsters;
+import entityItem.Items;
 import main.GamePanel;
 
 public class TileManager {
@@ -73,15 +74,26 @@ public class TileManager {
 		return inMap && whichBox(x, y).collision;
 	}
 	
-	public static objets giveMeFirst(ArrayList<objets> listeObjects, Entity me) {
-		objets res = null;
-		for (objets obj : listeObjects) {
-			if (res == null || me.distanceWidth(obj) < me.distanceWidth(res)) {
+	public static Items giveMeFirstItem(ArrayList<Items> listeObjects, Entity me, double distance) {
+		Items res = null;
+		for (Items obj : listeObjects) {
+			if ((res == null || me.distanceWidth(obj) < me.distanceWidth(res)) && me.distanceWidth(obj) < distance) {
 				res = obj;
 			}
 		}
 		return res;
 	}
+	
+	public static Monsters giveMeFirstMonster(ArrayList<Monsters> listeMonster, Entity me, double distance) {
+		Monsters res = null;
+		for (Monsters obj : listeMonster) {
+			if ((res == null || me.distanceWidth(obj) < me.distanceWidth(res)) && me.distanceWidth(obj) < distance) {
+				res = obj;
+			}
+		}
+		return res;
+	}
+
 
 	// Cette m�thode charge la map 
 	public void loadMap() {

@@ -1,4 +1,4 @@
-package entity;
+package entityItem;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -6,23 +6,28 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import entity.Entity;
 import entity.Inventaire;
+import entity.Player;
 import main.GamePanel;
 
-public abstract class objets extends Entity{
+public abstract class Items extends Entity{
 	//Variable de la fonction
 	public boolean aff;
 	public int[] caract;
 	public String urlImage;
+	public Boolean dying;
 	
-	//Constructeur objets contenant les caractéristiques que rajoute l'objets
-	public objets(GamePanel gp, String urlImage) {
+	//Constructeur objets contenant les caractï¿½ristiques que rajoute l'objets
+	public Items(GamePanel gp, String urlImage) {
 		super(gp);
 		this.urlImage=urlImage;
 		aff=true;
 		setDefaultValues();
 		getObjetImage();
 		caract=new int[4];
+		dying = false;
 	}
 
 	public void setDefaultValues(int a,int b) {
@@ -46,11 +51,12 @@ public abstract class objets extends Entity{
         }
 	}
 	
+	public void update() {}
 	
 	public void draw(Graphics2D g2) {
-		// récupère l'image de l'objet
+		// rï¿½cupï¿½re l'image de l'objet
 		BufferedImage image = idleImage;
-		// affiche l'objet avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		// affiche l'objet avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 	}
 

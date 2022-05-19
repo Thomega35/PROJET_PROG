@@ -69,20 +69,6 @@ public class TileManager {
 		return inMap && whichBox(x, y).collision;
 	}
 
-	// Change le numéro de la map
-	public void changeMap(int x, int y) {
-		if(numMap == 1) {
-			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
-				numMap = 2;
-			}
-		}
-		if(numMap == 2) {
-			if(x < gp.tileSize && x > 0) {
-				numMap = 1;
-			}
-		}
-	}
-
 	// Cette méthode charge la map 
 	public void loadMap() {
 		//charger le fichier txt de la map

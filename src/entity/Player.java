@@ -103,11 +103,28 @@ public class Player extends Entity{
 
 	public void draw(Graphics2D g2) {
 		// r�cup�re l'image du joueur
-		BufferedImage image = idle.get((timetodisplay/15)%4);
+		BufferedImage image;
+		if (!ismoving) {
+			image = idle.get((timetodisplay/15)%4);
+		}else {
+			image = moving.get((timetodisplay/15)%6);
+			if (keyH.QKey) {
+				image = flip(image);
+			}
+		}
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 		timetodisplay++;
 	}
 	
+	private BufferedImage flip(BufferedImage img) {
+		BufferedImage res = new BufferedImage(
+		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+		tx.translate(-img.getHeight(null), 0);
+		AffineTransformOp op = new AffineTransformOp(tx,
+		        AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+		res = op.filter(img, null);
+		return res;
+	}
 	
-}
+	

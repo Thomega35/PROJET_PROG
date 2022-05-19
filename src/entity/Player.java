@@ -50,6 +50,7 @@ public class Player extends Entity{
 	}
 	
 	public void update() {
+		gp.tileM.changeMap(x, y);
 		move();
 		
 		

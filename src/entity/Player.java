@@ -140,7 +140,9 @@ public class Player extends Entity{
 			image = idle.get((timetodisplay/15)%4);
 		}else {
 			image = moving.get((timetodisplay/15)%6);
-			//image = flip(image);
+			if (keyH.QKey) {
+				image = flip(image);
+			}
 		}
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
@@ -149,10 +151,8 @@ public class Player extends Entity{
 	
 	private BufferedImage flip(BufferedImage img) {
 		BufferedImage res = new BufferedImage(
-	            img.getWidth(), img.getHeight(),
-	            BufferedImage.TYPE_INT_ARGB);
-		AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
-		tx.translate(0, -img.getHeight(null));
+		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+		tx.translate(-img.getHeight(null), 0);
 		AffineTransformOp op = new AffineTransformOp(tx,
 		        AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 		res = op.filter(img, null);
@@ -160,4 +160,3 @@ public class Player extends Entity{
 	}
 	
 	
-}

@@ -48,7 +48,7 @@ public class Player extends Entity{
 		idle = new ArrayList<BufferedImage>();
 		moving = new ArrayList<BufferedImage>();
 		ismoving = false;
-		stuff = new Inventaire();
+		stuff = new Inventaire(gp);
 	}
 	
 	public void getPlayerImages() {
@@ -112,11 +112,13 @@ public class Player extends Entity{
 		// TODO Auto-generated method stub
 		if (keyH.openInventory) {
 			//TODO
+			stuff.aff = !stuff.aff;
 			keyH.openInventory = false;
 		}
 		
 		if (keyH.wantToHit) {
-			//TODO
+			isGoingToHit = true;
+			//TODO Arthur
 			keyH.wantToHit = false;
 		}
 	}

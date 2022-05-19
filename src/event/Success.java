@@ -30,7 +30,7 @@ public class Success {
         g2.setBackground(Color.black);
         g2.setColor(Color.WHITE);
         g2.scale(2, 2);
-        g2.drawString("Vous avez gagnÃ© !", 140, 140);
+        g2.drawString("Vous avez gagné !", 140, 140);
     }
 
 }

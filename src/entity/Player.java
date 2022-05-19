@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
@@ -17,7 +19,9 @@ public class Player extends Entity{
 	GamePanel gp;
 	KeyHandler keyH;
 	ArrayList<BufferedImage> idle;
+	ArrayList<BufferedImage> moving;
 	int timetodisplay;
+	Boolean ismoving;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -33,6 +37,8 @@ public class Player extends Entity{
 		speed = 4;
 		timetodisplay = 0;
 		idle = new ArrayList<BufferedImage>();
+		moving = new ArrayList<BufferedImage>();
+		ismoving = false;
 	}
 	
 	public void getPlayerImages() {
@@ -42,6 +48,14 @@ public class Player extends Entity{
 			idle.add(ImageIO.read(new File("res/player/SteamMan1.png")));
 			idle.add(ImageIO.read(new File("res/player/SteamMan2.png")));
 			idle.add(ImageIO.read(new File("res/player/SteamMan3.png")));
+			
+			moving.add(ImageIO.read(new File("res/player/SteamManRun1.png")));
+			moving.add(ImageIO.read(new File("res/player/SteamManRun2.png")));
+			moving.add(ImageIO.read(new File("res/player/SteamManRun3.png")));
+			moving.add(ImageIO.read(new File("res/player/SteamManRun4.png")));
+			moving.add(ImageIO.read(new File("res/player/SteamManRun5.png")));
+			moving.add(ImageIO.read(new File("res/player/SteamManRun6.png")));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,16 +75,32 @@ public class Player extends Entity{
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
+		if(gp.tileM.numMap == 2) {
+			if(y < gp.tileSize && y > 0) {
+				gp.tileM.numMap = 3;
+				y = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 3) {
+			if(y+10 < gp.screenWidth && y+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 2;
+				y = gp.tileSize;
+			}
+		}
 	}
 
 	public void update() {
 		changeMap();
-		move();	
+		move();
+		System.out.println(x + "," + y);
+		
 	}
 	
 	public void move() {
 		int x_temp = x;
 		int y_temp = y;
+		ismoving = true;
+		
 		//MOVE one direction
 		if (keyH.DKey && !keyH.QKey && !keyH.ZKey && !keyH.SKey) {
 			x_temp += speed;
@@ -94,6 +124,8 @@ public class Player extends Entity{
 		} else if (!keyH.DKey && keyH.QKey && keyH.ZKey && !keyH.SKey) {
 			y_temp -= speed / 2;
 			x_temp -= speed / 2;
+		}else {
+			ismoving = false;
 		}
 		if(gp.tileM.canMove(x_temp+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp, y_temp) && gp.tileM.canMove(x_temp, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y_temp)) {
 			x = x_temp;

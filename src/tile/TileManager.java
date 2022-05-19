@@ -13,13 +13,21 @@ public class TileManager {
 	Tile[] tile;
 	int maxTiles = 10;
 	int mapTileNum[][];
+	String tabMaps[];
+	public int numMap;
 	
-	public TileManager(GamePanel gp) {
+	public TileManager(GamePanel gp, int numMap) {
 		this.gp =  gp;
 		
 		tile = new Tile[maxTiles];
 		mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 		getTileImage();
+		tabMaps = new String[4];
+		tabMaps[0] = "res/maps/map.txt";
+		tabMaps[1] = "res/maps/map2.txt";
+		tabMaps[2] = "res/maps/map3.txt";
+		tabMaps[3] = "res/maps/map4.txt";
+		this.numMap = numMap;
 		loadMap();
 	}
 	
@@ -66,10 +74,11 @@ public class TileManager {
 	public void loadMap() {
 		//charger le fichier txt de la map
 		try {
-			
-			InputStream is = new FileInputStream("res/maps/map2.txt");
+
+
+			InputStream is = new FileInputStream(tabMaps[numMap]);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-		
+
 			int col = 0;
 			int row = 0;
 			// Parcourir le fichier txt pour r�cup�rer les valeurs
@@ -85,9 +94,9 @@ public class TileManager {
 						col = 0;
 						row ++;
 					}
-				
+
 			}
-			
+
 				br.close();
 			} catch (IOException e) {
 				e.printStackTrace();

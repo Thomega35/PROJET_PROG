@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	Player player = new Player(this, keyH);
 	objets Objets= new objets(this);
-	TileManager tileM = new TileManager(this);
+	public TileManager tileM = new TileManager(this, 1);
 
 	// Constructeur de la classe
 	public GamePanel() {
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 		while(gameThread != null) { //Tant que le thread du jeu est actif
 
-
+			tileM = new TileManager(this, tileM.numMap);
 			//Permet de mettre à jour les différentes variables du jeu
 			update();
 			//Dessine sur l'écran le personnage et la map avec les nouvelles informations. la méthode "paintComponent" doit obligatoirement être appelée avec "repaint()"

@@ -26,8 +26,12 @@ public class Inventaire extends Entity{
 	}
 	
 	void push_back(objets Obj) {
-		Obj.x=Obj.x+69*inventaire.size();			// Quand on obtient un objet lui donne les coordonnees de l'inventaire pour ça place
-		Obj.y=this.y;								// Si la case précédente est occupée alors on le mets dans la case suivante
+		Obj.x=this.x+62*inventaire.size();			// Quand on obtient un objet lui donne les coordonnees de l'inventaire pour ça place
+		Obj.y=this.y;
+		if (inventaire.size() >= 4) {
+			Obj.y=this.y+gp.tileSize+10;
+		}
+		// Si la case précédente est occupée alors on le mets dans la case suivante
 		inventaire.add(Obj);
 	}
 	
@@ -43,7 +47,7 @@ public class Inventaire extends Entity{
 			for(int i=0;i<2;i++) {
 				for(int j=0;j<4;j++) {
 					g2.setColor(Color.GRAY);
-					g2.fill3DRect(x+j*62, y+i*58, 54, 54,true);
+					g2.fill3DRect(x+j*62, y+i*58, gp.tileSize, gp.tileSize,true);
 				};
 			};
 			for(int i=0;i<inventaire.size();i++) {

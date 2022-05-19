@@ -1,10 +1,7 @@
 package tile;
 
 import java.awt.Graphics2D;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
@@ -31,22 +28,22 @@ public class TileManager {
 	
 		try {
 			tile[0] = new Tile();
-			tile[0].image = ImageIO.read(getClass().getResource("/tiles/GRASS.png"));
+			tile[0].image = ImageIO.read(new File("res/tiles/GRASS.png"));
 			
 			tile[1] = new Tile();
-			tile[1].image = ImageIO.read(getClass().getResource("/tiles/BRICK2.png"));
+			tile[1].image = ImageIO.read(new File("res/tiles/BRICK.png"));
 			
 			tile[2] = new Tile();
-			tile[2].image = ImageIO.read(getClass().getResource("/tiles/WATER.png"));
+			tile[2].image = ImageIO.read(new File("res/tiles/WATER.png"));
 			
 			tile[3] = new Tile();
-			tile[3].image = ImageIO.read(getClass().getResource("/tiles/LAVA.png"));
+			tile[3].image = ImageIO.read(new File("res/tiles/LAVA.png"));
 			
 			tile[4] = new Tile();
-			tile[4].image = ImageIO.read(getClass().getResource("/tiles/SAND.png"));
+			tile[4].image = ImageIO.read(new File("res/tiles/SAND.png"));
 			
 			tile[5] = new Tile();
-			tile[5].image = ImageIO.read(getClass().getResource("/tiles/SNOW.png"));
+			tile[5].image = ImageIO.read(new File("res/tiles/SNOW.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -57,7 +54,7 @@ public class TileManager {
 		//charger le fichier txt de la map
 		try {
 			
-			InputStream is = getClass().getResourceAsStream("/maps/map2.txt");
+			InputStream is = new FileInputStream("res/maps/map2.txt");
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		
 			int col = 0;

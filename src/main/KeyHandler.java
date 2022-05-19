@@ -18,6 +18,7 @@ public class KeyHandler implements KeyListener{
 		SKey = false;
 		DKey = false;
 		wantToHit = false;
+		openInventory = false;
 	}
 	
 	@Override
@@ -41,6 +42,10 @@ public class KeyHandler implements KeyListener{
 		
 		if (code == 32) {
 			wantToHit = true;
+		}
+		
+		if (code == 73) {
+			openInventory = true;
 		}
 		System.out.println(code);
 	}

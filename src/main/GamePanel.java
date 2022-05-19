@@ -1,16 +1,14 @@
 package main;
 
-import java.awt.Dimension;
-import java.awt.Color;
+import java.awt.*;
 import javax.swing.JPanel;
 
 import entity.Player;
 import entity.objets;
+import event.Success;
 import graphic.Hearth;
 import tile.TileManager;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -31,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Player player = new Player(this, keyH);
 	objets Objets= new objets(this);
 	Hearth hearth = new Hearth(player, this);
+	Success success = new Success(this, player);
 	public TileManager tileM = new TileManager(this, 1);
 
 	// Constructeur de la classe
@@ -84,23 +83,29 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void update() {
 		player.update();
-		
+		success.update();
 		Objets.update();
 	}
 
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D) g;
-		tileM.draw(g2);
-		if(Objets.aff) {
-		Objets.draw(g2);
-		player.draw(g2);
-			try {
-				hearth.draw(g2);
-			} catch (IOException e) {
-				e.printStackTrace();
+		if(!success.end) {
+			super.paintComponent(g);
+			Graphics2D g2 = (Graphics2D) g;
+			tileM.draw(g2);
+			if (Objets.aff) {
+				Objets.draw(g2);
+				player.draw(g2);
+				try {
+					hearth.draw(g2);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				g2.dispose();
 			}
-			g2.dispose();
+		} else {
+			super.paintComponent(g);
+			Graphics2D g2 = (Graphics2D) g;
+			success.draw(g2);
 		}
 	}
 

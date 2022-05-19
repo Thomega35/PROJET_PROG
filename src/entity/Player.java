@@ -92,7 +92,6 @@ public class Player extends Entity{
 	public void update() {
 		changeMap();
 		move();
-		System.out.println(x + "," + y);
 		
 	}
 	
@@ -150,7 +149,8 @@ public class Player extends Entity{
 	}
 	
 	private BufferedImage flip(BufferedImage img) {
-		BufferedImage res = new BufferedImage(
+		BufferedImage res = new BufferedImage(200, 200,
+		        BufferedImage.TYPE_BYTE_INDEXED);
 		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
 		tx.translate(-img.getHeight(null), 0);
 		AffineTransformOp op = new AffineTransformOp(tx,
@@ -158,5 +158,6 @@ public class Player extends Entity{
 		res = op.filter(img, null);
 		return res;
 	}
+}
 	
 	

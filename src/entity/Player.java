@@ -20,13 +20,14 @@ public class Player extends Entity{
 	KeyHandler keyH;
 	ArrayList<BufferedImage> idle;
 	ArrayList<BufferedImage> moving;
+	ArrayList<BufferedImage> hiting;
 	int timetodisplay;
-	Boolean ismoving;
 	public int hp;
 	int attack;
 	int defence;
 	Inventaire stuff;
-	Boolean isGoingToHit;
+	Boolean ismoving;
+	int display6fightFrame;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -36,17 +37,18 @@ public class Player extends Entity{
 		this.hp = 11;
 		this.attack = 1;
 		this.defence = 1;
-		this.isGoingToHit = false;
+		this.display6fightFrame = 200;
 	}
 	
 	public void setDefaultValues() {
-		// Initialise les valeurs par défaut
+		// Initialise les valeurs par dï¿½faut
 		x = 100;
 		y = 100;
 		speed = 4;
 		timetodisplay = 0;
 		idle = new ArrayList<BufferedImage>();
 		moving = new ArrayList<BufferedImage>();
+		hiting = new ArrayList<BufferedImage>();
 		ismoving = false;
 		stuff = new Inventaire(gp);
 	}
@@ -66,7 +68,12 @@ public class Player extends Entity{
 			moving.add(ImageIO.read(new File("res/player/SteamManRun5.png")));
 			moving.add(ImageIO.read(new File("res/player/SteamManRun6.png")));
 			
-			
+			hiting.add(ImageIO.read(new File("res/player/SteamManHit1.png")));
+			hiting.add(ImageIO.read(new File("res/player/SteamManHit2.png")));
+			hiting.add(ImageIO.read(new File("res/player/SteamManHit3.png")));
+			hiting.add(ImageIO.read(new File("res/player/SteamManHit4.png")));
+			hiting.add(ImageIO.read(new File("res/player/SteamManHit5.png")));
+			hiting.add(ImageIO.read(new File("res/player/SteamManHit6.png")));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -116,9 +123,8 @@ public class Player extends Entity{
 			keyH.openInventory = false;
 		}
 		
-		if (keyH.wantToHit) {
-			isGoingToHit = true;
-			//TODO Arthur
+		if (keyH.wantToHit && display6fightFrame >= 30) {
+			display6fightFrame = 0;
 			keyH.wantToHit = false;
 		}
 	}
@@ -167,9 +173,12 @@ public class Player extends Entity{
 	}
 
 	public void draw(Graphics2D g2) {
-		// récupère l'image du joueur
+		// rï¿½cupï¿½re l'image du joueur
 		BufferedImage image;
-		if (!ismoving) {
+		if (display6fightFrame < 30) {
+			image = hiting.get((timetodisplay/5)%6);
+			display6fightFrame++;
+		}else if (!ismoving) {
 			image = idle.get((timetodisplay/15)%4);
 		}else {
 			image = moving.get((timetodisplay/15)%6);
@@ -177,7 +186,8 @@ public class Player extends Entity{
 				image = flip(image);
 			}
 		}
-		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		
+		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 		timetodisplay++;
 	}

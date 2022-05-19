@@ -24,7 +24,7 @@ public class Player extends Entity{
 	}
 	
 	public void setDefaultValues() {
-		// Initialise les valeurs par défaut
+		// Initialise les valeurs par dï¿½faut
 		x = 100;
 		y = 100;
 		speed = 4;
@@ -32,9 +32,7 @@ public class Player extends Entity{
 	
 	public void getPlayerImage() {
 		try {
-			
 			idleImage = ImageIO.read(new File("res/player/superhero.png"));
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -80,9 +78,9 @@ public class Player extends Entity{
 	}
 
 	public void draw(Graphics2D g2) {
-		// récupère l'image du joueur
+		// rï¿½cupï¿½re l'image du joueur
 		BufferedImage image = idleImage;
-		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 	}
 	

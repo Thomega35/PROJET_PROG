@@ -13,9 +13,10 @@ import java.util.Random;
 
 public class SimpleMonster extends Monsters{
 
-    public SimpleMonster(GamePanel gp, KeyHandler keyH) {
+    public SimpleMonster(GamePanel gp, KeyHandler keyH, Player player) {
         this.gp = gp;
         this.keyH = keyH;
+        this.player=player;
         setDefaultValues();
         getSimpleMonsterImage();
     }
@@ -23,9 +24,14 @@ public class SimpleMonster extends Monsters{
     public void setDefaultValues() {
         // monsters pop position may to be random and far of the player
 
-        x = 100;
-        y = 100;
+        x = positionSimpleMonster(player.x, gp.screenWidth);
+        y = positionSimpleMonster(player.y, gp.screenHeight);
         speed = 4;
+    }
+
+    public int positionSimpleMonster(int positionPlayer, int max){
+        int r=new Random().nextInt(max-positionPlayer-5) + positionPlayer+5;
+        return r;
     }
 
 
@@ -39,9 +45,8 @@ public class SimpleMonster extends Monsters{
         }
     }
 
+
     public void update() {
-
-
 
     }
 

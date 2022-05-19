@@ -13,5 +13,6 @@ import main.KeyHandler;
 public class Monsters extends Entity {
     GamePanel gp;
     KeyHandler keyH;
+    Player player;
 
 }

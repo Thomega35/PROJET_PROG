@@ -8,7 +8,7 @@ public class Entity {
 	public BufferedImage idleImage;
 
 	// Entities attributs
-	private Integer lifePoint;
-	private Integer attackPoint;
-	private Integer velocityPoint;
+	public Integer lifePoint;
+	public Integer attackPoint;
+	// public Integer velocityPoint; // double avec speed
 }

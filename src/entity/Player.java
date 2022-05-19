@@ -18,6 +18,7 @@ public class Player extends Entity{
 	KeyHandler keyH;
 	ArrayList<BufferedImage> idle;
 	int timetodisplay;
+	Boolean ismoving;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -33,6 +34,7 @@ public class Player extends Entity{
 		speed = 4;
 		timetodisplay = 0;
 		idle = new ArrayList<BufferedImage>();
+		ismoving = false;
 	}
 	
 	public void getPlayerImages() {

@@ -42,8 +42,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public TileManager tileM = new TileManager(this, 1);
 	
 	//Liste choses
-	ArrayList<objets> listeObjects = new ArrayList<objets>();
-	ArrayList<Monsters> listeMonsters = new ArrayList<Monsters>();
+	public ArrayList<objets> listeObjects = new ArrayList<objets>();
+	public ArrayList<Monsters> listeMonsters = new ArrayList<Monsters>();
 
 	// Constructeur de la classe
 	public GamePanel() {

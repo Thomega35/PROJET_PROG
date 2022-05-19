@@ -111,11 +111,19 @@ public class Player extends Entity{
 	}
 	private void pick() {
 		if (keyH.wantToPick) {
-			
+			objets obj = giveMeFirst(gp.listeObjects);
+			if (obj != null) {
+				obj.interaction(this);
+			}
 			keyH.wantToPick = false;
 		}
 	}
 	
+	private objets giveMeFirst(ArrayList<objets> listeObjects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private void inventory() {
 		if (keyH.openInventory) {
 			stuff.aff = !stuff.aff;

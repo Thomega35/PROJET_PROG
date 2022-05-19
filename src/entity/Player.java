@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -15,26 +16,32 @@ public class Player extends Entity{
 
 	GamePanel gp;
 	KeyHandler keyH;
+	ArrayList<BufferedImage> idle;
+	int timetodisplay;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
 		setDefaultValues();
-		getPlayerImage();
+		getPlayerImages();
 	}
 	
 	public void setDefaultValues() {
-		// Initialise les valeurs par défaut
+		// Initialise les valeurs par dï¿½faut
 		x = 100;
 		y = 100;
 		speed = 4;
+		timetodisplay = 0;
+		idle = new ArrayList<BufferedImage>();
 	}
 	
-	public void getPlayerImage() {
+	public void getPlayerImages() {
 		try {
-			
-			idleImage = ImageIO.read(new File("res/player/superhero.png"));
-			
+			idleImage = ImageIO.read(new File("res/player/SteamMan.png"));
+			idle.add(ImageIO.read(new File("res/player/SteamMan.png")));
+			idle.add(ImageIO.read(new File("res/player/SteamMan1.png")));
+			idle.add(ImageIO.read(new File("res/player/SteamMan2.png")));
+			idle.add(ImageIO.read(new File("res/player/SteamMan3.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -47,17 +54,44 @@ public class Player extends Entity{
 	}
 	
 	public void move() {
-		if (keyH.DKey && !keyH.QKey) {x+=speed;}
-		if(keyH.QKey && !keyH.DKey) {x-=speed;}
-		if(keyH.ZKey && !keyH.SKey) {y-=speed;}
-		if(!keyH.ZKey && keyH.SKey) {y+=speed;}
+		int x_temp = x;
+		int y_temp = y;
+		//MOVE one direction
+		if (keyH.DKey && !keyH.QKey && !keyH.ZKey && !keyH.SKey) {
+			x_temp += speed;
+		} else if (!keyH.DKey && keyH.QKey && !keyH.ZKey && !keyH.SKey) {
+			x_temp -= speed;
+		} else if (!keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {
+			y_temp -= speed;
+		} else if (!keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {
+			y_temp += speed;
+		}
+		//MOVE diagonale
+		else if (keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {
+			y_temp += speed / 2;
+			x_temp += speed / 2;
+		} else if (keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {
+			y_temp -= speed / 2;
+			x_temp += speed / 2;
+		} else if (!keyH.DKey && keyH.QKey && !keyH.ZKey && keyH.SKey) {
+			y_temp += speed / 2;
+			x_temp -= speed / 2;
+		} else if (!keyH.DKey && keyH.QKey && keyH.ZKey && !keyH.SKey) {
+			y_temp -= speed / 2;
+			x_temp -= speed / 2;
+		}
+		if(gp.tileM.canMove(x_temp+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp, y_temp) && gp.tileM.canMove(x_temp, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y_temp)) {
+			x = x_temp;
+			y = y_temp;
+		}
 	}
-	
+
 	public void draw(Graphics2D g2) {
-		// récupère l'image du joueur
-		BufferedImage image = idleImage;
-		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		// rï¿½cupï¿½re l'image du joueur
+		BufferedImage image = idle.get((timetodisplay/15)%4);
+		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		timetodisplay++;
 	}
 	
 	

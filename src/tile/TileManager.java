@@ -27,28 +27,40 @@ public class TileManager {
 		// Charge les différentes tuiles dans le vecteur tile[]
 	
 		try {
-			tile[0] = new Tile(false);
+			tile[0] = new Tile(true);
 			tile[0].image = ImageIO.read(new File("res/tiles/GRASS.png"));
 			
-			tile[1] = new Tile(true);
+			tile[1] = new Tile(false);
 			tile[1].image = ImageIO.read(new File("res/tiles/BRICK.png"));
 			
-			tile[2] = new Tile(true);
+			tile[2] = new Tile(false);
 			tile[2].image = ImageIO.read(new File("res/tiles/WATER.png"));
 			
-			tile[3] = new Tile(true);
+			tile[3] = new Tile(false);
 			tile[3].image = ImageIO.read(new File("res/tiles/LAVA.png"));
 			
-			tile[4] = new Tile(false);
+			tile[4] = new Tile(true);
 			tile[4].image = ImageIO.read(new File("res/tiles/SAND.png"));
 			
-			tile[5] = new Tile(false);
+			tile[5] = new Tile(true);
 			tile[5].image = ImageIO.read(new File("res/tiles/SNOW.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
+	// Retourne le type de case qui est aux coordonnées x, y
+	public Tile whichBox(int x, int y) {
+		int tileNumber = mapTileNum[x/gp.tileSize][y/gp.tileSize];
+		return tile[tileNumber];
+	}
+
+	// Retourne si le joueur peut bouger sur cette case
+	public boolean canMove(int x, int y) {
+		return whichBox(x, y).collision;
+	}
+
 	// Cette méthode charge la map 
 	public void loadMap() {
 		//charger le fichier txt de la map

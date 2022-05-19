@@ -81,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void update() {
 		player.update();
+		
 		Objets.update();
 	}
 
@@ -88,13 +89,12 @@ public class GamePanel extends JPanel implements Runnable{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		tileM.draw(g2);
+		if(Objets.aff) {
 		Objets.draw(g2);
 		player.draw(g2);
 		g2.dispose();
 	}
-
-
-}
+		}}
 
 
 /*

@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import entity.Player;
+import entity.objets;
 import tile.TileManager;
 
 import java.awt.Graphics;
@@ -26,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable{
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH);
+	objets Objets= new objets(this);
 	TileManager tileM = new TileManager(this);
 
 	// Constructeur de la classe
@@ -79,12 +81,14 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void update() {
 		player.update();
+		Objets.update();
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		tileM.draw(g2);
+		Objets.draw(g2);
 		player.draw(g2);
 		g2.dispose();
 	}

@@ -35,8 +35,8 @@ public class Inventaire extends Entity{
 	
 	public void setDefaultValues() {
 		// Donne les coordonnées en bas au centre pour l'inventaire
-		x=31;
-		y=339;
+		x=264;
+		y=232;
 	}
 	
 	public void getObjetImage() {
@@ -51,11 +51,13 @@ public class Inventaire extends Entity{
 	
 	
 	public void draw(Graphics2D g2) {
-		// récupère l'image de l'inventaire
-		BufferedImage image = idleImage;
 		// affiche l'inventaire avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
-		g2.setColor(Color.BLACK);
-		g2.fill3DRect(x, y, 64, 64,true);
+		for(int i=0;i<2;i++) {
+			for(int j=0;j<4;j++) {
+				g2.setColor(Color.GRAY);
+				g2.fill3DRect(x+j*62, y+i*58, 54, 54,true);
+			};
+		};
 		for(int i=0;i<inventaire.size();i++) {
 			inventaire.get(i).draw(g2);
 		};

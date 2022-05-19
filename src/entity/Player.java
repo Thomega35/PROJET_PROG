@@ -25,6 +25,8 @@ public class Player extends Entity{
 	public int hp;
 	int attack;
 	int defence;
+	Inventaire stuff;
+	Boolean isGoingToHit;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
@@ -34,10 +36,11 @@ public class Player extends Entity{
 		this.hp = 10;
 		this.attack = 1;
 		this.defence = 1;
+		this.isGoingToHit = false;
 	}
 	
 	public void setDefaultValues() {
-		// Initialise les valeurs par dï¿½faut
+		// Initialise les valeurs par défaut
 		x = 100;
 		y = 100;
 		speed = 4;
@@ -45,6 +48,7 @@ public class Player extends Entity{
 		idle = new ArrayList<BufferedImage>();
 		moving = new ArrayList<BufferedImage>();
 		ismoving = false;
+		stuff = new Inventaire();
 	}
 	
 	public void getPlayerImages() {
@@ -61,6 +65,8 @@ public class Player extends Entity{
 			moving.add(ImageIO.read(new File("res/player/SteamManRun4.png")));
 			moving.add(ImageIO.read(new File("res/player/SteamManRun5.png")));
 			moving.add(ImageIO.read(new File("res/player/SteamManRun6.png")));
+			
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -98,10 +104,24 @@ public class Player extends Entity{
 	public void update() {
 		changeMap();
 		move();
+		hitAndInventory();
 		
 	}
 	
-	public void move() {
+	private void hitAndInventory() {
+		// TODO Auto-generated method stub
+		if (keyH.openInventory) {
+			//TODO
+			keyH.openInventory = false;
+		}
+		
+		if (keyH.wantToHit) {
+			//TODO
+			keyH.wantToHit = false;
+		}
+	}
+
+	private void move() {
 		int x_temp = x;
 		int y_temp = y;
 		ismoving = true;
@@ -145,7 +165,7 @@ public class Player extends Entity{
 	}
 
 	public void draw(Graphics2D g2) {
-		// rï¿½cupï¿½re l'image du joueur
+		// récupère l'image du joueur
 		BufferedImage image;
 		if (!ismoving) {
 			image = idle.get((timetodisplay/15)%4);
@@ -155,7 +175,7 @@ public class Player extends Entity{
 				image = flip(image);
 			}
 		}
-		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
+		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 		timetodisplay++;
 	}

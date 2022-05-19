@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import entity.Monsters;
 import entity.Player;
+import entity.Shield;
 import entity.SimpleMonster;
 import entity.Sword;
 import entity.objets;
@@ -37,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	Player player = new Player(this, keyH);
 	Sword sword= new Sword(this);
-	Sword sword2= new Sword(this);
+	Shield shield= new Shield(this);
 	Hearth hearth = new Hearth(player, this);
 	Success success = new Success(this, player);
 	public TileManager tileM = new TileManager(this, 1);
@@ -55,8 +56,8 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 		
 		listeObjects.add(sword);
-		listeObjects.add(sword2);
-		sword2.setDefaultValues(100,100);
+		listeObjects.add(shield);
+		shield.setDefaultValues(100,100);
 		listeMonsters.add(null);
 	}
 

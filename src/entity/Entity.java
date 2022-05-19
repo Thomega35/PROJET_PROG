@@ -19,6 +19,10 @@ public class Entity {
 		this.gp = gp;
 	}
 	
+	public double distanceWidth(Entity e) {
+		return Math.sqrt(Math.pow(x-e.x,2)+Math.pow(y-e.y,2));
+	}
+	
 	public void whereIgo(int x_temp, int y_temp){
 		if(gp.tileM.canMove(x_temp+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp, y_temp) && gp.tileM.canMove(x_temp, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y_temp)) {
 			x = x_temp;

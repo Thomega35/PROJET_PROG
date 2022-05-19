@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import tile.TileManager;
 
 public class Player extends Entity{
 
@@ -111,17 +112,12 @@ public class Player extends Entity{
 	}
 	private void pick() {
 		if (keyH.wantToPick) {
-			objets obj = giveMeFirst(gp.listeObjects);
+			objets obj = TileManager.giveMeFirst(gp.listeObjects,this);
 			if (obj != null) {
 				obj.interaction(this);
 			}
 			keyH.wantToPick = false;
 		}
-	}
-	
-	private objets giveMeFirst(ArrayList<objets> listeObjects) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	private void inventory() {
@@ -190,6 +186,7 @@ public class Player extends Entity{
 		
 		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		stuff.draw(g2);
 		timetodisplay++;
 	}
 	

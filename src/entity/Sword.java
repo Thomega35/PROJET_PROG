@@ -26,7 +26,7 @@ public class Sword extends objets{
 		// Si le joueur appuye pour récupérer l'objet, elle arrive dans son inventaire et disparait de la carte
 		public void interaction(Player pl) {
 			pl.stuff.push_back(this);
-			//gp.listeObjects.remove(this);
+			gp.listeObjects.remove(this);
 			pl.attack=pl.attack+caract[0];
 		}
 }

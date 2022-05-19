@@ -10,9 +10,11 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 public class objets extends Entity{
+
 	GamePanel gp;
 	public int life;
 	public boolean aff;
+	public int[] caract;
 	
 	public objets(GamePanel gp) {
 		this.gp = gp;
@@ -50,5 +52,17 @@ public class objets extends Entity{
 		// affiche l'objet avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 	}
-
+	
+	public class Epee {
+		public Epee(GamePanel gp){
+			new objets(gp);
+			int[] caract= {10,0,0};
+		}
+		
+	public class Food{
+		public Food() {
+			
+		}
+	}
+	}
 }

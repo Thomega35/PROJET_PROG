@@ -101,8 +101,10 @@ public class GamePanel extends JPanel implements Runnable{
 				e.printStackTrace();
 			}
 			g2.dispose();
+		}
 	}
-		}}
+
+}
 
 
 /*

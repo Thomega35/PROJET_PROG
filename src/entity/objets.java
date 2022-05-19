@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
+import entity.Inventaire;
 import main.GamePanel;
 
 public class objets extends Entity{
@@ -20,6 +20,7 @@ public class objets extends Entity{
 		aff=true;
 		setDefaultValues();
 		getObjetImage();
+		caract=new int[3];
 	}
 
 	public void setDefaultValues(int a,int b) {
@@ -32,18 +33,11 @@ public class objets extends Entity{
 		setDefaultValues(120,120);
 	}
 	
-
-	public void getObjetImage() {
-		try {
-			idleImage = ImageIO.read(new File("res/player/superhero.png"));
-			}
-		catch (IOException e) {
-			e.printStackTrace();
-			}
-		}
+	public void interaction() {}
 	
-	public void update() {
-	}
+
+	public void getObjetImage() {}
+	
 	
 	public void draw(Graphics2D g2) {
 		// récupère l'image de l'objet
@@ -51,17 +45,8 @@ public class objets extends Entity{
 		// affiche l'objet avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 	}
+
 	
-	public class Epee {
-		public Epee(GamePanel gp){
-			new objets(gp);
-			int[] caract= {10,0,0};
-		}
-		
-	public class Food{
-		public Food() {
-			
-		}
-	}
-	}
+	
+	
 }

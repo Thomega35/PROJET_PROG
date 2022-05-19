@@ -9,14 +9,16 @@ import javax.imageio.ImageIO;
 import entity.Inventaire;
 import main.GamePanel;
 
-public class objets extends Entity{
+public abstract class objets extends Entity{
 	//Variable de la fonction
 	public boolean aff;
 	public int[] caract;
+	public String urlImage;
 	
 	//Constructeur objets contenant les caractéristiques que rajoute l'objets
-	public objets(GamePanel gp) {
+	public objets(GamePanel gp, String urlImage) {
 		super(gp);
+		this.urlImage=urlImage;
 		aff=true;
 		setDefaultValues();
 		getObjetImage();
@@ -33,10 +35,16 @@ public class objets extends Entity{
 		setDefaultValues(120,120);
 	}
 	
-	public void interaction(Player pl) {}
+	public abstract void interaction(Player pl);
 	
 
-	public void getObjetImage() {}
+	public void getObjetImage() {
+		try {
+            idleImage = ImageIO.read(new File(urlImage));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 	
 	
 	public void draw(Graphics2D g2) {

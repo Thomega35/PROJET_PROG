@@ -76,13 +76,13 @@ public class Player extends Entity{
 			}
 		}
 		if(gp.tileM.numMap == 2) {
-			if(y < gp.tileSize && y > 0) {
+			if(y < gp.tileSize  && y > 0) {
 				gp.tileM.numMap = 3;
-				y = gp.screenWidth-2*gp.tileSize;
+				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 3) {
-			if(y+10 < gp.screenWidth && y+10 > gp.screenWidth-gp.tileSize) {
+			if(y+10 < gp.screenHeight && y+10 > gp.screenHeight-gp.tileSize) {
 				gp.tileM.numMap = 2;
 				y = gp.tileSize;
 			}

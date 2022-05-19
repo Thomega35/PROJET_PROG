@@ -25,7 +25,7 @@ public class Player extends Entity{
 	public int hp;
 	int attack;
 	int defence;
-	Inventaire stuff;
+	public Inventaire stuff;
 	Boolean ismoving;
 	int display6fightFrame;
 	
@@ -41,7 +41,7 @@ public class Player extends Entity{
 	}
 	
 	public void setDefaultValues() {
-		// Initialise les valeurs par dï¿½faut
+		// Initialise les valeurs par défaut
 		x = 100;
 		y = 100;
 		speed = 4;
@@ -111,18 +111,23 @@ public class Player extends Entity{
 	public void update() {
 		changeMap();
 		move();
-		hitAndInventory();
+		hit();
+		inventory();
+		pick();
+		
+	}
+	private void pick() {
 		
 	}
 	
-	private void hitAndInventory() {
-		// TODO Auto-generated method stub
+	private void inventory() {
 		if (keyH.openInventory) {
-			//TODO
 			stuff.aff = !stuff.aff;
 			keyH.openInventory = false;
 		}
-		
+	}
+
+	private void hit() {
 		if (keyH.wantToHit && display6fightFrame >= 30) {
 			display6fightFrame = 0;
 			keyH.wantToHit = false;
@@ -173,21 +178,22 @@ public class Player extends Entity{
 	}
 
 	public void draw(Graphics2D g2) {
-		// rï¿½cupï¿½re l'image du joueur
+		// récupére l'image du joueur
 		BufferedImage image;
 		if (display6fightFrame < 30) {
 			image = hiting.get((timetodisplay/5)%6);
 			display6fightFrame++;
 		}else if (!ismoving) {
-			image = idle.get((timetodisplay/15)%4);
+			image = idle.get((timetodisplay/10)%4);
 		}else {
-			image = moving.get((timetodisplay/15)%6);
-			if (keyH.QKey) {
-				image = flip(image);
-			}
+			image = moving.get((timetodisplay/10)%6);
 		}
 		
-		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
+		if (keyH.lookLeft) {
+			image = flip(image);
+		}
+		
+		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 		timetodisplay++;
 	}

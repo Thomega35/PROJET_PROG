@@ -11,6 +11,7 @@ public class KeyHandler implements KeyListener{
 	public Boolean DKey;
 	public Boolean openInventory;
 	public Boolean wantToHit;
+	public Boolean lookLeft;
 	
 	public KeyHandler() {
 		ZKey = false;
@@ -19,6 +20,7 @@ public class KeyHandler implements KeyListener{
 		DKey = false;
 		wantToHit = false;
 		openInventory = false;
+		lookLeft = false;
 	}
 	
 	@Override
@@ -34,10 +36,12 @@ public class KeyHandler implements KeyListener{
 			ZKey = true;
 		}else if (code == 81 || code == 37) {
 			QKey = true;
+			lookLeft = true;
 		}else if (code == 83 || code == 40) {
 			SKey = true;
 		}else if (code == 68 || code == 39) {
 			DKey = true;
+			lookLeft = false;
 		}
 		
 		if (code == 32) {
@@ -47,7 +51,6 @@ public class KeyHandler implements KeyListener{
 		if (code == 73) {
 			openInventory = true;
 		}
-		System.out.println(code);
 	}
 
 	@Override

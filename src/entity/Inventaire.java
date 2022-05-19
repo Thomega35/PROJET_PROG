@@ -24,7 +24,6 @@ public class Inventaire extends Entity{
 		aff=false;
 		inventaire=new ArrayList<objets>();
 		setDefaultValues();
-		getObjetImage();
 	}
 	
 	void push_back(objets Obj) {
@@ -37,30 +36,21 @@ public class Inventaire extends Entity{
 		// Donne les coordonnées en bas au centre pour l'inventaire
 		x=264;
 		y=232;
-	}
-	
-	public void getObjetImage() {
-		try {
-			idleImage = ImageIO.read(new File("res/objets/inventaire.png"));
-			}
-		catch (IOException e) {
-			e.printStackTrace();
-			}
-		}
-	
-	
+	}	
 	
 	public void draw(Graphics2D g2) {
 		// affiche l'inventaire avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
-		for(int i=0;i<2;i++) {
-			for(int j=0;j<4;j++) {
-				g2.setColor(Color.GRAY);
-				g2.fill3DRect(x+j*62, y+i*58, 54, 54,true);
+		if (aff) {
+			for(int i=0;i<2;i++) {
+				for(int j=0;j<4;j++) {
+					g2.setColor(Color.GRAY);
+					g2.fill3DRect(x+j*62, y+i*58, 54, 54,true);
+				};
 			};
-		};
-		for(int i=0;i<inventaire.size();i++) {
-			inventaire.get(i).draw(g2);
-		};
+			for(int i=0;i<inventaire.size();i++) {
+				inventaire.get(i).draw(g2);
+			};
+		}
 	}
 	
 	

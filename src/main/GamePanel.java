@@ -5,30 +5,30 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import entity.Player;
-import entity.SimpleMonster;
+import entity.objets;
 import tile.TileManager;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class GamePanel extends JPanel implements Runnable{
-	//Paramï¿½tres de l'ï¿½cran
+	//Paramètres de l'écran
 	final int originalTileSize = 16; // une tuile de taille 16x16
-	final int scale = 3; // ï¿½chelle utilisï¿½e pour agrandir l'affichage
+	final int scale = 3; // échelle utilisée pour agrandir l'affichage
 	public final int tileSize = originalTileSize * scale; // 48x48
 	public final int maxScreenCol = 16;
-	public final int maxScreenRow = 12; // ces valeurs donnent une rï¿½solution 4:3
+	public final int maxScreenRow = 12; // ces valeurs donnent une résolution 4:3
 	public final int screenWidth = tileSize * maxScreenCol; //768 pixels
 	public final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
 	// FPS : taux de rafraichissement
 	int FPS = 60;
-	// Crï¿½ation des diffï¿½rentes instances (Player, KeyHandler, TileManager, GameThread ...)
+	// Création des différentes instances (Player, KeyHandler, TileManager, GameThread ...)
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH);
-	SimpleMonster simpleMonster1= new SimpleMonster(this, keyH, player);
-	public TileManager tileM = new TileManager(this, 1);
+	objets Objets= new objets(this);
+	TileManager tileM = new TileManager(this);
 
 	// Constructeur de la classe
 	public GamePanel() {
@@ -52,10 +52,10 @@ public class GamePanel extends JPanel implements Runnable{
 
 		while(gameThread != null) { //Tant que le thread du jeu est actif
 
-			tileM = new TileManager(this, tileM.numMap);
-			//Permet de mettre ï¿½ jour les diffï¿½rentes variables du jeu
+
+			//Permet de mettre à jour les différentes variables du jeu
 			update();
-			//Dessine sur l'ï¿½cran le personnage et la map avec les nouvelles informations. la mï¿½thode "paintComponent" doit obligatoirement ï¿½tre appelï¿½e avec "repaint()"
+			//Dessine sur l'écran le personnage et la map avec les nouvelles informations. la méthode "paintComponent" doit obligatoirement être appelée avec "repaint()"
 			repaint();
 			//Calcule le temps de pause du thread
 
@@ -81,19 +81,20 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void update() {
 		player.update();
+		
+		Objets.update();
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		tileM.draw(g2);
-		simpleMonster1.draw(g2);
+		if(Objets.aff) {
+		Objets.draw(g2);
 		player.draw(g2);
 		g2.dispose();
 	}
-
-
-}
+		}}
 
 
 /*

@@ -21,6 +21,8 @@ public class Player extends Entity{
 	ArrayList<BufferedImage> idle;
 	ArrayList<BufferedImage> moving;
 	ArrayList<BufferedImage> hiting;
+	ArrayList<BufferedImage> winning;
+	
 	int timetodisplay;
 	public int hp;
 	int attack;
@@ -49,31 +51,22 @@ public class Player extends Entity{
 		idle = new ArrayList<BufferedImage>();
 		moving = new ArrayList<BufferedImage>();
 		hiting = new ArrayList<BufferedImage>();
+		winning = new ArrayList<BufferedImage>();
 		ismoving = false;
 		stuff = new Inventaire(gp);
 	}
 	
 	public void getPlayerImages() {
 		try {
-			idleImage = ImageIO.read(new File("res/player/SteamMan.png"));
-			idle.add(ImageIO.read(new File("res/player/SteamMan.png")));
-			idle.add(ImageIO.read(new File("res/player/SteamMan1.png")));
-			idle.add(ImageIO.read(new File("res/player/SteamMan2.png")));
-			idle.add(ImageIO.read(new File("res/player/SteamMan3.png")));
+			idleImage = ImageIO.read(new File("res/player/SteamMan1.png"));
+			for (int i=1; i<=6;i++) {
+				moving.add(ImageIO.read(new File("res/player/SteamManRun"+i+".png")));
+				hiting.add(ImageIO.read(new File("res/player/SteamManHit"+i+".png")));
+				if (i<=4) {idle.add(ImageIO.read(new File("res/player/SteamMan"+i+".png")));}
+			}
 			
-			moving.add(ImageIO.read(new File("res/player/SteamManRun1.png")));
-			moving.add(ImageIO.read(new File("res/player/SteamManRun2.png")));
-			moving.add(ImageIO.read(new File("res/player/SteamManRun3.png")));
-			moving.add(ImageIO.read(new File("res/player/SteamManRun4.png")));
-			moving.add(ImageIO.read(new File("res/player/SteamManRun5.png")));
-			moving.add(ImageIO.read(new File("res/player/SteamManRun6.png")));
 			
-			hiting.add(ImageIO.read(new File("res/player/SteamManHit1.png")));
-			hiting.add(ImageIO.read(new File("res/player/SteamManHit2.png")));
-			hiting.add(ImageIO.read(new File("res/player/SteamManHit3.png")));
-			hiting.add(ImageIO.read(new File("res/player/SteamManHit4.png")));
-			hiting.add(ImageIO.read(new File("res/player/SteamManHit5.png")));
-			hiting.add(ImageIO.read(new File("res/player/SteamManHit6.png")));
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();

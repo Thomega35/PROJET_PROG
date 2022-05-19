@@ -2,10 +2,13 @@ package tile;
 
 import java.awt.Graphics2D;
 import java.io.*;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
+import entity.Entity;
+import entity.objets;
 import main.GamePanel;
 
 public class TileManager {
@@ -68,6 +71,16 @@ public class TileManager {
 	public boolean canMove(int x, int y) {
 		boolean inMap = x < gp.screenWidth && x > 0 && y < gp.screenHeight && y > 0;
 		return inMap && whichBox(x, y).collision;
+	}
+	
+	public static objets giveMeFirst(ArrayList<objets> listeObjects, Entity me) {
+		objets res = null;
+		for (objets obj : listeObjects) {
+			if (res == null || me.distanceWidth(obj) < me.distanceWidth(res)) {
+				res = obj;
+			}
+		}
+		return res;
 	}
 
 	// Cette m�thode charge la map 

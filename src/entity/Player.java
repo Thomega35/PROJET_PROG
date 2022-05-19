@@ -22,12 +22,18 @@ public class Player extends Entity{
 	ArrayList<BufferedImage> moving;
 	int timetodisplay;
 	Boolean ismoving;
+	int hp;
+	int attack;
+	int defence;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
 		setDefaultValues();
 		getPlayerImages();
+		this.hp = 10;
+		this.attack = 1;
+		this.defence = 1;
 	}
 	
 	public void setDefaultValues() {
@@ -129,6 +135,12 @@ public class Player extends Entity{
 		if(gp.tileM.canMove(x_temp+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp, y_temp) && gp.tileM.canMove(x_temp, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y_temp)) {
 			x = x_temp;
 			y = y_temp;
+		}
+		if(gp.tileM.canMove(x+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x, y_temp) && gp.tileM.canMove(x, y_temp+ gp.tileSize) && gp.tileM.canMove(x+gp.tileSize, y_temp)) {
+			y = y_temp;
+		}
+		if(gp.tileM.canMove(x_temp+gp.tileSize, y+ gp.tileSize) && gp.tileM.canMove(x_temp, y) && gp.tileM.canMove(x_temp, y+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y)) {
+			x = x_temp;
 		}
 	}
 

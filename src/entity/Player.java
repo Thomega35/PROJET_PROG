@@ -182,9 +182,10 @@ public class Player extends Entity{
 			image = idle.get((timetodisplay/15)%4);
 		}else {
 			image = moving.get((timetodisplay/15)%6);
-			if (keyH.QKey) {
-				image = flip(image);
-			}
+		}
+		
+		if (keyH.lookLeft) {
+			image = flip(image);
 		}
 		
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)

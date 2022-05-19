@@ -14,9 +14,9 @@ public class TileManager {
 	int maxTiles = 10;
 	int mapTileNum[][];
 	String tabMaps[];
-	int numMap;
+	public int numMap;
 	
-	public TileManager(GamePanel gp) {
+	public TileManager(GamePanel gp, int numMap) {
 		this.gp =  gp;
 		
 		tile = new Tile[maxTiles];
@@ -26,7 +26,7 @@ public class TileManager {
 		tabMaps[0] = "res/maps/map.txt";
 		tabMaps[1] = "res/maps/map2.txt";
 		tabMaps[2] = "res/maps/map3.txt";
-		numMap = 1;
+		this.numMap = numMap;
 		loadMap();
 	}
 	
@@ -65,7 +65,22 @@ public class TileManager {
 
 	// Retourne si le joueur peut bouger sur cette case
 	public boolean canMove(int x, int y) {
-		return whichBox(x, y).collision;
+		boolean inMap = x < gp.screenWidth && x > 0 && y < gp.screenHeight && y > 0;
+		return inMap && whichBox(x, y).collision;
+	}
+
+	// Change le numéro de la map
+	public void changeMap(int x, int y) {
+		if(numMap == 1) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				numMap = 2;
+			}
+		}
+		if(numMap == 2) {
+			if(x < gp.tileSize && x > 0) {
+				numMap = 1;
+			}
+		}
 	}
 
 	// Cette méthode charge la map 

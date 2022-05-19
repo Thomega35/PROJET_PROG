@@ -27,6 +27,6 @@ public class Shield extends objets{
 	public void interaction(Player pl) {
 		pl.stuff.inventaire.add(this);
 		//gp.listeObjects.remove(this);
-		pl.attack=pl.attack+caract[0];
+		pl.defence=pl.defence+caract[1];
 	}
 }

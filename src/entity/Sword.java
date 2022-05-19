@@ -17,7 +17,7 @@ public class Sword extends objets{
 		// Fonction permettant d'obtenir l'image de la sword
 		public void getObjetImage() {
 			try {
-	            idleImage = ImageIO.read(new File("res/objets/epee.png"));
+	            idleImage = ImageIO.read(new File("res/objets/epeecaillou.png"));
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }

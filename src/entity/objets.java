@@ -11,13 +11,12 @@ import main.GamePanel;
 
 public class objets extends Entity{
 
-	GamePanel gp;
 	public int life;
 	public boolean aff;
 	public int[] caract;
 	
 	public objets(GamePanel gp) {
-		this.gp = gp;
+		super(gp);
 		aff=true;
 		setDefaultValues();
 		getObjetImage();

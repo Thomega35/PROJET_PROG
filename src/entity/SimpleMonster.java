@@ -13,9 +13,8 @@ import java.util.Random;
 
 public class SimpleMonster extends Monsters{
 
-    public SimpleMonster(GamePanel gp, KeyHandler keyH, Player player) {
-        this.gp = gp;
-        this.keyH = keyH;
+    public SimpleMonster(GamePanel gp, Player player) {
+        super(gp);
         this.player=player;
         setDefaultValues();
         getSimpleMonsterImage();

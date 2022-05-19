@@ -15,12 +15,11 @@ import main.KeyHandler;
  
 public class Inventaire extends Entity{
 	public ArrayList<objets> inventaire;
-	GamePanel gp;
 	public boolean aff;
 	KeyHandler keyH;
 	
 	public Inventaire(GamePanel gp) {
-		this.gp = gp;
+		super(gp);
 		aff=false;
 		inventaire=new ArrayList<objets>();
 		setDefaultValues();

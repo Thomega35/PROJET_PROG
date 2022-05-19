@@ -16,7 +16,6 @@ import main.KeyHandler;
 
 public class Player extends Entity{
 
-	GamePanel gp;
 	KeyHandler keyH;
 	ArrayList<BufferedImage> idle;
 	ArrayList<BufferedImage> moving;
@@ -32,7 +31,7 @@ public class Player extends Entity{
 	int display6fightFrame;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
-		this.gp = gp;
+		super(gp);
 		this.keyH = keyH;
 		setDefaultValues();
 		getPlayerImages();
@@ -62,6 +61,7 @@ public class Player extends Entity{
 			for (int i=1; i<=6;i++) {
 				moving.add(ImageIO.read(new File("res/player/SteamManRun"+i+".png")));
 				hiting.add(ImageIO.read(new File("res/player/SteamManHit"+i+".png")));
+				
 				if (i<=4) {idle.add(ImageIO.read(new File("res/player/SteamMan"+i+".png")));}
 			}
 			
@@ -110,7 +110,10 @@ public class Player extends Entity{
 		
 	}
 	private void pick() {
-		
+		if (keyH.wantToPick) {
+			
+			keyH.wantToPick = false;
+		}
 	}
 	
 	private void inventory() {
@@ -158,16 +161,7 @@ public class Player extends Entity{
 		}else {
 			ismoving = false;
 		}
-		if(gp.tileM.canMove(x_temp+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp, y_temp) && gp.tileM.canMove(x_temp, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y_temp)) {
-			x = x_temp;
-			y = y_temp;
-		}
-		if(gp.tileM.canMove(x+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x, y_temp) && gp.tileM.canMove(x, y_temp+ gp.tileSize) && gp.tileM.canMove(x+gp.tileSize, y_temp)) {
-			y = y_temp;
-		}
-		if(gp.tileM.canMove(x_temp+gp.tileSize, y+ gp.tileSize) && gp.tileM.canMove(x_temp, y) && gp.tileM.canMove(x_temp, y+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y)) {
-			x = x_temp;
-		}
+		whereIgo(x_temp,y_temp);
 	}
 
 	public void draw(Graphics2D g2) {

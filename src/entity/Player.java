@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -15,12 +16,14 @@ public class Player extends Entity{
 
 	GamePanel gp;
 	KeyHandler keyH;
+	ArrayList<BufferedImage> idle;
+	int timetodisplay;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
 		setDefaultValues();
-		getPlayerImage();
+		getPlayerImages();
 	}
 	
 	public void setDefaultValues() {
@@ -28,11 +31,17 @@ public class Player extends Entity{
 		x = 100;
 		y = 100;
 		speed = 4;
+		timetodisplay = 0;
+		idle = new ArrayList<BufferedImage>();
 	}
 	
-	public void getPlayerImage() {
+	public void getPlayerImages() {
 		try {
 			idleImage = ImageIO.read(new File("res/player/SteamMan.png"));
+			idle.add(ImageIO.read(new File("res/player/SteamMan.png")));
+			idle.add(ImageIO.read(new File("res/player/SteamMan1.png")));
+			idle.add(ImageIO.read(new File("res/player/SteamMan2.png")));
+			idle.add(ImageIO.read(new File("res/player/SteamMan3.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -79,9 +88,10 @@ public class Player extends Entity{
 
 	public void draw(Graphics2D g2) {
 		// r�cup�re l'image du joueur
-		BufferedImage image = idleImage;
+		BufferedImage image = idle.get((timetodisplay/15)%4);
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		timetodisplay++;
 	}
 	
 	

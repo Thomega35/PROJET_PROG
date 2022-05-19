@@ -22,10 +22,11 @@ public class TileManager {
 		tile = new Tile[maxTiles];
 		mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 		getTileImage();
-		tabMaps = new String[3];
+		tabMaps = new String[4];
 		tabMaps[0] = "res/maps/map.txt";
 		tabMaps[1] = "res/maps/map2.txt";
 		tabMaps[2] = "res/maps/map3.txt";
+		tabMaps[3] = "res/maps/map4.txt";
 		this.numMap = numMap;
 		loadMap();
 	}

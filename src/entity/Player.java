@@ -75,12 +75,24 @@ public class Player extends Entity{
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
+		if(gp.tileM.numMap == 2) {
+			if(y < gp.tileSize && y > 0) {
+				gp.tileM.numMap = 3;
+				y = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 3) {
+			if(y+10 < gp.screenWidth && y+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 2;
+				y = gp.tileSize;
+			}
+		}
 	}
 
 	public void update() {
 		changeMap();
 		move();
-		
+		System.out.println(x + "," + y);
 		
 	}
 	

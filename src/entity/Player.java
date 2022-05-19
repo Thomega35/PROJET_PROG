@@ -33,7 +33,7 @@ public class Player extends Entity{
 		this.keyH = keyH;
 		setDefaultValues();
 		getPlayerImages();
-		this.hp = 10;
+		this.hp = 11;
 		this.attack = 1;
 		this.defence = 1;
 		this.isGoingToHit = false;

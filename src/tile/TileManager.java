@@ -16,7 +16,7 @@ public class TileManager {
 	String tabMaps[];
 	public int numMap;
 	
-	public TileManager(GamePanel gp) {
+	public TileManager(GamePanel gp, int numMap) {
 		this.gp =  gp;
 		
 		tile = new Tile[maxTiles];
@@ -26,7 +26,7 @@ public class TileManager {
 		tabMaps[0] = "res/maps/map.txt";
 		tabMaps[1] = "res/maps/map2.txt";
 		tabMaps[2] = "res/maps/map3.txt";
-		numMap = 1;
+		this.numMap = numMap;
 		loadMap();
 	}
 	

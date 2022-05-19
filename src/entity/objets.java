@@ -20,7 +20,7 @@ public class objets extends Entity{
 		aff=true;
 		setDefaultValues();
 		getObjetImage();
-		caract=new int[3];
+		caract=new int[4];
 	}
 
 	public void setDefaultValues(int a,int b) {
@@ -33,7 +33,7 @@ public class objets extends Entity{
 		setDefaultValues(120,120);
 	}
 	
-	public void interaction() {}
+	public void interaction(Player pl) {}
 	
 
 	public void getObjetImage() {}

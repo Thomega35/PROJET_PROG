@@ -3,15 +3,24 @@ package main;
 import java.awt.*;
 import javax.swing.JPanel;
 
+import entity.Monsters;
 import entity.Player;
+import entity.SimpleMonster;
 import entity.Sword;
+import entity.objets;
 import event.Success;
 import graphic.Hearth;
 import tile.TileManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class GamePanel extends JPanel implements Runnable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8330524675799416531L;
 	//Paramètres de l'écran
 	final int originalTileSize = 16; // une tuile de taille 16x16
 	final int scale = 3; // échelle utilisée pour agrandir l'affichage
@@ -31,6 +40,10 @@ public class GamePanel extends JPanel implements Runnable{
 	Hearth hearth = new Hearth(player, this);
 	Success success = new Success(this, player);
 	public TileManager tileM = new TileManager(this, 1);
+	
+	//Liste choses
+	ArrayList<objets> listeObjects = new ArrayList<objets>();
+	ArrayList<Monsters> listeMonsters = new ArrayList<Monsters>();
 
 	// Constructeur de la classe
 	public GamePanel() {
@@ -39,6 +52,9 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
+		
+		listeObjects.add(sword);
+		listeMonsters.add(null);
 	}
 
 	public void startGameThread() {
@@ -84,6 +100,12 @@ public class GamePanel extends JPanel implements Runnable{
 	public void update() {
 		player.update();
 		success.update();
+		for(objets obj : listeObjects) {
+			//obj.update();
+		}
+		for(Monsters mons : listeMonsters) {
+			//mons.update();
+		}
 	}
 
 	public void paintComponent(Graphics g) {
@@ -91,7 +113,12 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			tileM.draw(g2);
-			sword.draw(g2);
+			for(objets obj : listeObjects) {
+				obj.draw(g2);
+			}
+			for(Monsters mons : listeMonsters) {
+				//mons.draw(g2);
+			}
 			player.draw(g2);
 			try {
 				hearth.draw(g2);

@@ -24,7 +24,7 @@ public class TileManager {
 	}
 	
 	public void getTileImage() {
-		// Charge les différentes tuiles dans le vecteur tile[]
+		// Charge les diffï¿½rentes tuiles dans le vecteur tile[]
 	
 		try {
 			tile[0] = new Tile(true);
@@ -50,7 +50,7 @@ public class TileManager {
 		}
 	}
 
-	// Retourne le type de case qui est aux coordonnées x, y
+	// Retourne le type de case qui est aux coordonnï¿½es x, y
 	public Tile whichBox(int x, int y) {
 		int tileNumber = mapTileNum[x/gp.tileSize][y/gp.tileSize];
 		return tile[tileNumber];
@@ -58,10 +58,11 @@ public class TileManager {
 
 	// Retourne si le joueur peut bouger sur cette case
 	public boolean canMove(int x, int y) {
-		return whichBox(x, y).collision;
+		boolean inMap = x < gp.screenWidth && x > 0 && y < gp.screenHeight && y > 0;
+		return inMap && whichBox(x, y).collision;
 	}
 
-	// Cette méthode charge la map 
+	// Cette mï¿½thode charge la map 
 	public void loadMap() {
 		//charger le fichier txt de la map
 		try {
@@ -71,7 +72,7 @@ public class TileManager {
 		
 			int col = 0;
 			int row = 0;
-			// Parcourir le fichier txt pour récupérer les valeurs
+			// Parcourir le fichier txt pour rï¿½cupï¿½rer les valeurs
 			while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
 				String line = br.readLine();
 				while (col < gp.maxScreenCol) {

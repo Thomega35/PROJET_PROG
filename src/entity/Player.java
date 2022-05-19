@@ -46,11 +46,26 @@ public class Player extends Entity{
 			e.printStackTrace();
 		}
 	}
-	
+
+	// Change le numéro de la map
+	public void changeMap() {
+		if(gp.tileM.numMap == 1) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 2;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 2) {
+			if(x < gp.tileSize && x > 0) {
+				gp.tileM.numMap = 1;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+	}
+
 	public void update() {
-		move();
-		
-		
+		changeMap();
+		move();	
 	}
 	
 	public void move() {

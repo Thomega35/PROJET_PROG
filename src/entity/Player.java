@@ -22,7 +22,7 @@ public class Player extends Entity{
 	ArrayList<BufferedImage> moving;
 	int timetodisplay;
 	Boolean ismoving;
-	int hp;
+	public int hp;
 	int attack;
 	int defence;
 	

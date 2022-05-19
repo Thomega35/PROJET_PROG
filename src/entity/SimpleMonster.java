@@ -28,7 +28,7 @@ public class SimpleMonster extends Monsters{
         speed = 4;
     }
 
-    public int
+
     public void getSimpleMonsterImage() {
         try {
 

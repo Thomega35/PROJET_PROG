@@ -24,7 +24,7 @@ public class Player extends Entity{
 	}
 	
 	public void setDefaultValues() {
-		// Initialise les valeurs par défaut
+		// Initialise les valeurs par dï¿½faut
 		x = 100;
 		y = 100;
 		speed = 4;
@@ -32,9 +32,7 @@ public class Player extends Entity{
 	
 	public void getPlayerImage() {
 		try {
-			
 			idleImage = ImageIO.read(new File("res/player/SteamMan.png"));
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -47,23 +45,42 @@ public class Player extends Entity{
 	}
 	
 	public void move() {
+		int x_temp = x;
+		int y_temp = y;
 		//MOVE one direction
-		     if(keyH.DKey && !keyH.QKey && !keyH.ZKey && !keyH.SKey) {x+=speed;}
-		else if(!keyH.DKey && keyH.QKey && !keyH.ZKey && !keyH.SKey) {x-=speed;}
-		else if(!keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {y-=speed;}
-		else if(!keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {y+=speed;}
+		if (keyH.DKey && !keyH.QKey && !keyH.ZKey && !keyH.SKey) {
+			x_temp += speed;
+		} else if (!keyH.DKey && keyH.QKey && !keyH.ZKey && !keyH.SKey) {
+			x_temp -= speed;
+		} else if (!keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {
+			y_temp -= speed;
+		} else if (!keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {
+			y_temp += speed;
+		}
 		//MOVE diagonale
-		else if(keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {y+=speed/2;x+=speed/2;}
-		else if(keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {y-=speed/2;x+=speed/2;}
-		else if(!keyH.DKey && keyH.QKey && !keyH.ZKey && keyH.SKey) {y+=speed/2;x-=speed/2;}
-		else if(!keyH.DKey && keyH.QKey && keyH.ZKey && !keyH.SKey) {y-=speed/2;x-=speed/2;}
-		     
+		else if (keyH.DKey && !keyH.QKey && !keyH.ZKey && keyH.SKey) {
+			y_temp += speed / 2;
+			x_temp += speed / 2;
+		} else if (keyH.DKey && !keyH.QKey && keyH.ZKey && !keyH.SKey) {
+			y_temp -= speed / 2;
+			x_temp += speed / 2;
+		} else if (!keyH.DKey && keyH.QKey && !keyH.ZKey && keyH.SKey) {
+			y_temp += speed / 2;
+			x_temp -= speed / 2;
+		} else if (!keyH.DKey && keyH.QKey && keyH.ZKey && !keyH.SKey) {
+			y_temp -= speed / 2;
+			x_temp -= speed / 2;
+		}
+		if(gp.tileM.canMove(x_temp+gp.tileSize, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp, y_temp) && gp.tileM.canMove(x_temp, y_temp+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y_temp)) {
+			x = x_temp;
+			y = y_temp;
+		}
 	}
-	
+
 	public void draw(Graphics2D g2) {
-		// récupère l'image du joueur
+		// rï¿½cupï¿½re l'image du joueur
 		BufferedImage image = idleImage;
-		// affiche le personnage avec l'image "image", avec les coordonnées x et y, et de taille tileSize (16x16) sans échelle, et 48x48 avec échelle)
+		// affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 	}
 	

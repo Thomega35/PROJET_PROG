@@ -9,14 +9,15 @@ public class KeyHandler implements KeyListener{
 	public Boolean QKey;
 	public Boolean SKey;
 	public Boolean DKey;
-	public Boolean FightKey;
+	public Boolean openInventory;
+	public Boolean wantToHit;
 	
 	public KeyHandler() {
 		ZKey = false;
 		QKey = false;
 		SKey = false;
 		DKey = false;
-		FightKey = false;
+		wantToHit = false;
 	}
 	
 	@Override
@@ -36,6 +37,10 @@ public class KeyHandler implements KeyListener{
 			SKey = true;
 		}else if (code == 68 || code == 39) {
 			DKey = true;
+		}
+		
+		if (code == 32) {
+			wantToHit = true;
 		}
 		System.out.println(code);
 	}

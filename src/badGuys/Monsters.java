@@ -11,12 +11,17 @@ public abstract class Monsters extends Entity {
     public Boolean dying;
     public boolean dead;
     Boolean sens;
+    int xLag;
+    int yLag;
     public Monsters(GamePanel gp) {
     	super(gp);
     	dying = false;
     	setDefaultValuesAlea();
     	sens = gp.player.x < gp.player.x;
     }
+
+
+
 	public abstract void draw(Graphics2D g2);
     
 	public abstract void update();
@@ -41,4 +46,31 @@ public abstract class Monsters extends Entity {
     }
 
 	public abstract void hurt();
+
+
+    public void orientedPosition(){
+        int x_temp;
+        int y_temp;
+
+        // Choix du x
+        if(gp.player.x<x) {
+            x_temp = x-speed/2;
+        }else if(gp.player.x>x){
+            x_temp=x+speed/2;
+        }else{
+            x_temp=x;
+        }
+
+        // Choix du y
+        if(gp.player.y<y) {
+            y_temp = y-speed/2;
+        }else if(gp.player.y>x){
+            y_temp=y+speed/2;
+        }else{
+            y_temp=y;
+        }
+        // Si on peut y aller on y va :z
+        whereIgo(x_temp,y_temp);
+        }
+
 }

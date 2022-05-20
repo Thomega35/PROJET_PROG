@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SimpleMonster extends Monsters{
-	
+
 	int display6fightFrame;
 	int timetodisplay;
 	private int display6fHurtFrame;
@@ -26,7 +26,7 @@ public class SimpleMonster extends Monsters{
 	ArrayList<BufferedImage> hurting;
 	ArrayList<BufferedImage> Dyiing;
 	ArrayList<BufferedImage> idle;
-	
+
     public SimpleMonster(GamePanel gp) {
         super(gp);
         lifePoint = 8;
@@ -35,7 +35,6 @@ public class SimpleMonster extends Monsters{
         timetodisplay = 0;
         display6fightFrame = 91;
         hiting = new ArrayList<BufferedImage>();
-        moving = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
         Dyiing = new ArrayList<BufferedImage>();
         idle = new ArrayList<BufferedImage>();
@@ -46,11 +45,19 @@ public class SimpleMonster extends Monsters{
     public void getMonsterImage() {
         try {
             idleImage = ImageIO.read(new File("res/monsters/Mummy_idle1.png"));
+            for (int i=1; i<=6;i++) {
+            	hiting.add(ImageIO.read(new File("res/monsters/Mummy_Slash"+i+".png")));
+            	if (i<=2) {hurting.add(ImageIO.read(new File("res/monsters/Mummy_Hurt"+i+".png")));}
+            	Dyiing.add(ImageIO.read(new File("res/monsters/Mummy_dead"+i+".png")));
+            	if (i<=4) {idle.add(ImageIO.read(new File("res/monsters/Mummy_idle"+i+".png")));}
+            	
+            
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     private void hit() {
     	if (display6fightFrame >= 120) {
     		sefight = true;
@@ -68,8 +75,9 @@ public class SimpleMonster extends Monsters{
 				hit();
 			}
 			sens = gp.player.x > x;
+			orientedPosition();
     	}
-		
+
 		if (dead && timetodisplay > 300) {
 			dying = true;
 		}

@@ -29,6 +29,16 @@ public abstract class Items extends Entity{
 		caract=new int[4];
 		dying = false;
 	}
+	
+	public Items(GamePanel gp, String urlImage,int a, int b) {
+		super(gp);
+		this.urlImage=urlImage;
+		aff=true;
+		setDefaultValues(a,b);
+		getObjetImage();
+		caract=new int[4];
+		dying = false;
+	}
 
 	public void setDefaultValues(int a,int b) {
 		x=a;

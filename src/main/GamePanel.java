@@ -39,8 +39,6 @@ public class GamePanel extends JPanel implements Runnable{
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	public Player player = new Player(this, keyH);
-	Sword sword= new Sword(this);
-	Shield shield= new Shield(this);
 	Hearth hearth = new Hearth(player, this);
 	//Monsters simplemonster1 = new SimpleMonster(this);
 	//Monsters shootermonster1 = new ShootingMonster(this);
@@ -61,9 +59,6 @@ public class GamePanel extends JPanel implements Runnable{
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
 
-		listeObjects.add(sword);
-		listeObjects.add(shield);
-		shield.setDefaultValues(100,100);
 		
 		//listeMonsters.add(simplemonster1);
 		//listeMonsters.add(shootermonster1);

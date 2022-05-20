@@ -9,6 +9,7 @@ public class Entity {
 
 	public int x,y;
 	public int speed;
+	public int defence;
 	public BufferedImage idleImage;
 	public GamePanel gp;
 
@@ -18,6 +19,7 @@ public class Entity {
 	
 	public Entity(GamePanel gp) {
 		this.gp = gp;
+		defence = 0;
 	}
 	
 	public double distanceWidth(Entity e) {

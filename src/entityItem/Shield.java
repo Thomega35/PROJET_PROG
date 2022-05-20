@@ -11,7 +11,7 @@ import main.GamePanel;
 public class Shield extends Items{
 	public Shield(GamePanel gp) {
 		super(gp,"res/objets/shield.png");
-		caract[1]=10;
+		caract[1]=1;
 	}
 	
 	// Fonction permettant l'int�raction avec l'�p�e et le joueur.

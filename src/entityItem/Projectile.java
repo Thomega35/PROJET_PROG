@@ -47,7 +47,8 @@ public class Projectile extends Items{
 		}
 		if(cible != null) {
 			if (cible.lifePoint != 0) {
-				cible.lifePoint -= attackPoint;
+				if (attackPoint-cible.defence >= 0)
+					cible.lifePoint -= (attackPoint-cible.defence);
 			}
 			cible.hurt();
 			dying = true;

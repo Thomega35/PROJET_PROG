@@ -81,7 +81,6 @@ public class ShootingMonster extends Monsters {
 		if (lifePoint <=0 && !dead) {
 			dead=true;
 			timetodisplay = 0;
-			System.out.println("yo");
     	}else if (!dead){
 			if (gp.player.y+40 > y && gp.player.y-40 < y) {
 				hit();

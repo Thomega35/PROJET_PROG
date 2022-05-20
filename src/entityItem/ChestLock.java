@@ -18,7 +18,7 @@ public class ChestLock extends Chest{
 	}
 	
 	public void interaction(Player pl) {
-		if(pl.stuff.inventaire.contains(key) && !lock) {
+		if(pl.stuff.inventaire.contains(key) && lock) {
 			urlImage = "res/objets/chestunlock.png";
 			this.getObjetImage();
 			pl.stuff.push_back(obj);

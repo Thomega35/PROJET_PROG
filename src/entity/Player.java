@@ -54,7 +54,7 @@ public class Player extends Entity{
 		setDefaultValues();
 		getPlayerImages();
 		this.lifePoint = 20;
-		this.attackPoint = 2;
+		this.attackPoint = 3;
 		this.defence = 1;
 		this.grabDistance=30;
 		this.display6fightFrame = 30;

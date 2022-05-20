@@ -13,6 +13,7 @@ public abstract class Monsters extends Entity {
     Boolean sens;
     int xLag;
     int yLag;
+	public int display6fHurtFrame;
     public Monsters(GamePanel gp) {
     	super(gp);
     	dying = false;
@@ -43,6 +44,7 @@ public abstract class Monsters extends Entity {
         // monsters pop position may to be random and far of the player
         this.x = x;
         this.y = y;
+        display6fHurtFrame = 11;
     }
 
 	public abstract void hurt();

@@ -14,7 +14,7 @@ import main.GamePanel;
 public class ShootingMonster extends Monsters {
 	int display6fightFrame;
 	int timetodisplay;
-	private int display6fHurtFrame;
+	public int display6fHurtFrame;
 	ArrayList<BufferedImage> moving;
 	ArrayList<BufferedImage> hiting;
 	ArrayList<BufferedImage> hurting;
@@ -28,6 +28,7 @@ public class ShootingMonster extends Monsters {
         speed = 3;
         timetodisplay = 0;
         display6fightFrame = 91;
+        display6fHurtFrame = 11;
         hiting = new ArrayList<BufferedImage>();
         moving = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
@@ -57,7 +58,7 @@ public class ShootingMonster extends Monsters {
 		if (sens) {
 			image = gp.player.flip(image);
 		}
-		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, x, y, (int)(gp.tileSize*1.5), (int)(gp.tileSize*1.5), null);
 		timetodisplay++;
 	}
 	

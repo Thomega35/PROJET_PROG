@@ -103,8 +103,10 @@ public class Player extends Entity{
 		if(num==2){
 			gp.listeMonsters.clear();
 			ShootingMonster shootingMonster1=new ShootingMonster(gp);
+			System.out.println(shootingMonster1.display6fHurtFrame);
 			gp.listeMonsters.add(shootingMonster1);
 			gp.listeMonsters.get(0).setDefaultValues(400,400);
+			System.out.println(shootingMonster1.display6fHurtFrame);
 		} else if (num == 3) {
 			gp.listeMonsters.clear();
 			ShootingMonster shootingMonster1 = new ShootingMonster(gp);

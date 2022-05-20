@@ -68,6 +68,7 @@ public class SimpleMonster extends Monsters{
 				hit();
 			}
 			sens = gp.player.x > x;
+			orientedPosition();
     	}
 
 		if (dead && timetodisplay > 300) {

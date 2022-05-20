@@ -17,7 +17,7 @@ public class Hearth {
     private GamePanel gp;
 
     public Hearth(Player player, GamePanel gp) {
-        this.health = player.hp;
+        this.health = player.lifePoint;
         this.x = 10;
         this.y = 10;
         this.gp = gp;

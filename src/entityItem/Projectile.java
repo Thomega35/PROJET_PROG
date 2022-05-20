@@ -7,21 +7,29 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import badGuys.Monsters;
 import entity.Entity;
-import entity.Monsters;
 import entity.Player;
+import main.Functions;
 import main.GamePanel;
 import tile.TileManager;
 
 public class Projectile extends Items{
 	Boolean sens;
 	int degat = 5;
+	Boolean fromPlayer;
 	
-	public Projectile(GamePanel gp, Player shooter) {
-		super(gp, "res/monsters/Pioupiou.png");
+	public Projectile(GamePanel gp, Entity shooter) {
+		super(gp, "res/projectiles/Pioupiou.png");
 		// TODO Auto-generated constructor stub
 		speed = 5;
-		sens = shooter.keyH.lookLeft;
+		degat = shooter.attackPoint;
+		fromPlayer = shooter.getClass() == Player.class;
+		if (fromPlayer) {
+			sens = ((Player) shooter).keyH.lookLeft;
+		}else {
+			sens = gp.player.x < shooter.x;
+		}
 		
 	}
 	
@@ -32,14 +40,19 @@ public class Projectile extends Items{
 		}else {
 			x+=speed;
 		}
-		Monsters cible = TileManager.giveMeFirstMonster(gp.listeMonsters, this, 25);
+		Entity cible;
+		if (fromPlayer) {
+			cible = Functions.giveMeFirstMonster(gp.listeMonsters, this, 25);
+		}else {
+			cible = gp.f.giveMeFirstPlayer(this, 25);
+		}
 		if(cible != null) {
 			cible.lifePoint -= degat;
+			cible.hurt();
 			dying = true;
 		}else if (x <= 0 || x >= gp.screenWidth){
 			dying = true;
 		}
-		
 	}
 
 	@Override
@@ -56,7 +69,6 @@ public class Projectile extends Items{
 		g2.drawImage(image, x, y, 10, 3, null);
 	}
 	
-	@Override
 	public void interaction(Player pl) {
 		// TODO Auto-generated method stub
 	}

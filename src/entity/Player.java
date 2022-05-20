@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 
 import entityItem.Items;
 import entityItem.Projectile;
+import main.Functions;
 import main.GamePanel;
 import main.KeyHandler;
 import tile.TileManager;
@@ -28,8 +29,6 @@ public class Player extends Entity{
 	ArrayList<BufferedImage> hurting;
 	
 	int timetodisplay;
-	public int hp;
-	public int attack;
 	public int defence;
 	public double grabDistance;
 	public Inventaire stuff;
@@ -44,8 +43,8 @@ public class Player extends Entity{
 		this.keyH = keyH;
 		setDefaultValues();
 		getPlayerImages();
-		this.hp = 11;
-		this.attack = 1;
+		this.lifePoint = 11;
+		this.attackPoint = 5;
 		this.defence = 1;
 		this.grabDistance=30;
 		this.display6fightFrame = 30;
@@ -130,7 +129,7 @@ public class Player extends Entity{
 
 	private void pick() {
 		if (keyH.wantToPick) {
-			Items obj = TileManager.giveMeFirstItem(gp.listeObjects,this, grabDistance);
+			Items obj = Functions.giveMeFirstItem(gp.listeObjects,this, grabDistance);
 			if (obj != null) {
 				obj.interaction(this);
 			}
@@ -232,7 +231,7 @@ public class Player extends Entity{
 		timetodisplay++;
 	}
 	
-	private BufferedImage flip(BufferedImage img) {
+	public BufferedImage flip(BufferedImage img) {
 		BufferedImage res = new BufferedImage(200, 200,
 		        BufferedImage.TYPE_BYTE_INDEXED);
 		AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);

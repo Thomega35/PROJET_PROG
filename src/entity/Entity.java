@@ -21,7 +21,7 @@ public class Entity {
 	}
 	
 	public double distanceWidth(Entity e) {
-		return Math.sqrt(Math.pow(x-e.x,2)+Math.pow(y-e.y,2));
+		return Math.sqrt(Math.pow(x-e.x,2)+Math.pow(y-(e.y+gp.tileSize/4),2));
 	}
 	
 	public void whereIgo(int x_temp, int y_temp){
@@ -35,5 +35,10 @@ public class Entity {
 		if(gp.tileM.canMove(x_temp+gp.tileSize, y+ gp.tileSize) && gp.tileM.canMove(x_temp, y) && gp.tileM.canMove(x_temp, y+ gp.tileSize) && gp.tileM.canMove(x_temp+gp.tileSize, y)) {
 			x = x_temp;
 		}
+	}
+
+	public void hurt() {
+		// TODO Auto-generated method stub
+		
 	}
 }

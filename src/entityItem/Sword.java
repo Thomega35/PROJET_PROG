@@ -22,6 +22,6 @@ public class Sword extends Items{
 			this.getObjetImage();
 			pl.stuff.push_back(this);
 			gp.listeObjects.remove(this);
-			pl.attack=pl.attack+caract[0];
+			pl.attackPoint=pl.attackPoint+caract[0];
 		}
 }

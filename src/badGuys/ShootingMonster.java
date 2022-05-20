@@ -25,24 +25,23 @@ public class ShootingMonster extends Monsters {
 		// TODO Auto-generated constructor stub
 		lifePoint = 8;
 		attackPoint=1;
-        speed = 2;
+        speed = 3;
         timetodisplay = 0;
         display6fightFrame = 91;
-        display6fHurtFrame = 11;
         hiting = new ArrayList<BufferedImage>();
         moving = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
         Dyiing = new ArrayList<BufferedImage>();
     	getMonsterImage();
 	}
-	
+
 	@Override
 	public void draw(Graphics2D g2) {
 		// TODO Auto-generated method stub
 		BufferedImage image = null;
 		if (dead) {
-			if (timetodisplay < 100) {
-				image = Dyiing.get((timetodisplay/50)%3);
+			if (timetodisplay < 200) {
+				image = Dyiing.get((timetodisplay/100)%3);
 			}else {
 				image = Dyiing.get(3);
 			}
@@ -58,7 +57,7 @@ public class ShootingMonster extends Monsters {
 		if (sens) {
 			image = gp.player.flip(image);
 		}
-		g2.drawImage(image, x, y,(int) (gp.tileSize*1.5), (int) (gp.tileSize*1.5), null);
+		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 		timetodisplay++;
 	}
 	
@@ -90,15 +89,10 @@ public class ShootingMonster extends Monsters {
 			orientedPosition();
     	}
 		
-		if (dead && timetodisplay > 200) {
-			loot();
+		if (dead && timetodisplay > 300) {
 			dying = true;
 		}
 
-	}
-	
-	public void loot() {
-		
 	}
 
 	public void hurt() {

@@ -27,7 +27,7 @@ public class TileManager {
 	public TileManager(GamePanel gp, int numMap) {
 		this.gp =  gp;
 
-		int nbTab = 11;
+		int nbTab = 13;
 
 		tile = new Tile[maxTiles];
 		mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
@@ -44,6 +44,8 @@ public class TileManager {
 		tabMaps[8] = "res/maps/map9.txt";
 		tabMaps[9] = "res/maps/map10.txt";
 		tabMaps[10] = "res/maps/map11.txt";
+		tabMaps[11] = "res/maps/map12.txt";
+		tabMaps[12] = "res/maps/map13.txt";
 		itemMaps=new Items[nbTab][4];
 		itemMaps[3][0]=new ChestUnlock(gp,new PotionHeal(gp));
 		this.numMap = numMap;

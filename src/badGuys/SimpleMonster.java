@@ -45,7 +45,7 @@ public class SimpleMonster extends Monsters{
 
     public void getMonsterImage() {
         try {
-            idleImage = ImageIO.read(new File("res/player/Mummy_idle1.png"));
+            idleImage = ImageIO.read(new File("res/monsters/Mummy_idle1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,7 +76,7 @@ public class SimpleMonster extends Monsters{
     }
 
     public void draw(Graphics2D g2) {
-        // récupère l'image du joueur
+        // rï¿½cupï¿½re l'image du joueur
         BufferedImage image = idleImage;
         if (sens) {
 			image = gp.player.flip(image);

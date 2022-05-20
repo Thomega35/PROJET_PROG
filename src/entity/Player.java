@@ -223,7 +223,7 @@ public class Player extends Entity{
 
 	private void hit() {
 		if (keyH.wantToHit && display6fightFrame >= 30) {
-			Monsters cible = gp.f.giveMeFirstMonster(gp.listeMonsters,this,55);
+			Monsters cible = Functions.giveMeFirstMonster(gp.listeMonsters,this,55);
 			if (cible != null) {
 				cible.lifePoint -= attackPoint;
 	    		cible.hurt();
@@ -307,7 +307,7 @@ public class Player extends Entity{
 			image = moving.get((timetodisplay/10)%6);
 		}
 		
-		if (keyH.lookLeft) {
+		if (keyH.lookLeft && !dead) {
 			image = flip(image);
 		}
 		

@@ -89,6 +89,9 @@ public class GamePanel extends JPanel implements Runnable{
 		while(gameThread != null) { //Tant que le thread du jeu est actif
 
 			tileM = new TileManager(this, tileM.numMap);
+			if(tileM.numMap == 12 && listeMonsters.isEmpty()){
+				success.end = true;
+			}
 			//Permet de mettre é jour les différentes variables du jeu
 			update();
 			//Dessine sur l'écran le personnage et la map avec les nouvelles informations. la méthode "paintComponent" doit obligatoirement étre appelée avec "repaint()"

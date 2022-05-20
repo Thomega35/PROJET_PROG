@@ -16,14 +16,13 @@ import tile.TileManager;
 
 public class Projectile extends Items{
 	Boolean sens;
-	int degat = 5;
 	Boolean fromPlayer;
 	
 	public Projectile(GamePanel gp, Entity shooter) {
 		super(gp, "res/projectiles/Pioupiou.png");
 		// TODO Auto-generated constructor stub
 		speed = 5;
-		degat = shooter.attackPoint;
+		attackPoint = shooter.attackPoint;
 		fromPlayer = shooter.getClass() == Player.class;
 		if (fromPlayer) {
 			sens = ((Player) shooter).keyH.lookLeft;
@@ -48,7 +47,7 @@ public class Projectile extends Items{
 		}
 		if(cible != null) {
 			if (cible.lifePoint != 0) {
-				cible.lifePoint -= degat;
+				cible.lifePoint -= attackPoint;
 			}
 			cible.hurt();
 			dying = true;

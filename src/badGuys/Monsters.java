@@ -52,20 +52,20 @@ public abstract class Monsters extends Entity {
         int x_temp;
         int y_temp;
         int aimx = gp.player.x;
-        int aimy = gp.player.x;
+        int aimy = gp.player.y-20;
         // Choix du x
         if(aimx+2<x) {
             x_temp = x-speed/2;
-        }else if(gp.player.x-2>x){
+        }else if(aimx-2>x){
             x_temp=x+speed/2;
         }else{
             x_temp=x;
         }
 
         // Choix du y
-        if(gp.player.y+2<y) {
+        if(aimy+2<y) {
             y_temp = y-speed/2;
-        }else if(gp.player.y-2>y){
+        }else if(aimy-2>y){
             y_temp=y+speed/2;
         }else{
             y_temp=y;

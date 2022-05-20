@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class GamePanel extends JPanel implements Runnable{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8330524675799416531L;
 	//Paramétres de l'écran
@@ -44,9 +44,9 @@ public class GamePanel extends JPanel implements Runnable{
 	Monsters simplemonster1 = new SimpleMonster(this);
 	Monsters shootermonster1 = new ShootingMonster(this);
 	Success success = new Success(this, player);
-	public TileManager tileM = new TileManager(this, 1);
+	public TileManager tileM = new TileManager(this, 6);
 	public Functions f = new Functions(this);
-	
+
 	//Liste choses
 	public ArrayList<Items> listeObjects = new ArrayList<Items>();
 	public ArrayList<Monsters> listeMonsters = new ArrayList<Monsters>();
@@ -58,11 +58,11 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
-		
+
 		listeObjects.add(sword);
 		listeObjects.add(shield);
 		shield.setDefaultValues(100,100);
-		
+
 		listeMonsters.add(simplemonster1);
 		listeMonsters.add(shootermonster1);
 	}
@@ -135,7 +135,7 @@ public class GamePanel extends JPanel implements Runnable{
 			player.draw(g2);
 			try {
 				hearth.draw(g2);
-			} 
+			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}

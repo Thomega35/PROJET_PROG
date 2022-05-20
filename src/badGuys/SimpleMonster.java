@@ -35,7 +35,6 @@ public class SimpleMonster extends Monsters{
         timetodisplay = 0;
         display6fightFrame = 91;
         hiting = new ArrayList<BufferedImage>();
-        moving = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
         Dyiing = new ArrayList<BufferedImage>();
         idle = new ArrayList<BufferedImage>();
@@ -46,6 +45,14 @@ public class SimpleMonster extends Monsters{
     public void getMonsterImage() {
         try {
             idleImage = ImageIO.read(new File("res/monsters/Mummy_idle1.png"));
+            for (int i=1; i<=6;i++) {
+            	hiting.add(ImageIO.read(new File("res/monsters/Mummy_Slash"+i+".png")));
+            	if (i<=2) {hurting.add(ImageIO.read(new File("res/monsters/Mummy_Hurt"+i+".png")));}
+            	Dyiing.add(ImageIO.read(new File("res/monsters/Mummy_dead"+i+".png")));
+            	idle.add(ImageIO.read(new File("res/monsters/Mummy_idle"+i+".png")));
+            	
+            
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

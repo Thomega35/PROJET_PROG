@@ -82,11 +82,13 @@ public class ShootingMonster extends Monsters {
 				hit();
 			}
 			sens = gp.player.x > x;
+			orientedPosition();
     	}
 		
 		if (dead && timetodisplay > 300) {
 			dying = true;
 		}
+
 	}
 
 	public void hurt() {

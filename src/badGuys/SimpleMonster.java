@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SimpleMonster extends Monsters{
-	
+
 	int display6fightFrame;
 	int timetodisplay;
 	private int display6fHurtFrame;
@@ -26,7 +26,7 @@ public class SimpleMonster extends Monsters{
 	ArrayList<BufferedImage> hurting;
 	ArrayList<BufferedImage> Dyiing;
 	ArrayList<BufferedImage> idle;
-	
+
     public SimpleMonster(GamePanel gp) {
         super(gp);
         lifePoint = 8;
@@ -57,7 +57,7 @@ public class SimpleMonster extends Monsters{
             e.printStackTrace();
         }
     }
-    
+
     private void hit() {
     	if (display6fightFrame >= 120) {
     		sefight = true;
@@ -75,8 +75,9 @@ public class SimpleMonster extends Monsters{
 				hit();
 			}
 			sens = gp.player.x > x;
+			orientedPosition();
     	}
-		
+
 		if (dead && timetodisplay > 300) {
 			dying = true;
 		}

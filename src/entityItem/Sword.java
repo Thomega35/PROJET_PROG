@@ -23,5 +23,10 @@ public class Sword extends Items{
 			pl.stuff.push_back(this);
 			gp.listeObjects.remove(this);
 			pl.attackPoint=pl.attackPoint+caract[0];
+			for (int i =0;i < gp.itemMaps[gp.tileM.numMap].length; i++) {
+				if (gp.itemMaps[gp.tileM.numMap][i] == this) {
+					gp.itemMaps[gp.tileM.numMap][i]=null;
+				}
+			}
 		}
 }

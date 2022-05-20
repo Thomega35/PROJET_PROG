@@ -14,6 +14,9 @@ import entityItem.Items;
 import main.GamePanel;
 import entityItem.ChestUnlock;
 import entityItem.PotionHeal;
+import entityItem.Sword;
+import entityItem.Shield;
+
 
 public class TileManager {
 	GamePanel gp;
@@ -21,7 +24,6 @@ public class TileManager {
 	int maxTiles = 10;
 	int mapTileNum[][];
 	String tabMaps[];
-	public Items itemMaps[][];
 	public int numMap;
 	
 	public TileManager(GamePanel gp, int numMap) {
@@ -46,8 +48,6 @@ public class TileManager {
 		tabMaps[10] = "res/maps/map11.txt";
 		tabMaps[11] = "res/maps/map12.txt";
 		tabMaps[12] = "res/maps/map13.txt";
-		itemMaps=new Items[nbTab][4];
-		itemMaps[3][0]=new ChestUnlock(gp,new PotionHeal(gp));
 		this.numMap = numMap;
 		loadMap();
 	}

@@ -7,7 +7,9 @@ import badGuys.Monsters;
 import badGuys.ShootingMonster;
 import badGuys.SimpleMonster;
 import entity.Player;
+import entityItem.ChestUnlock;
 import entityItem.Items;
+import entityItem.PotionHeal;
 import entityItem.Shield;
 import entityItem.Sword;
 import event.GameOver;
@@ -46,6 +48,8 @@ public class GamePanel extends JPanel implements Runnable{
 	public GameOver gameOver = new GameOver(this, player);
 	public TileManager tileM = new TileManager(this, 10);
 	public Functions f = new Functions(this);
+	public Items[][] itemMaps =new Items[13][4];
+	
 
 	//Liste choses
 	public ArrayList<Items> listeObjects = new ArrayList<Items>();
@@ -58,6 +62,11 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
+		itemMaps[9][0]=new ChestUnlock(this,new PotionHeal(this));
+		((ChestUnlock)(this.itemMaps[9][0])).obj = new PotionHeal(this);
+		itemMaps[7][0]=new Sword(this);
+		itemMaps[3][0]=new ChestUnlock(this,new PotionHeal(this));
+		((ChestUnlock)(this.itemMaps[3][0])).obj = new PotionHeal(this);
 
 		
 		//listeMonsters.add(simplemonster1);
@@ -123,9 +132,9 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			tileM.draw(g2);
-			for(int i=0;i<(tileM.itemMaps[tileM.numMap].length);i++) {
-				if(tileM.itemMaps[tileM.numMap][i]!=null) {
-				tileM.itemMaps[tileM.numMap][i].draw(g2);}
+			for(int i=0;i<(itemMaps[tileM.numMap].length);i++) {
+				if(itemMaps[tileM.numMap][i]!=null) {
+				itemMaps[tileM.numMap][i].draw(g2);}
 			}
 			for(Monsters mons : listeMonsters) {
 				mons.draw(g2);

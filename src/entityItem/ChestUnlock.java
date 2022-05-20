@@ -5,7 +5,7 @@ import main.GamePanel;
 
 public class ChestUnlock extends Chest{
 	Key key;
-	Items obj;
+	public Items obj;
 	boolean status;
 	
 	public ChestUnlock(GamePanel gp,Items item) {

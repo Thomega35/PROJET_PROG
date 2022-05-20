@@ -31,6 +31,7 @@ public class Inventaire extends Entity{
 		Obj.y=this.y;
 		if (inventaire.size() >= 4) {
 			Obj.y=this.y+gp.tileSize+10;
+			Obj.x=this.x+62*(inventaire.size()-4);
 		}
 		// Si la case pr�c�dente est occup�e alors on le mets dans la case suivante
 		inventaire.add(Obj);

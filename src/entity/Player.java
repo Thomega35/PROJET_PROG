@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 
 import badGuys.ShootingMonster;
 import badGuys.Monsters;
+import entityItem.ChestUnlock;
 import entityItem.Items;
 import entityItem.Projectile;
 import main.Functions;
@@ -113,12 +114,20 @@ public class Player extends Entity{
 			gp.listeMonsters.get(1).setDefaultValues(400,300);
 		}
 	}
-
+	
 
 	// Change le numéro de la map
 	public void changeMap() {
 		numOldMap=numNewMap;
-
+		
+		gp.listeObjects.clear();
+		System.out.println();
+		for (int i=0; i < gp.itemMaps[gp.tileM.numMap].length;i++){
+			if (gp.itemMaps[gp.tileM.numMap][i] != null)
+				gp.listeObjects.add(gp.itemMaps[gp.tileM.numMap][i]);
+		}
+		
+		
 		if(gp.tileM.numMap == 1) {
 			numNewMap=1;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
@@ -372,7 +381,6 @@ public class Player extends Entity{
 			}else {
 				image = Dyiing.get(5);
 				gp.gameOver.end = true;
-				System.out.println(gp.gameOver.end);
 			}
 		}else if (display6fHurtFrame <= 10) {
 			image = hurting.get((timetodisplay/5)%3);

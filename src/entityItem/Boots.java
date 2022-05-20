@@ -14,6 +14,11 @@ public class Boots extends Items{
 	public void interaction(Player pl) {
 		pl.stuff.push_back(this);
 		gp.listeObjects.remove(this);
+		for (int i =0;i < gp.itemMaps[gp.tileM.numMap].length; i++) {
+			if (gp.itemMaps[gp.tileM.numMap][i].getClass() == this.getClass()) {
+				gp.itemMaps[gp.tileM.numMap][i]=null;
+			}
+		}
 		pl.speed=pl.speed+caract[2];
 	}
 }

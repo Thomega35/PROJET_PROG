@@ -26,6 +26,11 @@ public class PotionHeal extends Items{
 			pl.stuff.push_back(this);
 			gp.listeObjects.remove(this);
 			pl.lifePoint=pl.lifePoint+min(caract[3],11-pl.lifePoint);
+			for (int i =0;i < gp.itemMaps[gp.tileM.numMap].length; i++) {
+				if (gp.itemMaps[gp.tileM.numMap][i].getClass() == this.getClass()) {
+					gp.itemMaps[gp.tileM.numMap][i]=null;
+				}
+			}
 			}
 	}
 

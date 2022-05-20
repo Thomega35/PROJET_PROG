@@ -28,13 +28,14 @@ public class ShootingMonster extends Monsters {
         speed = 2;
         timetodisplay = 0;
         display6fightFrame = 91;
+        display6fHurtFrame = 11;
         hiting = new ArrayList<BufferedImage>();
         moving = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
         Dyiing = new ArrayList<BufferedImage>();
     	getMonsterImage();
 	}
-
+	
 	@Override
 	public void draw(Graphics2D g2) {
 		// TODO Auto-generated method stub
@@ -57,7 +58,7 @@ public class ShootingMonster extends Monsters {
 		if (sens) {
 			image = gp.player.flip(image);
 		}
-		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, x, y,(int) (gp.tileSize*1.5), (int) (gp.tileSize*1.5), null);
 		timetodisplay++;
 	}
 	

@@ -29,9 +29,10 @@ public class SimpleMonster extends Monsters{
         super(gp);
         lifePoint = 8;
 		attackPoint=1;
-        speed = 3;
+        speed = 4;
         timetodisplay = 0;
         display6fightFrame = 121;
+        display6fHurtFrame = 11;
         hiting = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
         Dyiing = new ArrayList<BufferedImage>();
@@ -56,6 +57,7 @@ public class SimpleMonster extends Monsters{
 
     private void hit() {
     	if (display6fightFrame >= 120) {
+    		
     		display6fightFrame = 0;
 		}
 	}
@@ -66,6 +68,7 @@ public class SimpleMonster extends Monsters{
 			timetodisplay = 0;
     	}else if (!dead){
 			if (gp.player.y+20 > y && gp.player.y-20 < y && gp.player.x+20 > x && gp.player.x-20 < x) {
+				System.out.println("test");
 				hit();
 			}
 			sens = gp.player.x > x;
@@ -90,7 +93,7 @@ public class SimpleMonster extends Monsters{
 		}else if (display6fHurtFrame <= 10) {
 			image = hurting.get((timetodisplay/5)%2);
 			display6fHurtFrame++;
-		}else if(display6fightFrame<= 80) {
+		}else if(display6fightFrame<= 120) {
 			image = hiting.get((timetodisplay/20)%6);
 			display6fightFrame++;
 		}else {
@@ -100,7 +103,7 @@ public class SimpleMonster extends Monsters{
 			image = gp.player.flip(image);
 		}
         // affiche le personnage avec l'image "image", avec les coordonn?es x et y, et de taille tileSize (16x16) sans ?chelle, et 48x48 avec ?chelle)
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, x, y,(int) (gp.tileSize*1.5),(int) (gp.tileSize*1.5), null);
         timetodisplay++;
     }
 

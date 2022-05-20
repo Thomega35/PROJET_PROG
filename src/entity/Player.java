@@ -126,7 +126,12 @@ public class Player extends Entity{
 				x = gp.tileSize;
 			}
 		}
-
+		if(gp.tileM.numMap == 2) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 1;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
 		if(gp.tileM.numMap == 2) {
 			numNewMap=2;
 			if(y < gp.tileSize  && y > 0) {

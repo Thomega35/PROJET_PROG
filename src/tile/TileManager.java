@@ -50,7 +50,7 @@ public class TileManager {
 			tile[0].image = ImageIO.read(new File("res/new_tiles/grass.png"));
 			
 			tile[1] = new Tile(false);
-			tile[1].image = ImageIO.read(new File("res/new_tiles/rock.png"));
+			tile[1].image = ImageIO.read(new File("res/new_tiles/brick.png"));
 			
 			tile[2] = new Tile(false);
 			tile[2].image = ImageIO.read(new File("res/new_tiles/water.png"));

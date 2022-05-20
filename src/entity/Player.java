@@ -180,6 +180,18 @@ public class Player extends Entity{
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
+		if(gp.tileM.numMap == 8) {
+			if(y < 10  && y > -gp.tileSize + 10) {
+				gp.tileM.numMap = 9;
+				y = gp.screenHeight-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 9) {
+			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
+				gp.tileM.numMap = 8;
+				y = gp.tileSize;
+			}
+		}
 	}
 
 	public void update() {

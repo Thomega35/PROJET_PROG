@@ -12,6 +12,7 @@ import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
 
 import badGuys.ShootingMonster;
+import badGuys.Monsters;
 import entityItem.Items;
 import entityItem.Projectile;
 import main.Functions;
@@ -97,11 +98,6 @@ public class Player extends Entity{
 	// Change le numéro de la map
 	public void changeMap() {
 		if(gp.tileM.numMap == 1) {
-			// Si on est sur la map 1
-			gp.listeMonsters.clear();
-			gp.listeMonsters.add(new ShootingMonster(gp));
-			gp.listeMonsters.get(0).setDefaultValues(700,100);
-
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 2;
 				x = gp.tileSize;
@@ -123,6 +119,66 @@ public class Player extends Entity{
 			if(y+10 < gp.screenHeight && y+10 > gp.screenHeight-gp.tileSize) {
 				gp.tileM.numMap = 2;
 				y = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 2) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 4;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 4) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 2;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 4) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 5;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 5) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 4;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 5) {
+			if(y < 10  && y > -gp.tileSize + 10) {
+				gp.tileM.numMap = 6;
+				y = gp.screenHeight-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 6) {
+			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
+				gp.tileM.numMap = 5;
+				y = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 6) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 7;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 7) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 6;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 6) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 8;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 8) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 6;
+				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 	}
@@ -168,7 +224,11 @@ public class Player extends Entity{
 
 	private void hit() {
 		if (keyH.wantToHit && display6fightFrame >= 30) {
-			//TODO frapper le monstre
+			Monsters cible = Functions.giveMeFirstMonster(gp.listeMonsters,this,55);
+			if (cible != null) {
+				cible.lifePoint -= attackPoint;
+	    		cible.hurt();
+			}
 			display6fightFrame = 0;
 			keyH.wantToHit = false;
 		}
@@ -248,7 +308,7 @@ public class Player extends Entity{
 			image = moving.get((timetodisplay/10)%6);
 		}
 		
-		if (keyH.lookLeft) {
+		if (keyH.lookLeft && !dead) {
 			image = flip(image);
 		}
 		

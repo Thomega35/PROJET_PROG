@@ -35,7 +35,7 @@ public abstract class Monsters extends Entity {
     }
 	
 	public int positionMonster(int positionPlayer, int max){
-        int r=new Random().nextInt(max-positionPlayer-5) + positionPlayer+5;
+        int r=new Random().nextInt(max-20-positionPlayer-5) + positionPlayer+5;
         return r;
     }
 	
@@ -51,20 +51,21 @@ public abstract class Monsters extends Entity {
     public void orientedPosition(){
         int x_temp;
         int y_temp;
-
+        int aimx = gp.player.x;
+        int aimy = gp.player.y-20;
         // Choix du x
-        if(gp.player.x<x) {
+        if(aimx+2<x) {
             x_temp = x-speed/2;
-        }else if(gp.player.x>x){
+        }else if(aimx-2>x){
             x_temp=x+speed/2;
         }else{
             x_temp=x;
         }
 
         // Choix du y
-        if(gp.player.y<y) {
+        if(aimy+2<y) {
             y_temp = y-speed/2;
-        }else if(gp.player.y>y){
+        }else if(aimy-2>y){
             y_temp=y+speed/2;
         }else{
             y_temp=y;

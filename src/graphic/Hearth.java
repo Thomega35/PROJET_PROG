@@ -38,7 +38,7 @@ public class Hearth {
             g2.drawImage(hearth, x+i*18, y, 30, 30, null);
             i += 2;
         }
-        if(health%2!=0) {
+        if(health%2!=0 && health > 0) {
             g2.drawImage(half_hearth, x+i*18, y, 30, 30, null);
         }
     }

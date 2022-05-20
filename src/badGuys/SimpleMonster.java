@@ -49,7 +49,7 @@ public class SimpleMonster extends Monsters{
             	hiting.add(ImageIO.read(new File("res/monsters/Mummy_Slash"+i+".png")));
             	if (i<=2) {hurting.add(ImageIO.read(new File("res/monsters/Mummy_Hurt"+i+".png")));}
             	Dyiing.add(ImageIO.read(new File("res/monsters/Mummy_dead"+i+".png")));
-            	idle.add(ImageIO.read(new File("res/monsters/Mummy_idle"+i+".png")));
+            	if (i<=4) {idle.add(ImageIO.read(new File("res/monsters/Mummy_idle"+i+".png")));}
             	
             
             }

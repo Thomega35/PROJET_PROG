@@ -19,7 +19,7 @@ public class SimpleMonster extends Monsters{
 
 	int display6fightFrame;
 	int timetodisplay;
-	private int display6fHurtFrame;
+	protected int display6fHurtFrame;
 	ArrayList<BufferedImage> moving;
 	ArrayList<BufferedImage> hiting;
 	ArrayList<BufferedImage> hurting;
@@ -28,7 +28,7 @@ public class SimpleMonster extends Monsters{
     public SimpleMonster(GamePanel gp) {
         super(gp);
         lifePoint = 8;
-		attackPoint=1;
+		attackPoint=2;
         speed = 4;
         timetodisplay = 0;
         display6fightFrame = 121;
@@ -58,7 +58,11 @@ public class SimpleMonster extends Monsters{
     private void hit() {
     	if (display6fightFrame >= 120) {
     		if (gp.player.lifePoint != 0) {
-    			gp.player.lifePoint -= attackPoint;
+    			if (gp.player.lifePoint > attackPoint) {
+    				gp.player.lifePoint -= attackPoint;
+    			}else {
+    				gp.player.lifePoint = 0;
+    			}
     		}
     		gp.player.hurt();
     		display6fightFrame = 0;
@@ -71,7 +75,6 @@ public class SimpleMonster extends Monsters{
 			timetodisplay = 0;
     	}else if (!dead){
 			if (gp.player.y+35 > y && gp.player.y-35 < y && gp.player.x+35 > x && gp.player.x-35 < x) {
-				System.out.println("test");
 				hit();
 			}
 			sens = gp.player.x > x;

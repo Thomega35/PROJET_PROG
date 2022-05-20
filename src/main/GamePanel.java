@@ -126,8 +126,9 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			tileM.draw(g2);
-			for(Items obj : listeObjects) {
-				obj.draw(g2);
+			for(int i=0;i<(tileM.itemMaps[tileM.numMap].length);i++) {
+				if(tileM.itemMaps[tileM.numMap][i]!=null) {
+				tileM.itemMaps[tileM.numMap][i].draw(g2);}
 			}
 			for(Monsters mons : listeMonsters) {
 				mons.draw(g2);

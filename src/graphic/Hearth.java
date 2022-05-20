@@ -23,8 +23,8 @@ public class Hearth {
         this.gp = gp;
     }
 
-    void update() {
-
+    public void update() {
+    	this.health = gp.player.lifePoint;
     }
 
     // Affiche la barre de vie

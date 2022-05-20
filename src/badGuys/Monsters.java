@@ -9,6 +9,7 @@ import main.GamePanel;
 
 public abstract class Monsters extends Entity {
     public Boolean dying;
+    public boolean dead;
     Boolean sens;
     public Monsters(GamePanel gp) {
     	super(gp);

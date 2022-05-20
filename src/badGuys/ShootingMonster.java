@@ -17,18 +17,20 @@ public class ShootingMonster extends Monsters {
 	ArrayList<BufferedImage> moving;
 	ArrayList<BufferedImage> hiting;
 	ArrayList<BufferedImage> hurting;
+	ArrayList<BufferedImage> Dyiing;
 	private int display6fHurtFrame;
 	public ShootingMonster(GamePanel gp) {
 		super(gp);
 		// TODO Auto-generated constructor stub
-		lifePoint = 20;
-		attackPoint=10;
+		lifePoint = 8;
+		attackPoint=1;
         speed = 4;
         timetodisplay = 0;
         display6fightFrame = 91;
         hiting = new ArrayList<BufferedImage>();
         moving = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
+        Dyiing = new ArrayList<BufferedImage>();
     	getMonsterImage();
 	}
 
@@ -36,8 +38,13 @@ public class ShootingMonster extends Monsters {
 	public void draw(Graphics2D g2) {
 		// TODO Auto-generated method stub
 		BufferedImage image = null;
-		if (display6fHurtFrame <= 10) {
-			System.out.println("pass");
+		if (dead) {
+			if (timetodisplay < 200) {
+				image = Dyiing.get((timetodisplay/100)%3);
+			}else {
+				image = Dyiing.get(3);
+			}
+		}else if (display6fHurtFrame <= 10) {
 			image = hurting.get((timetodisplay/5)%2);
 			display6fHurtFrame++;
 		}else if(display6fightFrame<= 90) {
@@ -65,13 +72,20 @@ public class ShootingMonster extends Monsters {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		if (lifePoint <=0) {
-    		dying=true;
+		if (lifePoint <=0 && !dead) {
+			dead=true;
+			timetodisplay = 0;
+			System.out.println("yo");
+    	}else if (!dead){
+			if (gp.player.y+20 > y && gp.player.y-20 < y) {
+				hit();
+			}
+			sens = gp.player.x > x;
     	}
-		if (gp.player.y+20 > y && gp.player.y-20 < y) {
-			hit();
+		
+		if (dead && timetodisplay > 300) {
+			dying = true;
 		}
-		sens = gp.player.x > x;
 	}
 
 	public void hurt() {
@@ -84,6 +98,7 @@ public class ShootingMonster extends Monsters {
 				if (i<=4) moving.add(ImageIO.read(new File("res/monsters/Shooter_walking"+i+".png")));
 				hiting.add(ImageIO.read(new File("res/monsters/Shooter_hitting"+i+".png")));
 				if (i<=2) hurting.add(ImageIO.read(new File("res/monsters/Shooter_hurt"+i+".png")));
+				if (i<=4) Dyiing.add(ImageIO.read(new File("res/monsters/Shooter_dead"+i+".png")));
             }
         } catch (IOException e) {
             e.printStackTrace();

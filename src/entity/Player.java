@@ -27,6 +27,7 @@ public class Player extends Entity{
 	ArrayList<BufferedImage> hitingProjectile;
 	ArrayList<BufferedImage> jumping;
 	ArrayList<BufferedImage> hurting;
+	ArrayList<BufferedImage> Dyiing;
 	
 	int timetodisplay;
 	public int defence;
@@ -37,6 +38,7 @@ public class Player extends Entity{
 	int display6fightFrame;
 	int display6fightFrameFar;
 	int display6fHurtFrame;
+	private boolean dead;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		super(gp);
@@ -44,7 +46,7 @@ public class Player extends Entity{
 		setDefaultValues();
 		getPlayerImages();
 		this.lifePoint = 11;
-		this.attackPoint = 5;
+		this.attackPoint = 2;
 		this.defence = 1;
 		this.grabDistance=30;
 		this.display6fightFrame = 30;
@@ -65,6 +67,7 @@ public class Player extends Entity{
 		hitingProjectile = new ArrayList<BufferedImage>();
 		jumping = new ArrayList<BufferedImage>();
 		hurting = new ArrayList<BufferedImage>();
+		Dyiing = new ArrayList<BufferedImage>();
 		ismoving = false;
 		stuff = new Inventaire(gp);
 	}
@@ -77,6 +80,7 @@ public class Player extends Entity{
 				hiting.add(ImageIO.read(new File("res/player/SteamManHit"+i+".png")));
 				jumping.add(ImageIO.read(new File("res/player/SteamManHit_Jump"+i+".png")));
 				hitingProjectile.add(ImageIO.read(new File("res/player/SteamManHitNum2_"+i+".png")));
+				Dyiing.add(ImageIO.read(new File("res/player/SteamMan_Dyiing"+i+".png")));
 				if (i<=4) {idle.add(ImageIO.read(new File("res/player/SteamMan"+i+".png")));}
 				if (i<=3) {hurting.add(ImageIO.read(new File("res/player/SteamManHitHurt_"+i+".png")));}
 			}
@@ -118,13 +122,25 @@ public class Player extends Entity{
 	}
 
 	public void update() {
-		changeMap();
-		move();
-		hit();
-		hit_far();
-		inventory();
-		pick();
+		if(!dead) {
+			changeMap();
+			move();
+			hit();
+			hit_far();
+			inventory();
+			pick();
+			dead();
+		}
 		//hurt(); set display6fHurtFrame to ten is need to hurt display
+	}
+
+	private void dead() {
+		// TODO Auto-generated method stub
+		if (lifePoint <= 0) {
+			dead = true;
+			timetodisplay = 0;
+		}
+		
 	}
 
 	private void pick() {
@@ -158,7 +174,6 @@ public class Player extends Entity{
 	
 	public void hit_far() {
 		if (keyH.wantToHitFar && display6fightFrameFar >= 30) {
-			//TODO frapper le monstre
 			Projectile p = new Projectile(gp, this);
 			gp.listeObjects.add(p);
 			p.setDefaultValues(x+gp.tileSize/2,y+gp.tileSize/2);
@@ -206,6 +221,12 @@ public class Player extends Entity{
 		BufferedImage image;
 		if(win) {
 			image = jumping.get((timetodisplay/15)%6);
+		}else if (dead) {
+			if (timetodisplay < 200) {
+				image = Dyiing.get((timetodisplay/35)%6);
+			}else {
+				image = Dyiing.get(5);
+			}
 		}else if (display6fHurtFrame <= 10) {
 			image = hurting.get((timetodisplay/5)%3);
 			display6fHurtFrame++;

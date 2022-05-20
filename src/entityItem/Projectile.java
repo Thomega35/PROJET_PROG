@@ -47,7 +47,9 @@ public class Projectile extends Items{
 			cible = gp.f.giveMeFirstPlayer(this, 25);
 		}
 		if(cible != null) {
-			cible.lifePoint -= degat;
+			if (cible.lifePoint != 0) {
+				cible.lifePoint -= degat;
+			}
 			cible.hurt();
 			dying = true;
 		}else if (x <= 0 || x >= gp.screenWidth){

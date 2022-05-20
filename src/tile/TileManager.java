@@ -41,22 +41,31 @@ public class TileManager {
 	
 		try {
 			tile[0] = new Tile(true);
-			tile[0].image = ImageIO.read(new File("res/tiles/GRASS.png"));
+			tile[0].image = ImageIO.read(new File("res/new_tiles/grass.png"));
 			
 			tile[1] = new Tile(false);
-			tile[1].image = ImageIO.read(new File("res/tiles/BRICK.png"));
+			tile[1].image = ImageIO.read(new File("res/new_tiles/rock.png"));
 			
 			tile[2] = new Tile(false);
-			tile[2].image = ImageIO.read(new File("res/tiles/WATER.png"));
+			tile[2].image = ImageIO.read(new File("res/new_tiles/water.png"));
 			
-			tile[3] = new Tile(false);
-			tile[3].image = ImageIO.read(new File("res/tiles/LAVA.png"));
+			tile[3] = new Tile(true);
+			tile[3].image = ImageIO.read(new File("res/new_tiles/dirt.png"));
 			
 			tile[4] = new Tile(true);
-			tile[4].image = ImageIO.read(new File("res/tiles/SAND.png"));
+			tile[4].image = ImageIO.read(new File("res/new_tiles/sand.png"));
 			
 			tile[5] = new Tile(true);
-			tile[5].image = ImageIO.read(new File("res/tiles/SNOW.png"));
+			tile[5].image = ImageIO.read(new File("res/new_tiles/red_sand.png"));
+
+			tile[6] = new Tile(false);
+			tile[6].image = ImageIO.read(new File("res/new_tiles/tree.png"));
+
+			tile[7] = new Tile(true);
+			tile[7].image = ImageIO.read(new File("res/new_tiles/dirt_with_grass.png"));
+
+			tile[8] = new Tile(true);
+			tile[8].image = ImageIO.read(new File("res/new_tiles/grass_to_sand.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();

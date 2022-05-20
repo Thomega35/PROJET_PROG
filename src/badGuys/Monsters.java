@@ -64,7 +64,7 @@ public abstract class Monsters extends Entity {
         // Choix du y
         if(gp.player.y<y) {
             y_temp = y-speed/2;
-        }else if(gp.player.y>y){
+        }else if(gp.player.y>x){
             y_temp=y+speed/2;
         }else{
             y_temp=y;

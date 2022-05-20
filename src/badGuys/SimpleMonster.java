@@ -20,12 +20,10 @@ public class SimpleMonster extends Monsters{
 	int display6fightFrame;
 	int timetodisplay;
 	private int display6fHurtFrame;
-	Boolean sefight = true;
 	ArrayList<BufferedImage> moving;
 	ArrayList<BufferedImage> hiting;
 	ArrayList<BufferedImage> hurting;
 	ArrayList<BufferedImage> Dyiing;
-	ArrayList<BufferedImage> idle;
 
     public SimpleMonster(GamePanel gp) {
         super(gp);
@@ -33,12 +31,12 @@ public class SimpleMonster extends Monsters{
 		attackPoint=1;
         speed = 4;
         timetodisplay = 0;
-        display6fightFrame = 91;
+        display6fightFrame = 121;
+        display6fHurtFrame = 11;
         hiting = new ArrayList<BufferedImage>();
-        moving = new ArrayList<BufferedImage>();
         hurting = new ArrayList<BufferedImage>();
         Dyiing = new ArrayList<BufferedImage>();
-        idle = new ArrayList<BufferedImage>();
+        moving = new ArrayList<BufferedImage>();
     	getMonsterImage();
     }
 
@@ -46,6 +44,12 @@ public class SimpleMonster extends Monsters{
     public void getMonsterImage() {
         try {
             idleImage = ImageIO.read(new File("res/monsters/Mummy_idle1.png"));
+            for (int i=1; i<=6;i++) {
+            	hiting.add(ImageIO.read(new File("res/monsters/Mummy_Slash"+i+".png")));
+            	if (i<=2) {hurting.add(ImageIO.read(new File("res/monsters/Mummy_Hurt"+i+".png")));}
+            	Dyiing.add(ImageIO.read(new File("res/monsters/Mummy_dead"+i+".png")));
+            	if (i<=4) {moving.add(ImageIO.read(new File("res/monsters/Mummy_idle"+i+".png")));}
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,7 +57,7 @@ public class SimpleMonster extends Monsters{
 
     private void hit() {
     	if (display6fightFrame >= 120) {
-    		sefight = true;
+    		
     		display6fightFrame = 0;
 		}
 	}
@@ -62,34 +66,55 @@ public class SimpleMonster extends Monsters{
     	if (lifePoint <=0 && !dead) {
 			dead=true;
 			timetodisplay = 0;
-			System.out.println("yo");
     	}else if (!dead){
-			if (gp.player.y+20 > y && gp.player.y-20 < y) {
+			if (gp.player.y+20 > y && gp.player.y-20 < y && gp.player.x+20 > x && gp.player.x-20 < x) {
+				System.out.println("test");
 				hit();
 			}
 			sens = gp.player.x > x;
 			orientedPosition();
     	}
 
-		if (dead && timetodisplay > 300) {
+		if (dead && timetodisplay > 200) {
+			loot();
 			dying = true;
 		}
     }
 
     public void draw(Graphics2D g2) {
         // r�cup�re l'image du joueur
-        BufferedImage image = idleImage;
-        if (sens) {
+        BufferedImage image = null;
+        if (dead) {
+			if (timetodisplay < 100) {
+				image = Dyiing.get((timetodisplay/50)%3);
+			}else {
+				image = Dyiing.get(3);
+			}
+		}else if (display6fHurtFrame <= 10) {
+			image = hurting.get((timetodisplay/5)%2);
+			display6fHurtFrame++;
+		}else if(display6fightFrame<= 120) {
+			image = hiting.get((timetodisplay/20)%6);
+			display6fightFrame++;
+		}else {
+			image = moving.get((timetodisplay/15)%4);
+		}
+		if (sens) {
 			image = gp.player.flip(image);
 		}
         // affiche le personnage avec l'image "image", avec les coordonn?es x et y, et de taille tileSize (16x16) sans ?chelle, et 48x48 avec ?chelle)
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, x, y,(int) (gp.tileSize*1.5),(int) (gp.tileSize*1.5), null);
+        timetodisplay++;
     }
 
 
 	@Override
 	public void hurt() {
 		// TODO Auto-generated method stub
+		display6fHurtFrame = 0;
+	}
+	
+	public void loot() {
 		
 	}
 }

@@ -42,9 +42,9 @@ public class Projectile extends Items{
 		}
 		Entity cible;
 		if (fromPlayer) {
-			cible = Functions.giveMeFirstMonster(gp.listeMonsters, this, 25);
+			cible = Functions.giveMeFirstMonster(gp.listeMonsters, this, 35);
 		}else {
-			cible = gp.f.giveMeFirstPlayer(this, 25);
+			cible = gp.f.giveMeFirstPlayer(this, 35);
 		}
 		if(cible != null) {
 			if (cible.lifePoint != 0) {

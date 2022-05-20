@@ -102,13 +102,13 @@ public class Player extends Entity{
 			}
 		}
 		if(gp.tileM.numMap == 2) {
-			if(x < gp.tileSize && x > 0) {
+			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 1;
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 2) {
-			if(y < gp.tileSize  && y > 0) {
+			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 3;
 				y = gp.screenHeight-2*gp.tileSize;
 			}
@@ -117,6 +117,30 @@ public class Player extends Entity{
 			if(y+10 < gp.screenHeight && y+10 > gp.screenHeight-gp.tileSize) {
 				gp.tileM.numMap = 2;
 				y = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 2) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 4;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 4) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 2;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 4) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 5;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 5) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 4;
+				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 	}

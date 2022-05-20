@@ -17,7 +17,7 @@ public class Success {
     }
 
     public void endOrNot() {
-        if(gp.tileM.numMap == 2 && player.x > gp.screenWidth-gp.tileSize-5 && player.x < gp.screenWidth) {
+        if(gp.tileM.numMap == 100 && player.x > gp.screenWidth-gp.tileSize-5 && player.x < gp.screenWidth) {
             end = true;
         }
     }

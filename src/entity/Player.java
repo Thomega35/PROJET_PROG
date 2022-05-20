@@ -17,6 +17,7 @@ import badGuys.ShootingMonster;
 import badGuys.Monsters;
 import entityItem.ChestUnlock;
 import entityItem.Items;
+import entityItem.PotionHeal;
 import entityItem.Projectile;
 import main.Functions;
 import main.GamePanel;
@@ -92,9 +93,7 @@ public class Player extends Entity{
 				if (i<=4) {idle.add(ImageIO.read(new File("res/player/SteamMan"+i+".png")));}
 				if (i<=3) {hurting.add(ImageIO.read(new File("res/player/SteamManHitHurt_"+i+".png")));}
 			}
-			
-			
-			
+
 			
 		} catch (IOException e) {
 			e.printStackTrace();

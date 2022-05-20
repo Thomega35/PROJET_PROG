@@ -14,6 +14,7 @@ public class KeyHandler implements KeyListener{
 	public Boolean wantToHitFar;
 	public Boolean lookLeft;
 	public Boolean wantToPick;
+	public Boolean wantToUsePotion;
 	
 	public KeyHandler() {
 		ZKey = false;
@@ -25,6 +26,7 @@ public class KeyHandler implements KeyListener{
 		openInventory = false;
 		wantToPick = false;
 		lookLeft = false;
+		wantToUsePotion = false;
 	}
 	
 	@Override
@@ -62,6 +64,10 @@ public class KeyHandler implements KeyListener{
 		
 		if (code == 69) {
 			wantToPick = true;
+		}
+
+		if (code == 80) {
+			wantToUsePotion = true;
 		}
 		//System.out.println(code);
 	}

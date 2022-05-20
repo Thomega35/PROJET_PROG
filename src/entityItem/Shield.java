@@ -21,8 +21,8 @@ public class Shield extends Items{
 		gp.listeObjects.remove(this);
 		pl.defence=pl.defence+caract[1];
 		for (int i =0;i < gp.itemMaps[gp.tileM.numMap].length; i++) {
-			if (gp.itemMaps[gp.tileM.numMap][i].getClass() == this.getClass()) {
-				gp.itemMaps[gp.tileM.numMap][i]=null;
+			if (gp.itemMaps[gp.tileM.numMap][i] != null && gp.itemMaps[gp.tileM.numMap][i].getClass() == this.getClass()) {
+				gp.itemMaps[gp.tileM.numMap][i] = null;
 			}
 		}
 		gp.listeObjects.clear();

@@ -14,6 +14,11 @@ public class PotionHeal extends Items{
 		caract[3]=5;
 	}
 	
+	public PotionHeal(GamePanel gp,int a, int b) {
+		super(gp,"res/screen/hearth.png",a,b);
+		caract[3]=5;
+	}
+	
 	// Fonction permettant l'int�raction avec l'�p�e et le joueur.
 		// Si le joueur appuye pour r�cup�rer l'objet, elle arrive dans son inventaire et disparait de la carte
 	public void interaction(Player pl) {

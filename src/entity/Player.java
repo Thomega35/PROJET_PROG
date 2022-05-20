@@ -40,7 +40,7 @@ public class Player extends Entity{
 	int display6fightFrame;
 	int display6fightFrameFar;
 	int display6fHurtFrame;
-	private boolean dead;
+	public boolean dead;
 
 	int numOldMap;
 	int numNewMap;
@@ -371,6 +371,8 @@ public class Player extends Entity{
 				image = Dyiing.get((timetodisplay/35)%6);
 			}else {
 				image = Dyiing.get(5);
+				gp.gameOver.end = true;
+				System.out.println(gp.gameOver.end);
 			}
 		}else if (display6fHurtFrame <= 10) {
 			image = hurting.get((timetodisplay/5)%3);
@@ -386,10 +388,12 @@ public class Player extends Entity{
 		}else {
 			image = moving.get((timetodisplay/10)%6);
 		}
-		
-		if (keyH.lookLeft) {
-			image = flip(image);
+		if (!dead) {
+			if (keyH.lookLeft) {
+				image = flip(image);
+			}
 		}
+		
 		
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);

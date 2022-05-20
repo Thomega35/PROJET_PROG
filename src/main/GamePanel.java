@@ -45,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 	//Monsters simplemonster1 = new SimpleMonster(this);
 	//Monsters shootermonster1 = new ShootingMonster(this);
 	Success success = new Success(this, player);
+	public GameOver gameOver = new GameOver(this, player);
 	public TileManager tileM = new TileManager(this, 10);
 	public Functions f = new Functions(this);
 
@@ -123,7 +124,7 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 
 	public void paintComponent(Graphics g) {
-		if(!success.end) {
+		if(!success.end && !gameOver.end) {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			tileM.draw(g2);
@@ -143,14 +144,14 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 			g2.dispose();
 		}
-		else if (!gameover.end){
+		else if (!gameOver.end){
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			success.draw(g2);
 		}else {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
-			gameover.draw(g2);
+			gameOver.draw(g2);
 		}
 	}
 

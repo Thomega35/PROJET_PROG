@@ -28,5 +28,6 @@ public class Sword extends Items{
 					gp.itemMaps[gp.tileM.numMap][i]=null;
 				}
 			}
+			gp.listeObjects.clear();
 		}
 }

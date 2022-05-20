@@ -10,6 +10,7 @@ import entity.Player;
 import entityItem.ChestUnlock;
 import entityItem.Items;
 import entityItem.PotionHeal;
+import entityItem.Projectile;
 import entityItem.Shield;
 import entityItem.Sword;
 import event.GameOver;
@@ -140,6 +141,10 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 			for(Monsters mons : listeMonsters) {
 				mons.draw(g2);
+			}
+			for(Items obj : listeObjects) {
+				if (obj != null && obj.getClass() == Projectile.class)
+					obj.draw(g2);
 			}
 			player.draw(g2);
 			try {

@@ -6,7 +6,7 @@ import main.GamePanel;
 public class Boots extends Items{
 	public Boots(GamePanel gp) {
 		super(gp,"res/objets/boots.png");
-		caract[2]=4;
+		caract[2]=2;
 	}
 	
 	// Fonction permettant l'int�raction avec l'�p�e et le joueur.
@@ -19,6 +19,7 @@ public class Boots extends Items{
 				gp.itemMaps[gp.tileM.numMap][i]=null;
 			}
 		}
+		gp.listeObjects.clear();
 		pl.speed=pl.speed+caract[2];
 	}
 }

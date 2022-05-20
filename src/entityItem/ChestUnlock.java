@@ -16,7 +16,7 @@ public class ChestUnlock extends Chest{
 		if(lock) {
 			urlImage = "res/objets/chestunlock.png";
 			this.getObjetImage();
-			pl.stuff.push_back(obj);
+			obj.interaction(pl);;
 		}
 	}
 	

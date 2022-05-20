@@ -25,5 +25,6 @@ public class Shield extends Items{
 				gp.itemMaps[gp.tileM.numMap][i]=null;
 			}
 		}
+		gp.listeObjects.clear();
 	}
 }

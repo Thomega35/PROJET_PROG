@@ -83,7 +83,7 @@ public class TileManager {
 			tile[8] = new Tile(true);
 			tile[8].image = ImageIO.read(new File("res/new_tiles/grass_to_sand.png"));
 
-			tile[9] = new Tile(true);
+			tile[9] = new Tile(false);
 			tile[9].image = ImageIO.read(new File("res/new_tiles/palm_tree.png"));
 			
 		} catch (IOException e) {

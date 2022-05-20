@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable{
 	//Monsters shootermonster1 = new ShootingMonster(this);
 	Success success = new Success(this, player);
 	public GameOver gameOver = new GameOver(this, player);
-	public TileManager tileM = new TileManager(this, 10);
+	public TileManager tileM = new TileManager(this, 1);
 	public Functions f = new Functions(this);
 	public Items[][] itemMaps =new Items[13][4];
 	

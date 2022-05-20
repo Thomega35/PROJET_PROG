@@ -11,6 +11,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
 
+import badGuys.HUGEMOMMYISGONNAEATYOU;
+import badGuys.SimpleMonster;
 import badGuys.ShootingMonster;
 import badGuys.Monsters;
 import entityItem.ChestUnlock;
@@ -51,7 +53,7 @@ public class Player extends Entity{
 		this.keyH = keyH;
 		setDefaultValues();
 		getPlayerImages();
-		this.lifePoint = 11;
+		this.lifePoint = 20;
 		this.attackPoint = 2;
 		this.defence = 1;
 		this.grabDistance=30;
@@ -106,12 +108,89 @@ public class Player extends Entity{
 			gp.listeMonsters.get(0).setDefaultValues(400,400);
 		} else if (num == 3) {
 			gp.listeMonsters.clear();
-			ShootingMonster shootingMonster1=new ShootingMonster(gp);
-			ShootingMonster shootingMonster2=new ShootingMonster(gp);
+			ShootingMonster shootingMonster1 = new ShootingMonster(gp);
+			ShootingMonster shootingMonster2 = new ShootingMonster(gp);
 			gp.listeMonsters.add(shootingMonster1);
 			gp.listeMonsters.add(shootingMonster2);
-			gp.listeMonsters.get(0).setDefaultValues(200,100);
-			gp.listeMonsters.get(1).setDefaultValues(400,300);
+			gp.listeMonsters.get(0).setDefaultValues(200, 100);
+			gp.listeMonsters.get(1).setDefaultValues(400, 300);
+
+		} else if (num == 4) {
+			gp.listeMonsters.clear();
+			ShootingMonster shootingMonster1 = new ShootingMonster(gp);
+			ShootingMonster shootingMonster2 = new ShootingMonster(gp);
+			ShootingMonster shootingMonster3 = new ShootingMonster(gp);
+			//ShootingMonster shootingMonster4 = new ShootingMonster(gp);
+			gp.listeMonsters.add(shootingMonster1);
+			gp.listeMonsters.add(shootingMonster2);
+			gp.listeMonsters.add(shootingMonster3);
+			//gp.listeMonsters.add(shootingMonster4);
+			gp.listeMonsters.get(0).setDefaultValues(300, 100);
+			gp.listeMonsters.get(1).setDefaultValues(200, 100);
+			gp.listeMonsters.get(2).setDefaultValues(150, 400);
+			//gp.listeMonsters.get(3).setDefaultValues(300, 500);
+
+		} else if (num == 5) {
+			gp.listeMonsters.clear();
+			ShootingMonster shootingMonster1 = new ShootingMonster(gp);
+			ShootingMonster shootingMonster2 = new ShootingMonster(gp);
+			gp.listeMonsters.add(shootingMonster1);
+			gp.listeMonsters.add(shootingMonster2);
+			gp.listeMonsters.get(0).setDefaultValues(90, 80);
+			gp.listeMonsters.get(1).setDefaultValues(60, 450);
+
+		} else if (num == 6) {
+			gp.listeMonsters.clear();
+			SimpleMonster simpleMonster1=new SimpleMonster(gp);
+			gp.listeMonsters.add(simpleMonster1);
+			gp.listeMonsters.get(0).setDefaultValues(60,200);
+
+		} else if (num == 7) {
+			// épée
+			gp.listeMonsters.clear();
+
+		} else if (num == 8) {
+			gp.listeMonsters.clear();
+			SimpleMonster simpleMonster1=new SimpleMonster(gp);
+			SimpleMonster simpleMonster2=new SimpleMonster(gp);
+			gp.listeMonsters.add(simpleMonster1);
+			gp.listeMonsters.add(simpleMonster2);
+			gp.listeMonsters.get(0).setDefaultValues(60,70);
+			gp.listeMonsters.get(1).setDefaultValues(500,350);
+
+		} else if (num == 9) {
+			gp.listeMonsters.clear();
+
+		} else if (num == 10) {
+			gp.listeMonsters.clear();
+			SimpleMonster simpleMonster1=new SimpleMonster(gp);
+			SimpleMonster simpleMonster2=new SimpleMonster(gp);
+			SimpleMonster simpleMonster3=new SimpleMonster(gp);
+			ShootingMonster simpleMonster4=new ShootingMonster(gp);
+			gp.listeMonsters.add(simpleMonster1);
+			gp.listeMonsters.add(simpleMonster2);
+			gp.listeMonsters.add(simpleMonster3);
+			gp.listeMonsters.add(simpleMonster4);
+			gp.listeMonsters.get(0).setDefaultValues(100,100);
+			gp.listeMonsters.get(1).setDefaultValues(100,250);
+			gp.listeMonsters.get(2).setDefaultValues(100,400);
+			gp.listeMonsters.get(3).setDefaultValues(500,250);
+
+		}else if (num == 11) {
+			// Chest
+			gp.listeMonsters.clear();
+		}else if (num == 12) {
+			gp.listeMonsters.clear();
+			ShootingMonster simpleMonster1=new ShootingMonster(gp);
+			ShootingMonster simpleMonster2=new ShootingMonster(gp);
+			gp.listeMonsters.add(simpleMonster1);
+			gp.listeMonsters.add(simpleMonster2);
+			gp.listeMonsters.get(0).setDefaultValues(400,100);
+			gp.listeMonsters.get(1).setDefaultValues(400,400);
+			HUGEMOMMYISGONNAEATYOU hugeMommy = new HUGEMOMMYISGONNAEATYOU(gp);
+			gp.listeMonsters.add(hugeMommy);
+			gp.listeMonsters.get(2).setDefaultValues(180,180);
+
 		}
 	}
 	
@@ -136,6 +215,7 @@ public class Player extends Entity{
 			}
 		}
 		if(gp.tileM.numMap == 2) {
+			numNewMap=2;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 1;
 				x = gp.screenWidth-2*gp.tileSize;
@@ -159,108 +239,126 @@ public class Player extends Entity{
 
 		}
 		if(gp.tileM.numMap == 2) {
+			numNewMap=2;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 4;
 				x = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 4) {
+			numNewMap=4;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 2;
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 4) {
+			numNewMap=4;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 5;
 				x = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 5) {
+			numNewMap=5;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 4;
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 5) {
+			numNewMap=5;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 6;
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 6) {
+			numNewMap=6;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 5;
 				y = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 6) {
+			numNewMap=6;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 7;
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 7) {
+			numNewMap=7;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 6;
 				x = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 6) {
+			numNewMap=6;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 8;
 				x = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 8) {
+			numNewMap=8;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 6;
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 8) {
+			numNewMap=8;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 9;
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 9) {
+			numNewMap=9;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 8;
 				y = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 10) {
+			numNewMap=10;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 8;
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 8) {
+			numNewMap=8;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 10;
 				y = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 11) {
+			numNewMap=11;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 10;
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 10) {
+			numNewMap=10;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 11;
 				y = gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 10) {
+			numNewMap=10;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 12;
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
 		if(gp.tileM.numMap == 12) {
+			numNewMap=12;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 10;
 				x = gp.tileSize;

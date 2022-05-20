@@ -12,6 +12,8 @@ import entity.Entity;
 import entity.Player;
 import entityItem.Items;
 import main.GamePanel;
+import entityItem.ChestUnlock;
+import entityItem.PotionHeal;
 
 public class TileManager {
 	GamePanel gp;
@@ -19,6 +21,7 @@ public class TileManager {
 	int maxTiles = 10;
 	int mapTileNum[][];
 	String tabMaps[];
+	public Items itemMaps[][];
 	public int numMap;
 	
 	public TileManager(GamePanel gp, int numMap) {
@@ -38,6 +41,8 @@ public class TileManager {
 		tabMaps[7] = "res/maps/map8.txt";
 		tabMaps[8] = "res/maps/map9.txt";
 		tabMaps[9] = "res/maps/map10.txt";
+		itemMaps=new Items[4][10];
+		itemMaps[3][0]=new ChestUnlock(gp,new PotionHeal(gp));
 		this.numMap = numMap;
 		loadMap();
 	}
@@ -50,7 +55,7 @@ public class TileManager {
 			tile[0].image = ImageIO.read(new File("res/new_tiles/grass.png"));
 			
 			tile[1] = new Tile(false);
-			tile[1].image = ImageIO.read(new File("res/new_tiles/rock.png"));
+			tile[1].image = ImageIO.read(new File("res/new_tiles/brick.png"));
 			
 			tile[2] = new Tile(false);
 			tile[2].image = ImageIO.read(new File("res/new_tiles/water.png"));

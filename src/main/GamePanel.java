@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class GamePanel extends JPanel implements Runnable{
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 8330524675799416531L;
 	//Paramétres de l'écran
@@ -41,8 +41,8 @@ public class GamePanel extends JPanel implements Runnable{
 	Sword sword= new Sword(this);
 	Shield shield= new Shield(this);
 	Hearth hearth = new Hearth(player, this);
-	Monsters simplemonster1 = new SimpleMonster(this);
-	Monsters shootermonster1 = new ShootingMonster(this);
+	//Monsters simplemonster1 = new SimpleMonster(this);
+	//Monsters shootermonster1 = new ShootingMonster(this);
 	Success success = new Success(this, player);
 	public TileManager tileM = new TileManager(this, 6);
 	public Functions f = new Functions(this);
@@ -62,9 +62,9 @@ public class GamePanel extends JPanel implements Runnable{
 		listeObjects.add(sword);
 		listeObjects.add(shield);
 		shield.setDefaultValues(100,100);
-
-		listeMonsters.add(simplemonster1);
-		listeMonsters.add(shootermonster1);
+		
+		//listeMonsters.add(simplemonster1);
+		//listeMonsters.add(shootermonster1);
 	}
 
 	public void startGameThread() {
@@ -126,8 +126,9 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			tileM.draw(g2);
-			for(Items obj : listeObjects) {
-				obj.draw(g2);
+			for(int i=0;i<(tileM.itemMaps[tileM.numMap].length);i++) {
+				if(tileM.itemMaps[tileM.numMap][i]!=null) {
+				tileM.itemMaps[tileM.numMap][i].draw(g2);}
 			}
 			for(Monsters mons : listeMonsters) {
 				mons.draw(g2);

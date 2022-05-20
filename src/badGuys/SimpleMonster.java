@@ -57,7 +57,9 @@ public class SimpleMonster extends Monsters{
 
     private void hit() {
     	if (display6fightFrame >= 120) {
-    		gp.player.lifePoint -= attackPoint;
+    		if (gp.player.lifePoint != 0) {
+    			gp.player.lifePoint -= attackPoint;
+    		}
     		gp.player.hurt();
     		display6fightFrame = 0;
 		}
@@ -68,7 +70,7 @@ public class SimpleMonster extends Monsters{
 			dead=true;
 			timetodisplay = 0;
     	}else if (!dead){
-			if (gp.player.y+20 > y && gp.player.y-20 < y && gp.player.x+20 > x && gp.player.x-20 < x) {
+			if (gp.player.y+35 > y && gp.player.y-35 < y && gp.player.x+35 > x && gp.player.x-35 < x) {
 				System.out.println("test");
 				hit();
 			}

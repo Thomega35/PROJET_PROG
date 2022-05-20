@@ -50,7 +50,7 @@ public class ShootingMonster extends Monsters {
 			image = hurting.get((timetodisplay/5)%2);
 			display6fHurtFrame++;
 		}else if(display6fightFrame<= 90) {
-			image = hiting.get((timetodisplay/15)%6);
+			image = hiting.get(((timetodisplay+45)/15)%6);
 			display6fightFrame++;
 		}else {
 			image = moving.get((timetodisplay/15)%4);
@@ -65,7 +65,11 @@ public class ShootingMonster extends Monsters {
 	private void hit() {
 		if (display6fightFrame >= 90) {
 			Projectile p = new Projectile(gp, this);
-			p.setDefaultValues(x,y+20);
+			if (sens) {
+				p.setDefaultValues(x+30,y+20);
+			}else {
+				p.setDefaultValues(x,y+20);
+			}
 			gp.listeObjects.add(p);
 			display6fightFrame = 0;
 		}
@@ -79,7 +83,7 @@ public class ShootingMonster extends Monsters {
 			timetodisplay = 0;
 			System.out.println("yo");
     	}else if (!dead){
-			if (gp.player.y+20 > y && gp.player.y-20 < y) {
+			if (gp.player.y+40 > y && gp.player.y-40 < y) {
 				hit();
 			}
 			sens = gp.player.x > x;

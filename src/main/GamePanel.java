@@ -41,8 +41,8 @@ public class GamePanel extends JPanel implements Runnable{
 	Sword sword= new Sword(this);
 	Shield shield= new Shield(this);
 	Hearth hearth = new Hearth(player, this);
-	Monsters simplemonster1 = new SimpleMonster(this);
-	Monsters shootermonster1 = new ShootingMonster(this);
+	//Monsters simplemonster1 = new SimpleMonster(this);
+	//Monsters shootermonster1 = new ShootingMonster(this);
 	Success success = new Success(this, player);
 	public TileManager tileM = new TileManager(this, 1);
 	public Functions f = new Functions(this);
@@ -63,8 +63,8 @@ public class GamePanel extends JPanel implements Runnable{
 		listeObjects.add(shield);
 		shield.setDefaultValues(100,100);
 		
-		listeMonsters.add(simplemonster1);
-		listeMonsters.add(shootermonster1);
+		//listeMonsters.add(simplemonster1);
+		//listeMonsters.add(shootermonster1);
 	}
 
 	public void startGameThread() {

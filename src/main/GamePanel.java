@@ -10,6 +10,7 @@ import entity.Player;
 import entityItem.Items;
 import entityItem.Shield;
 import entityItem.Sword;
+import event.GameOver;
 import event.Success;
 import graphic.Hearth;
 import tile.TileManager;
@@ -44,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 	//Monsters simplemonster1 = new SimpleMonster(this);
 	//Monsters shootermonster1 = new ShootingMonster(this);
 	Success success = new Success(this, player);
+	GameOver gameover = new GameOver(this, player);
 	public TileManager tileM = new TileManager(this, 6);
 	public Functions f = new Functions(this);
 
@@ -142,10 +144,14 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 			g2.dispose();
 		}
-		else {
+		else if (!gameover.end){
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
 			success.draw(g2);
+		}else {
+			super.paintComponent(g);
+			Graphics2D g2 = (Graphics2D) g;
+			gameover.draw(g2);
 		}
 	}
 

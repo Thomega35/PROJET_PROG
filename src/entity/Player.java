@@ -62,8 +62,8 @@ public class Player extends Entity{
 	
 	public void setDefaultValues() {
 		// Initialise les valeurs par d�faut
-		x = 100;
-		y = 100;
+		x = 290;
+		y = 270;
 		speed = 4;
 		timetodisplay = 0;
 		idle = new ArrayList<BufferedImage>();

@@ -29,7 +29,7 @@ public class SimpleMonster extends Monsters{
         super(gp);
         lifePoint = 8;
 		attackPoint=2;
-        speed = 4;
+        speed = 3;
         timetodisplay = 0;
         display6fightFrame = 121;
         display6fHurtFrame = 11;

@@ -11,6 +11,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
 
+import badGuys.ShootingMonster;
 import entityItem.Items;
 import entityItem.Projectile;
 import main.Functions;
@@ -96,6 +97,11 @@ public class Player extends Entity{
 	// Change le numéro de la map
 	public void changeMap() {
 		if(gp.tileM.numMap == 1) {
+			// Si on est sur la map 1
+			gp.listeMonsters.clear();
+			gp.listeMonsters.add(new ShootingMonster(gp));
+			gp.listeMonsters.get(0).setDefaultValues(700,100);
+
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 2;
 				x = gp.tileSize;

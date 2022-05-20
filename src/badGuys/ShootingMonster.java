@@ -25,7 +25,7 @@ public class ShootingMonster extends Monsters {
 		// TODO Auto-generated constructor stub
 		lifePoint = 8;
 		attackPoint=1;
-        speed = 4;
+        speed = 3;
         timetodisplay = 0;
         display6fightFrame = 91;
         hiting = new ArrayList<BufferedImage>();

@@ -67,6 +67,8 @@ public class GamePanel extends JPanel implements Runnable{
 		itemMaps[7][0]=new Sword(this);
 		itemMaps[3][0]=new ChestUnlock(this,new PotionHeal(this));
 		((ChestUnlock)(this.itemMaps[3][0])).obj = new PotionHeal(this);
+		itemMaps[11][0]=new ChestUnlock(this,new Shield(this));
+		((ChestUnlock)(this.itemMaps[11][0])).obj = new Shield(this);
 
 		
 		//listeMonsters.add(simplemonster1);

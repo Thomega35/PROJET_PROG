@@ -52,7 +52,7 @@ public class Player extends Entity{
 		this.keyH = keyH;
 		setDefaultValues();
 		getPlayerImages();
-		this.lifePoint = 11;
+		this.lifePoint = 20;
 		this.attackPoint = 2;
 		this.defence = 1;
 		this.grabDistance=30;
@@ -119,15 +119,15 @@ public class Player extends Entity{
 			ShootingMonster shootingMonster1 = new ShootingMonster(gp);
 			ShootingMonster shootingMonster2 = new ShootingMonster(gp);
 			ShootingMonster shootingMonster3 = new ShootingMonster(gp);
-			ShootingMonster shootingMonster4 = new ShootingMonster(gp);
+			//ShootingMonster shootingMonster4 = new ShootingMonster(gp);
 			gp.listeMonsters.add(shootingMonster1);
 			gp.listeMonsters.add(shootingMonster2);
 			gp.listeMonsters.add(shootingMonster3);
-			gp.listeMonsters.add(shootingMonster4);
+			//gp.listeMonsters.add(shootingMonster4);
 			gp.listeMonsters.get(0).setDefaultValues(300, 100);
-			gp.listeMonsters.get(1).setDefaultValues(500, 100);
+			gp.listeMonsters.get(1).setDefaultValues(200, 100);
 			gp.listeMonsters.get(2).setDefaultValues(150, 400);
-			gp.listeMonsters.get(3).setDefaultValues(300, 500);
+			//gp.listeMonsters.get(3).setDefaultValues(300, 500);
 
 		} else if (num == 5) {
 			gp.listeMonsters.clear();

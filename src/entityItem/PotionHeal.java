@@ -22,16 +22,16 @@ public class PotionHeal extends Items{
 	// Fonction permettant l'int�raction avec l'�p�e et le joueur.
 		// Si le joueur appuye pour r�cup�rer l'objet, elle arrive dans son inventaire et disparait de la carte
 	public void interaction(Player pl) {
-		if (pl.lifePoint<11) {
-			pl.stuff.push_back(this);
-			gp.listeObjects.remove(this);
-			pl.lifePoint=pl.lifePoint+min(caract[3],11-pl.lifePoint);
-			for (int i =0;i < gp.itemMaps[gp.tileM.numMap].length; i++) {
-				if (gp.itemMaps[gp.tileM.numMap][i].getClass() == this.getClass()) {
-					gp.itemMaps[gp.tileM.numMap][i]=null;
-				}
+		pl.stuff.push_back(this);
+		gp.listeObjects.remove(this);
+		pl.lifePoint=pl.lifePoint+caract[3];
+		for (int i =0;i < gp.itemMaps[gp.tileM.numMap].length; i++) {
+			if (gp.itemMaps[gp.tileM.numMap][i] != null && gp.itemMaps[gp.tileM.numMap][i].getClass() == this.getClass()) {
+				gp.itemMaps[gp.tileM.numMap][i] = null;
 			}
-			}
+		}
+		gp.listeObjects.clear();
+			
 	}
 
 }

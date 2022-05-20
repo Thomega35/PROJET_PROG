@@ -198,8 +198,7 @@ public class Player extends Entity{
 	public void changeMap() {
 		numOldMap=numNewMap;
 		
-		gp.listeObjects.clear();
-		System.out.println();
+		
 		for (int i=0; i < gp.itemMaps[gp.tileM.numMap].length;i++){
 			if (gp.itemMaps[gp.tileM.numMap][i] != null)
 				gp.listeObjects.add(gp.itemMaps[gp.tileM.numMap][i]);
@@ -210,6 +209,7 @@ public class Player extends Entity{
 			numNewMap=1;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 2;
+				gp.listeObjects.clear();
 				x = gp.tileSize;
 			}
 		}
@@ -217,6 +217,7 @@ public class Player extends Entity{
 			numNewMap=2;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 1;
+				gp.listeObjects.clear();
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
@@ -224,6 +225,7 @@ public class Player extends Entity{
 			numNewMap=2;
 			if(y < gp.tileSize  && y > 0) {
 				gp.tileM.numMap = 3;
+				gp.listeObjects.clear();
 				y = gp.screenHeight-2*gp.tileSize;
 
 			}
@@ -232,6 +234,7 @@ public class Player extends Entity{
 			numNewMap=3;
 			if(y+10 < gp.screenHeight && y+10 > gp.screenHeight-gp.tileSize) {
 				gp.tileM.numMap = 2;
+				gp.listeObjects.clear();
 				y = gp.tileSize;
 
 			}
@@ -241,6 +244,7 @@ public class Player extends Entity{
 			numNewMap=2;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 4;
+				gp.listeObjects.clear();
 				x = gp.tileSize;
 			}
 		}
@@ -248,6 +252,7 @@ public class Player extends Entity{
 			numNewMap=4;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 2;
+				gp.listeObjects.clear();
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
@@ -255,6 +260,7 @@ public class Player extends Entity{
 			numNewMap=4;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 5;
+				gp.listeObjects.clear();
 				x = gp.tileSize;
 			}
 		}
@@ -262,6 +268,7 @@ public class Player extends Entity{
 			numNewMap=5;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 4;
+				gp.listeObjects.clear();
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
@@ -269,6 +276,7 @@ public class Player extends Entity{
 			numNewMap=5;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 6;
+				gp.listeObjects.clear();
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
@@ -276,6 +284,7 @@ public class Player extends Entity{
 			numNewMap=6;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 5;
+				gp.listeObjects.clear();
 				y = gp.tileSize;
 			}
 		}
@@ -283,6 +292,7 @@ public class Player extends Entity{
 			numNewMap=6;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 7;
+				gp.listeObjects.clear();
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
@@ -290,6 +300,7 @@ public class Player extends Entity{
 			numNewMap=7;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 6;
+				gp.listeObjects.clear();
 				x = gp.tileSize;
 			}
 		}
@@ -297,6 +308,7 @@ public class Player extends Entity{
 			numNewMap=6;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 8;
+				gp.listeObjects.clear();
 				x = gp.tileSize;
 			}
 		}
@@ -304,6 +316,7 @@ public class Player extends Entity{
 			numNewMap=8;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 6;
+				gp.listeObjects.clear();
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
@@ -311,6 +324,7 @@ public class Player extends Entity{
 			numNewMap=8;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 9;
+				gp.listeObjects.clear();
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
@@ -318,6 +332,7 @@ public class Player extends Entity{
 			numNewMap=9;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 8;
+				gp.listeObjects.clear();
 				y = gp.tileSize;
 			}
 		}
@@ -325,6 +340,7 @@ public class Player extends Entity{
 			numNewMap=10;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 8;
+				gp.listeObjects.clear();
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
@@ -332,6 +348,7 @@ public class Player extends Entity{
 			numNewMap=8;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 10;
+				gp.listeObjects.clear();
 				y = gp.tileSize;
 			}
 		}
@@ -339,6 +356,7 @@ public class Player extends Entity{
 			numNewMap=11;
 			if(y < 10  && y > -gp.tileSize + 10) {
 				gp.tileM.numMap = 10;
+				gp.listeObjects.clear();
 				y = gp.screenHeight-2*gp.tileSize;
 			}
 		}
@@ -346,6 +364,7 @@ public class Player extends Entity{
 			numNewMap=10;
 			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
 				gp.tileM.numMap = 11;
+				gp.listeObjects.clear();
 				y = gp.tileSize;
 			}
 		}
@@ -353,6 +372,7 @@ public class Player extends Entity{
 			numNewMap=10;
 			if(x < 10  && x > -gp.tileSize + 10) {
 				gp.tileM.numMap = 12;
+				gp.listeObjects.clear();
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
@@ -360,6 +380,7 @@ public class Player extends Entity{
 			numNewMap=12;
 			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
 				gp.tileM.numMap = 10;
+				gp.listeObjects.clear();
 				x = gp.tileSize;
 			}
 		}

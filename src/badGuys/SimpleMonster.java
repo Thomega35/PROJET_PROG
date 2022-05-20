@@ -76,12 +76,12 @@ public class SimpleMonster extends Monsters{
     }
 
     public void draw(Graphics2D g2) {
-        // rÃ©cupÃ¨re l'image du joueur
+        // récupère l'image du joueur
         BufferedImage image = idleImage;
         if (sens) {
 			image = gp.player.flip(image);
 		}
-        // affiche le personnage avec l'image "image", avec les coordonnï¿½es x et y, et de taille tileSize (16x16) sans ï¿½chelle, et 48x48 avec ï¿½chelle)
+        // affiche le personnage avec l'image "image", avec les coordonn?es x et y, et de taille tileSize (16x16) sans ?chelle, et 48x48 avec ?chelle)
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
 

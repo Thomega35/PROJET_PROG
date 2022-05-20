@@ -11,6 +11,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
 
+import badGuys.Monsters;
 import entityItem.Items;
 import entityItem.Projectile;
 import main.Functions;
@@ -186,7 +187,11 @@ public class Player extends Entity{
 
 	private void hit() {
 		if (keyH.wantToHit && display6fightFrame >= 30) {
-			//TODO frapper le monstre
+			Monsters cible = gp.f.giveMeFirstMonster(gp.listeMonsters,this,55);
+			if (cible != null) {
+				cible.lifePoint -= attackPoint;
+	    		cible.hurt();
+			}
 			display6fightFrame = 0;
 			keyH.wantToHit = false;
 		}

@@ -57,7 +57,8 @@ public class SimpleMonster extends Monsters{
 
     private void hit() {
     	if (display6fightFrame >= 120) {
-    		
+    		gp.player.lifePoint -= attackPoint;
+    		gp.player.hurt();
     		display6fightFrame = 0;
 		}
 	}

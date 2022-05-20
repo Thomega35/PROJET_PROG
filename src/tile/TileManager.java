@@ -41,7 +41,7 @@ public class TileManager {
 		tabMaps[7] = "res/maps/map8.txt";
 		tabMaps[8] = "res/maps/map9.txt";
 		tabMaps[9] = "res/maps/map10.txt";
-		itemMaps=new Items[4][6];
+		itemMaps=new Items[4][10];
 		itemMaps[3][0]=new ChestUnlock(gp,new PotionHeal(gp));
 		this.numMap = numMap;
 		loadMap();

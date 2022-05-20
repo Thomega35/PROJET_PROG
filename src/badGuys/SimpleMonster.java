@@ -20,6 +20,7 @@ public class SimpleMonster extends Monsters{
         lifePoint = 20;
         speed = 4;
     	getMonsterImage();
+        xLag=x;
     }
 
 
@@ -34,7 +35,9 @@ public class SimpleMonster extends Monsters{
     public void update() {
     	if (lifePoint <=0) {
     		dying=true;
-    	}
+    	}else{
+            orientedPosition();
+        }
     }
 
     public void draw(Graphics2D g2) {

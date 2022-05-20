@@ -30,13 +30,17 @@ public class TileManager {
 		tile = new Tile[maxTiles];
 		mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 		getTileImage();
-		tabMaps = new String[6];
+		tabMaps = new String[10];
 		tabMaps[0] = "res/maps/map.txt";
 		tabMaps[1] = "res/maps/map2.txt";
 		tabMaps[2] = "res/maps/map3.txt";
 		tabMaps[3] = "res/maps/map4.txt";
 		tabMaps[4] = "res/maps/map5.txt";
 		tabMaps[5] = "res/maps/map6.txt";
+		tabMaps[6] = "res/maps/map7.txt";
+		tabMaps[7] = "res/maps/map8.txt";
+		tabMaps[8] = "res/maps/map9.txt";
+		tabMaps[9] = "res/maps/map10.txt";
 		itemMaps=new Items[4][6];
 		itemMaps[3][0]=new ChestUnlock(gp,new PotionHeal(gp));
 		this.numMap = numMap;
@@ -73,6 +77,9 @@ public class TileManager {
 
 			tile[8] = new Tile(true);
 			tile[8].image = ImageIO.read(new File("res/new_tiles/grass_to_sand.png"));
+
+			tile[9] = new Tile(true);
+			tile[9].image = ImageIO.read(new File("res/new_tiles/palm_tree.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();

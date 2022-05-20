@@ -144,6 +144,42 @@ public class Player extends Entity{
 				x = gp.screenWidth-2*gp.tileSize;
 			}
 		}
+		if(gp.tileM.numMap == 5) {
+			if(y < 10  && y > -gp.tileSize + 10) {
+				gp.tileM.numMap = 6;
+				y = gp.screenHeight-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 6) {
+			if (y + 10 < gp.screenHeight && y + 10 > gp.screenHeight - gp.tileSize) {
+				gp.tileM.numMap = 5;
+				y = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 6) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 7;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 7) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 6;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 6) {
+			if(x+10 < gp.screenWidth && x+10 > gp.screenWidth-gp.tileSize) {
+				gp.tileM.numMap = 8;
+				x = gp.tileSize;
+			}
+		}
+		if(gp.tileM.numMap == 8) {
+			if(x < 10  && x > -gp.tileSize + 10) {
+				gp.tileM.numMap = 6;
+				x = gp.screenWidth-2*gp.tileSize;
+			}
+		}
 	}
 
 	public void update() {
@@ -187,7 +223,7 @@ public class Player extends Entity{
 
 	private void hit() {
 		if (keyH.wantToHit && display6fightFrame >= 30) {
-			Monsters cible = gp.f.giveMeFirstMonster(gp.listeMonsters,this,55);
+			Monsters cible = Functions.giveMeFirstMonster(gp.listeMonsters,this,55);
 			if (cible != null) {
 				cible.lifePoint -= attackPoint;
 	    		cible.hurt();
@@ -271,7 +307,7 @@ public class Player extends Entity{
 			image = moving.get((timetodisplay/10)%6);
 		}
 		
-		if (keyH.lookLeft) {
+		if (keyH.lookLeft && !dead) {
 			image = flip(image);
 		}
 		

@@ -45,7 +45,7 @@ public class SimpleMonster extends Monsters{
 
     public void getMonsterImage() {
         try {
-            idleImage = ImageIO.read(new File("res/player/Mummy_idle1.png"));
+            idleImage = ImageIO.read(new File("res/monsters/Mummy_idle1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

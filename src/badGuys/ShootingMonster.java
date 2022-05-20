@@ -14,11 +14,12 @@ import main.GamePanel;
 public class ShootingMonster extends Monsters {
 	int display6fightFrame;
 	int timetodisplay;
+	private int display6fHurtFrame;
 	ArrayList<BufferedImage> moving;
 	ArrayList<BufferedImage> hiting;
 	ArrayList<BufferedImage> hurting;
 	ArrayList<BufferedImage> Dyiing;
-	private int display6fHurtFrame;
+	
 	public ShootingMonster(GamePanel gp) {
 		super(gp);
 		// TODO Auto-generated constructor stub

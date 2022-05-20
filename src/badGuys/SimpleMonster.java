@@ -29,7 +29,7 @@ public class SimpleMonster extends Monsters{
         super(gp);
         lifePoint = 8;
 		attackPoint=1;
-        speed = 4;
+        speed = 3;
         timetodisplay = 0;
         display6fightFrame = 121;
         hiting = new ArrayList<BufferedImage>();
@@ -72,7 +72,8 @@ public class SimpleMonster extends Monsters{
 			orientedPosition();
     	}
 
-		if (dead && timetodisplay > 300) {
+		if (dead && timetodisplay > 200) {
+			loot();
 			dying = true;
 		}
     }
@@ -81,8 +82,8 @@ public class SimpleMonster extends Monsters{
         // r�cup�re l'image du joueur
         BufferedImage image = null;
         if (dead) {
-			if (timetodisplay < 200) {
-				image = Dyiing.get((timetodisplay/100)%3);
+			if (timetodisplay < 100) {
+				image = Dyiing.get((timetodisplay/50)%3);
 			}else {
 				image = Dyiing.get(3);
 			}
@@ -108,5 +109,9 @@ public class SimpleMonster extends Monsters{
 	public void hurt() {
 		// TODO Auto-generated method stub
 		display6fHurtFrame = 0;
+	}
+	
+	public void loot() {
+		
 	}
 }

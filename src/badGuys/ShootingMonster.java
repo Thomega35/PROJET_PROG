@@ -25,7 +25,7 @@ public class ShootingMonster extends Monsters {
 		// TODO Auto-generated constructor stub
 		lifePoint = 8;
 		attackPoint=1;
-        speed = 4;
+        speed = 2;
         timetodisplay = 0;
         display6fightFrame = 91;
         hiting = new ArrayList<BufferedImage>();
@@ -40,8 +40,8 @@ public class ShootingMonster extends Monsters {
 		// TODO Auto-generated method stub
 		BufferedImage image = null;
 		if (dead) {
-			if (timetodisplay < 200) {
-				image = Dyiing.get((timetodisplay/100)%3);
+			if (timetodisplay < 100) {
+				image = Dyiing.get((timetodisplay/50)%3);
 			}else {
 				image = Dyiing.get(3);
 			}
@@ -85,10 +85,15 @@ public class ShootingMonster extends Monsters {
 			orientedPosition();
     	}
 		
-		if (dead && timetodisplay > 300) {
+		if (dead && timetodisplay > 200) {
+			loot();
 			dying = true;
 		}
 
+	}
+	
+	public void loot() {
+		
 	}
 
 	public void hurt() {

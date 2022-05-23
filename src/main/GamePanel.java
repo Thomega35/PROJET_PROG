@@ -2,10 +2,7 @@ package main;
 
 import java.awt.*;
 import javax.swing.JPanel;
-
 import badGuys.Monsters;
-import badGuys.ShootingMonster;
-import badGuys.SimpleMonster;
 import entity.Player;
 import entityItem.ChestUnlock;
 import entityItem.Items;
@@ -17,10 +14,8 @@ import event.GameOver;
 import event.Success;
 import graphic.Hearth;
 import tile.TileManager;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class GamePanel extends JPanel implements Runnable{
 	/**
@@ -45,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Hearth hearth = new Hearth(player, this);
 	//Monsters simplemonster1 = new SimpleMonster(this);
 	//Monsters shootermonster1 = new ShootingMonster(this);
-	Success success = new Success(this, player);
+	public Success success = new Success(this, player);
 	public GameOver gameOver = new GameOver(this, player);
 	public TileManager tileM = new TileManager(this, 1);
 	public Functions f = new Functions(this);

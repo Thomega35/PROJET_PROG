@@ -1,19 +1,12 @@
 package badGuys;
-
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-
-import entity.Player;
-import entityItem.Projectile;
 import main.GamePanel;
-import main.KeyHandler;
-
 import java.util.ArrayList;
-import java.util.Random;
 
 public class SimpleMonster extends Monsters{
 
@@ -45,7 +38,7 @@ public class SimpleMonster extends Monsters{
         try {
             idleImage = ImageIO.read(new File("res/monsters/Mummy_idle1.png"));
             for (int i=1; i<=6;i++) {
-            	hiting.add(ImageIO.read(new File("res/monsters/Mummy_Slash"+i+".png")));
+            	hiting.add(ImageIO.read(new FileInputStream("res/monsters/Mummy_Slash"+i+".png")));
             	if (i<=2) {hurting.add(ImageIO.read(new File("res/monsters/Mummy_Hurt"+i+".png")));}
             	Dyiing.add(ImageIO.read(new File("res/monsters/Mummy_dead"+i+".png")));
             	if (i<=4) {moving.add(ImageIO.read(new File("res/monsters/Mummy_idle"+i+".png")));}

@@ -1,15 +1,7 @@
 package entity;
-
-
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
 import entityItem.Items;
 import main.GamePanel;
 import main.KeyHandler;
@@ -45,7 +37,7 @@ public class Inventaire extends Entity{
 	
 	public void draw(Graphics2D g2) {
 		// affiche l'inventaire avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
-		if (aff) {
+		if (aff && !gp.success.end && !gp.gameOver.end) {
 			for(int i=0;i<2;i++) {
 				for(int j=0;j<4;j++) {
 					g2.setColor(Color.GRAY);

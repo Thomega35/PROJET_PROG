@@ -1,13 +1,5 @@
 package entityItem;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import entity.Inventaire;
-import javax.imageio.ImageIO;
-import entity.Entity;
-import entity.Player;
 import main.GamePanel;
 
 public abstract class Chest extends Items{

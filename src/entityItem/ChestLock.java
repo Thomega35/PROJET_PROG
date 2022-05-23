@@ -1,12 +1,6 @@
 package entityItem;
 import main.GamePanel;
-import java.awt.*;
-import entityItem.Key;
 import entity.Player;
-import entityItem.Key;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ChestLock extends Chest{
 	Key key;
 	Items obj;

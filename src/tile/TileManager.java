@@ -2,20 +2,8 @@ package tile;
 
 import java.awt.Graphics2D;
 import java.io.*;
-import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
-
-import badGuys.Monsters;
-import entity.Entity;
-import entity.Player;
-import entityItem.Items;
 import main.GamePanel;
-import entityItem.ChestUnlock;
-import entityItem.PotionHeal;
-import entityItem.Sword;
-import entityItem.Shield;
 
 
 public class TileManager {

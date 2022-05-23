@@ -1,10 +1,4 @@
 package entityItem;
-import static java.lang.Math.*;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import entity.Player;
 import main.GamePanel;
 

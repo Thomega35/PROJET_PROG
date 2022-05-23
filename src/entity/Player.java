@@ -1,28 +1,21 @@
 package entity;
-
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import javax.imageio.ImageIO;
-
 import badGuys.HUGEMOMMYISGONNAEATYOU;
 import badGuys.SimpleMonster;
 import badGuys.ShootingMonster;
 import badGuys.Monsters;
-import entityItem.ChestUnlock;
 import entityItem.Items;
-import entityItem.PotionHeal;
 import entityItem.Projectile;
 import main.Functions;
 import main.GamePanel;
 import main.KeyHandler;
-import tile.TileManager;
 
 public class Player extends Entity{
 
@@ -514,7 +507,7 @@ public class Player extends Entity{
 		}else {
 			image = moving.get((timetodisplay/10)%6);
 		}
-		if (!dead) {
+		if (!dead && !win) {
 			if (keyH.lookLeft) {
 				image = flip(image);
 			}

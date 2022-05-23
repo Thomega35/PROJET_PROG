@@ -1,7 +1,6 @@
 package badGuys;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -100,13 +99,13 @@ public class ShootingMonster extends Monsters {
 		try{
 			
 			//idleImage = ImageIO.read(new File("res/player/superhero.png"));
-			idleImage = ImageIO.read(new FileInputStream("res/player/superhero.png"));
+			idleImage = ImageIO.read(ShootingMonster.class.getResource("/res/player/superhero.png"));
 			
             for (int i=1; i<=6;i++) {
-				if (i<=4) moving.add(ImageIO.read(new FileInputStream("res/monsters/Shooter_walking"+i+".png")));
-				hiting.add(ImageIO.read(new FileInputStream("res/monsters/Shooter_hitting"+i+".png")));
-				if (i<=2) hurting.add(ImageIO.read(new FileInputStream("res/monsters/Shooter_hurt"+i+".png")));
-				if (i<=4) Dyiing.add(ImageIO.read(new FileInputStream("res/monsters/Shooter_dead"+i+".png")));
+				if (i<=4) moving.add(ImageIO.read(ShootingMonster.class.getResource("/res/monsters/Shooter_walking"+i+".png")));
+				hiting.add(ImageIO.read(ShootingMonster.class.getResource("/res/monsters/Shooter_hitting"+i+".png")));
+				if (i<=2) hurting.add(ImageIO.read(ShootingMonster.class.getResource("/res/monsters/Shooter_hurt"+i+".png")));
+				if (i<=4) Dyiing.add(ImageIO.read(ShootingMonster.class.getResource("/res/monsters/Shooter_dead"+i+".png")));
             }
         } catch (IOException e) {
             e.printStackTrace();

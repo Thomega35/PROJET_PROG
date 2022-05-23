@@ -4,7 +4,7 @@ import main.GamePanel;
 
 public class PotionHeal extends Items{
 	public PotionHeal(GamePanel gp) {
-		super(gp,"res/screen/hearth.png");
+		super(gp,"/res/screen/hearth.png");
 		caract[3]=5;
 	}
 	

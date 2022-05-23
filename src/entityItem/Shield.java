@@ -4,7 +4,7 @@ import main.GamePanel;
 
 public class Shield extends Items{
 	public Shield(GamePanel gp) {
-		super(gp,"res/objets/shield.png");
+		super(gp,"/res/objets/shield.png");
 		caract[1]=1;
 	}
 	

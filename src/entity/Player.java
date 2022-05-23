@@ -1,7 +1,6 @@
 package entity;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.geom.AffineTransform;
@@ -76,15 +75,15 @@ public class Player extends Entity{
 	
 	public void getPlayerImages() {
 		try {
-			idleImage = ImageIO.read(new File("res/player/SteamMan1.png"));
+			idleImage = ImageIO.read(Player.class.getResource("/res/player/SteamMan1.png"));
 			for (int i=1; i<=6;i++) {
-				moving.add(ImageIO.read(new File("res/player/SteamManRun"+i+".png")));
-				hiting.add(ImageIO.read(new File("res/player/SteamManHit"+i+".png")));
-				jumping.add(ImageIO.read(new File("res/player/SteamManHit_Jump"+i+".png")));
-				hitingProjectile.add(ImageIO.read(new File("res/player/SteamManHitNum2_"+i+".png")));
-				Dyiing.add(ImageIO.read(new File("res/player/SteamMan_Dyiing"+i+".png")));
-				if (i<=4) {idle.add(ImageIO.read(new File("res/player/SteamMan"+i+".png")));}
-				if (i<=3) {hurting.add(ImageIO.read(new File("res/player/SteamManHitHurt_"+i+".png")));}
+				moving.add(ImageIO.read(Player.class.getResource("/res/player/SteamManRun"+i+".png")));
+				hiting.add(ImageIO.read(Player.class.getResource("/res/player/SteamManHit"+i+".png")));
+				jumping.add(ImageIO.read(Player.class.getResource("/res/player/SteamManHit_Jump"+i+".png")));
+				hitingProjectile.add(ImageIO.read(Player.class.getResource("/res/player/SteamManHitNum2_"+i+".png")));
+				Dyiing.add(ImageIO.read(Player.class.getResource("/res/player/SteamMan_Dyiing"+i+".png")));
+				if (i<=4) {idle.add(ImageIO.read(Player.class.getResource("/res/player/SteamMan"+i+".png")));}
+				if (i<=3) {hurting.add(ImageIO.read(Player.class.getResource("/res/player/SteamManHitHurt_"+i+".png")));}
 			}
 
 			

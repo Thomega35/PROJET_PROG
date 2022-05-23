@@ -1,7 +1,6 @@
 package entityItem;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import entity.Entity;
@@ -51,7 +50,7 @@ public abstract class Items extends Entity{
 
 	public void getObjetImage() {
 		try {
-            idleImage = ImageIO.read(new File(urlImage));
+            idleImage = ImageIO.read(Items.class.getResource(urlImage));
         } catch (IOException e) {
             e.printStackTrace();
         }

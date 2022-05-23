@@ -23,19 +23,19 @@ public class TileManager {
 		mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 		getTileImage();
 		tabMaps = new String[nbTab];
-		tabMaps[0] = "res/maps/map.txt";
-		tabMaps[1] = "res/maps/map2.txt";
-		tabMaps[2] = "res/maps/map3.txt";
-		tabMaps[3] = "res/maps/map4.txt";
-		tabMaps[4] = "res/maps/map5.txt";
-		tabMaps[5] = "res/maps/map6.txt";
-		tabMaps[6] = "res/maps/map7.txt";
-		tabMaps[7] = "res/maps/map8.txt";
-		tabMaps[8] = "res/maps/map9.txt";
-		tabMaps[9] = "res/maps/map10.txt";
-		tabMaps[10] = "res/maps/map11.txt";
-		tabMaps[11] = "res/maps/map12.txt";
-		tabMaps[12] = "res/maps/map13.txt";
+		tabMaps[0] = "/res/maps/map.txt";
+		tabMaps[1] = "/res/maps/map2.txt";
+		tabMaps[3] = "/res/maps/map4.txt";
+		tabMaps[2] = "/res/maps/map3.txt";
+		tabMaps[4] = "/res/maps/map5.txt";
+		tabMaps[5] = "/res/maps/map6.txt";
+		tabMaps[6] = "/res/maps/map7.txt";
+		tabMaps[7] = "/res/maps/map8.txt";
+		tabMaps[8] = "/res/maps/map9.txt";
+		tabMaps[9] = "/res/maps/map10.txt";
+		tabMaps[10] = "/res/maps/map11.txt";
+		tabMaps[11] = "/res/maps/map12.txt";
+		tabMaps[12] = "/res/maps/map13.txt";
 		this.numMap = numMap;
 		loadMap();
 	}
@@ -45,34 +45,34 @@ public class TileManager {
 	
 		try {
 			tile[0] = new Tile(true);
-			tile[0].image = ImageIO.read(new File("res/new_tiles/grass.png"));
+			tile[0].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/grass.png"));
 			
 			tile[1] = new Tile(false);
-			tile[1].image = ImageIO.read(new File("res/new_tiles/brick.png"));
+			tile[1].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/brick.png"));
 			
 			tile[2] = new Tile(false);
-			tile[2].image = ImageIO.read(new File("res/new_tiles/water.png"));
+			tile[2].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/water.png"));
 			
 			tile[3] = new Tile(true);
-			tile[3].image = ImageIO.read(new File("res/new_tiles/dirt.png"));
+			tile[3].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/dirt.png"));
 			
 			tile[4] = new Tile(true);
-			tile[4].image = ImageIO.read(new File("res/new_tiles/sand.png"));
+			tile[4].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/sand.png"));
 			
 			tile[5] = new Tile(true);
-			tile[5].image = ImageIO.read(new File("res/new_tiles/red_sand.png"));
+			tile[5].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/red_sand.png"));
 
 			tile[6] = new Tile(false);
-			tile[6].image = ImageIO.read(new File("res/new_tiles/tree.png"));
+			tile[6].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/tree.png"));
 
 			tile[7] = new Tile(true);
-			tile[7].image = ImageIO.read(new File("res/new_tiles/dirt_with_grass.png"));
+			tile[7].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/dirt_with_grass.png"));
 
 			tile[8] = new Tile(true);
-			tile[8].image = ImageIO.read(new File("res/new_tiles/grass_to_sand.png"));
+			tile[8].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/grass_to_sand.png"));
 
 			tile[9] = new Tile(false);
-			tile[9].image = ImageIO.read(new File("res/new_tiles/palm_tree.png"));
+			tile[9].image = ImageIO.read(TileManager.class.getResource("/res/new_tiles/palm_tree.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -96,9 +96,9 @@ public class TileManager {
 		//charger le fichier txt de la map
 		try {
 
-
-			InputStream is = new FileInputStream(tabMaps[numMap]);
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			
+			InputStreamReader is = new InputStreamReader(getClass().getResourceAsStream(tabMaps[numMap]));
+			BufferedReader br = new BufferedReader(is);
 
 			int col = 0;
 			int row = 0;

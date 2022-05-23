@@ -12,7 +12,7 @@ public class Projectile extends Items{
 	Boolean fromPlayer;
 	
 	public Projectile(GamePanel gp, Entity shooter) {
-		super(gp, "res/projectiles/Pioupiou.png");
+		super(gp, "/res/projectiles/Pioupiou.png");
 		// TODO Auto-generated constructor stub
 		speed = 5;
 		attackPoint = shooter.attackPoint;
